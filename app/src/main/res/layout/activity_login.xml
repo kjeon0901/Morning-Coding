@@ -6,4 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <FrameLayout
+        android:layout_width="287dp"
+        android:layout_height="431dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="172dp">
+
+        <ImageView
+            android:layout_width="314dp"
+            android:layout_height="257dp"
+            android:src="@drawable/yellowcircle"
+            tools:ignore="MissingConstraints">
+
+        </ImageView>
+
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/Title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Morning"
+        android:textSize="40sp"
+        android:textColor="#090000"
+        tools:ignore="MissingConstraints"
+
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coding"
+        android:textSize="35sp"
+        android:textColor="#090000"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="313dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
