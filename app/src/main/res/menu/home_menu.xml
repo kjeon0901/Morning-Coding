@@ -11,7 +11,7 @@
     android:id="@+id/FavoritesMenu"
     android:orderInCategory="2"
     app:showAsAction="never"
-    android:title="즐겨찾기 리스트" />
+    android:title="즐겨찾기 리스트!" />
 
 <item
     android:id="@+id/SolutionMenu"
