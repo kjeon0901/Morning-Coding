@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SolutionActivity_python"></activity>
-        <activity android:name=".SolutionActivity_c" />
+        <activity android:name=".SolutionActivity_c" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SolutionActivity_java" />
         <activity android:name=".ProblemActivity_solution" />
         <activity android:name=".FavouritesActivity" />
