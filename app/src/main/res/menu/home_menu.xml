@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/LogoutMenu"
+    android:orderInCategory="1"
+    app:showAsAction="never"
+    android:title="LOGOUT" />
+
+<item
+    android:id="@+id/FavoritesMenu"
+    android:orderInCategory="2"
+    app:showAsAction="never"
+    android:title="즐겨찾기 리스트!" />
+
+<item
+    android:id="@+id/SolutionMenu"
+    android:orderInCategory="3"
+    app:showAsAction="never"
+    android:title="언어별 풀이보기" >
+    <menu>
+        <item
+            android:id="@+id/subMenu_C"
+            android:orderInCategory="4"
+            android:title="▷C"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/subMenu_JAVA"
+            android:orderInCategory="5"
+            app:showAsAction="never"
+            android:title="▷JAVA"/>
+        <item
+            android:id="@+id/subMenu_PYTHON"
+            android:orderInCategory="6"
+            app:showAsAction="never"
+            android:title="▷PYTHON"/>
+    </menu>
+</item>
+
+</menu>
