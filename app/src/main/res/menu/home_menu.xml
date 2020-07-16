@@ -17,7 +17,7 @@
     android:id="@+id/SolutionMenu"
     android:orderInCategory="3"
     app:showAsAction="never"
-    android:title="언어별 풀이보기" >
+    android:title="언어별 풀이보기!" >
     <menu>
         <item
             android:id="@+id/subMenu_C"
