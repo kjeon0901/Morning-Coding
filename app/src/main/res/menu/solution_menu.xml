@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- "Mark Favorite", should appear as action button if possible -->
+    <item android:id="@+id/SolutionCMenu"
+        android:title="C"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/SolutionJavaMenu"
+        android:title="Java"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/SolutionPythonMenu"
+        android:title="Python"
+        app:showAsAction="ifRoom"/>
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/SettingMenu"
+        android:title="설정"
+        app:showAsAction="never"/>
+</menu>
