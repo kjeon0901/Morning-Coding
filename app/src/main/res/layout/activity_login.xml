@@ -7,15 +7,15 @@
     tools:context=".LoginActivity">
 
     <FrameLayout
-        android:layout_width="287dp"
-        android:layout_height="431dp"
+        android:layout_width="290dp"
+        android:layout_height="368dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="172dp">
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="110dp">
 
         <ImageView
-            android:layout_width="314dp"
-            android:layout_height="257dp"
+            android:layout_width="217dp"
+            android:layout_height="293dp"
             android:src="@drawable/yellowcircle"
             tools:ignore="MissingConstraints">
 
@@ -31,6 +31,7 @@
         android:text="Morning"
         android:textSize="40sp"
         android:textColor="#090000"
+        android:fontFamily="@font/font"
         tools:ignore="MissingConstraints"
 
         tools:layout_editor_absoluteX="131dp"
@@ -41,8 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coding"
-        android:textSize="35sp"
+        android:textSize="40sp"
         android:textColor="#090000"
+        android:fontFamily="@font/font"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="150dp"
         tools:layout_editor_absoluteY="313dp" />
