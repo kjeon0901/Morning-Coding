@@ -28,12 +28,12 @@
             android:id="@+id/subMenu_JAVA"
             android:orderInCategory="5"
             app:showAsAction="never"
-            android:title="▷JAVA"/>
+            android:title="▷JAVA" />
         <item
             android:id="@+id/subMenu_PYTHON"
             android:orderInCategory="6"
             app:showAsAction="never"
-            android:title="▷PYTHON"/>
+            android:title="▷PYTHON" />
     </menu>
 </item>
 

@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".FavouritesActivity">
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="즐겨찾는 문제"
+        android:textSize="30sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="52dp" />
+
+    <ScrollView
+        android:layout_width="276dp"
+        android:layout_height="468dp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="132dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
