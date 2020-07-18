@@ -1,11 +1,15 @@
 package com.example.bottomup2020;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -15,6 +19,28 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
 
+    }
+
+    @Override
+    public void setContentView(int layoutResID){
+        LinearLayout fullView = (LinearLayout)getLayoutInflater().inflate(R.layout.activity_home_toolbar, null);
+        FrameLayout activityContainer = (FrameLayout)fullView.findViewById(R.id.activity_content);
+        getLayoutInflater().inflate(layoutResID, activityContainer, true);
+        super.setContentView(fullView);
+
+        Toolbar toolbar=(Toolbar)findViewById(R.id.home_toolbar);
+        //툴바 사용여부 결정(기본=사용)
+        if(useToolbar()){
+            setSupportActionBar(toolbar);
+            setTitle("MorningCoding");
+        }else{
+            toolbar.setVisibility(View.GONE);
+        }
+    }
+
+    //툴바 사용할지 말지 정함
+    protected boolean useToolbar(){
+        return true;
     }
 
     // R.menu.home_menu라는 코드로 res/menu/home_menu.xml에 있는 코드 읽어옴
@@ -54,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
     // 메뉴를 눌렀을 때 이미 적용되어있어야 하는 정보들(ex) 로그인안하면 로그아웃 버튼 없게)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-       return super.onPrepareOptionsMenu(menu);
+        return super.onPrepareOptionsMenu(menu);
     }
 
 

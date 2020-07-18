@@ -148,5 +148,16 @@
         tools:layout_editor_absoluteY="416dp"
         tools:ignore="MissingConstraints" />
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        app:titleTextColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#FECE22"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
