@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".SolutionActivity_c">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar"
+        android:id="@+id/c_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FECE22"
+        android:layout_marginBottom="30dp"
         tools:ignore="ExtraText">
 
         <TextView
@@ -19,20 +25,455 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="20dp"
-            android:text="C">
+            android:text="언어별 풀이보기">
 
         </TextView>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="C"/>
+
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/flower"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="99dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
 
-    </ImageView>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button1"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button2"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button3"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button4"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button5"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button6"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button7"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button8"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button9"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button10"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button11"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button12"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button13"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button14"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button15"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button16"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button17"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button18"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button19"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button20"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button21"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button22"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button23"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button24"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button25"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button26"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button27"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button28"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button29"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button30"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button31"
+            android:text="1"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button32"
+            android:text="2"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button33"
+            android:text="3"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button34"
+            android:text="4"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellowpaint"
+            android:id="@+id/c_button35"
+            android:text="5"
+            android:textSize="20dp"
+            tools:ignore="MissingConstraints"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
