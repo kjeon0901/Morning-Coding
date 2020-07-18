@@ -51,31 +51,28 @@
 
     <Button
         android:id="@+id/btn_custom_login"
-        android:layout_width="147dp"
-        android:layout_height="41dp"
-        android:text="카카오 간편 로그인"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카카오 로그인"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="504dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="606dp" />
 
     <com.kakao.usermgmt.LoginButton
-        android:id="@+id/login_button"
+        android:id="@+id/btn_kakao_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="497dp" />
 
     <Button
         android:id="@+id/btn_custom_login_out"
-        android:layout_width="106dp"
-        android:layout_height="40dp"
-        android:text="logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카카오 로그아웃"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="564dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="667dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
