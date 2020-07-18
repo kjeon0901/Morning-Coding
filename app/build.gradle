@@ -34,10 +34,19 @@ dependencies {
     // 카카오톡 SDK 추가
     implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
 
-    implementation "com.kakao.sdk:v2-user-rx:2.0.0-beta05"
-    implementation "com.kakao.sdk:v2-talk-rx:2.0.0-beta05"
-    implementation "com.kakao.sdk:v2-story-rx:2.0.0-beta05"
-    implementation "com.kakao.sdk:v2-link-rx:2.0.0-beta05"
-    implementation "com.kakao.sdk:v2-navi:2.0.0-beta05"
+    // 카카오 로그인
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.30.0'
+
+    // 카카오톡
+    implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.30.0'
+
+    // 카카오스토리
+    implementation group: 'com.kakao.sdk', name: 'kakaostory', version: '1.30.0'
+
+    // 카카오링크
+    implementation group: 'com.kakao.sdk', name: 'kakaolink', version: '1.30.0'
+
+    // 카카오내비
+    implementation group: 'com.kakao.sdk', name: 'kakaonavi', version: '1.30.0'
 
 }

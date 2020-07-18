@@ -1,4 +1,5 @@
 package com.example.bottomup2020;
+
 import android.app.Application;
 import android.content.Context;
 
@@ -8,7 +9,6 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
-
 
 
 public class GlobalApplication extends Application {
@@ -28,7 +28,7 @@ public class GlobalApplication extends Application {
         instance = this;
 
         // Kakao Sdk 초기화
-        KakaoSdk.init(this, "{}")
+        KakaoSDK.init(new KakaoSDKAdapter());
     }
 
     @Override
