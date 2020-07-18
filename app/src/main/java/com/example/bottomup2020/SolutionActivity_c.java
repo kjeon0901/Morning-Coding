@@ -20,7 +20,7 @@ public class SolutionActivity_c extends AppCompatActivity {
         //toolbar.setTitle(R.string.solutionC_toolbar);
         //setSupportActionBar(toolbar);
 
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FECE22"))); //custom action ba
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FECE22")));
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //enable using home button(ex/ back button)
 
     }
