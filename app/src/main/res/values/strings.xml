@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">BottomUp2020</string>
-    <string name="f2015757451a92ea49fb11cbffcb46e8">NativeAppKey</string>
+  //카카오 앱 키
+    <string name="app_name">MorningCoding</string>
+    <string name="kakao_app_key">f2015757451a92ea49fb11cbffcb46e8</string>
 </resources>
