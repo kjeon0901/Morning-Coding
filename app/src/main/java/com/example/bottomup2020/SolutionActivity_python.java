@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SolutionActivity_python extends AppCompatActivity {
+public class SolutionActivity_python extends SolutionToolbarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
