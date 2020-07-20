@@ -18,22 +18,12 @@
             android:value="@string/kakao_app_key" />
 
         <activity android:name=".SolutionActivity_python" />
-        <activity android:name=".SolutionActivity_c">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SolutionActivity_c"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".SolutionActivity_java" />
         <activity android:name=".ProblemActivity_solution" />
-        <activity android:name=".SolutionToolbarActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SolutionToolbarActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".FavouritesActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -43,13 +33,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
