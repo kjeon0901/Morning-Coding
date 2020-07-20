@@ -1,78 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="290dp"
-        android:layout_height="368dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="110dp">
+        android:layout_width="423dp"
+        android:layout_height="549dp"
+        android:orientation="vertical">
+
 
         <ImageView
-            android:layout_width="217dp"
-            android:layout_height="293dp"
-            android:src="@drawable/yellowcircle"
-            tools:ignore="MissingConstraints">
+            android:layout_width="265dp"
+            android:layout_height="369dp"
+            android:layout_margin="40dp"
+            android:src="@drawable/yellowcircle" />
 
-        </ImageView>
+        <LinearLayout
 
+            android:layout_width="230dp"
+            android:layout_height="163dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Title1"
+                android:layout_width="201dp"
+                android:layout_height="60dp"
+                android:fontFamily="@font/font"
+                android:gravity="right"
+                android:text="Morning"
+                android:textColor="#090000"
+                android:textSize="40sp"
+
+                tools:layout_editor_absoluteX="131dp"
+                tools:layout_editor_absoluteY="246dp" />
+
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:text="Coding"
+                android:textColor="#090000"
+                android:textSize="40sp"
+                tools:layout_editor_absoluteX="150dp"
+                tools:layout_editor_absoluteY="313dp" />
+        </LinearLayout>
+
+        <com.kakao.usermgmt.LoginButton
+            android:id="@+id/btn_kakao_login"
+            android:layout_width="19dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/Title1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Morning"
-        android:textSize="40sp"
-        android:textColor="#090000"
-        android:fontFamily="@font/font"
-        tools:ignore="MissingConstraints"
-
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="246dp" />
-
-    <TextView
-        android:id="@+id/title2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coding"
-        android:textSize="40sp"
-        android:textColor="#090000"
-        android:fontFamily="@font/font"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="313dp" />
-
-    <Button
-        android:id="@+id/btn_custom_login"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="카카오 로그인"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="606dp" />
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <com.kakao.usermgmt.LoginButton
-        android:id="@+id/btn_kakao_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="497dp" />
+        <Button
+            android:id="@+id/btn_custom_login"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="카카오톡으로 간편 로그인" />
 
-    <Button
-        android:id="@+id/btn_custom_login_out"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="카카오 로그아웃"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="667dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_custom_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="로그아웃(메뉴바로 옮길거임/기능만 확인)" />
+    </LinearLayout>
+</LinearLayout>
+
+
