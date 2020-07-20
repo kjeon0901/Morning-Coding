@@ -67,9 +67,6 @@ public class SolutionToolbarActivity extends AppCompatActivity {
                 intent = new Intent(this, SolutionActivity_python.class);
                 startActivity(intent);
                 return true;
-            case R.id.SettingMenu:
-                //getMenuInflater().inflate(R.menu.home_menu, menu);
-                return true;
             default:
 
                 return super.onOptionsItemSelected(item);
