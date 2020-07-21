@@ -25,7 +25,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="192dp"
+            android:layout_height="match_parent"
 
             >
 
@@ -35,9 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="50dp"
-                android:textStyle="bold"
                 android:text="해바라기"
-                android:textSize="23dp" />
+                android:textSize="23dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -47,15 +47,6 @@
                 android:layout_marginTop="53dp"
                 android:text="님"
                 android:textSize="20dp" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="107dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="50dp"
-                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -97,10 +88,10 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="130dp"
-                android:text="정답률: " />
+                android:text="정답률: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/corrrectPercent"
@@ -108,17 +99,110 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="270dp"
                 android:layout_marginTop="130dp"
-                android:textSize="20dp"
-                android:text="100" />
+                android:text="100"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
                 android:layout_marginLeft="310dp"
-                android:textSize="20dp"
-                android:text="%" />
+                android:layout_marginTop="130dp"
+                android:text="%"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="185dp"
+                android:text="선택한 언어"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="315dp"
+                android:text="오늘의 모닝코딩"
+                android:textSize="20dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="220dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/java_button"
+                        android:onClick="onClick"
+                        android:layout_width="76dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape"
+                        android:text="Java" />
+
+                    <Button
+                        android:id="@+id/python_button"
+                        android:onClick="onClick"
+                        android:layout_width="76dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape"
+                        android:text="PYTHON" />
+
+                    <Button
+                        android:id="@+id/c_button"
+                        android:onClick="onClick"
+                        android:layout_width="76dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape"
+                        android:text="C" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="180dp"
+                app:srcCompat="@drawable/flowerhead" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="310dp"
+                app:srcCompat="@drawable/flowerhead" />
+
+            <FrameLayout
+                android:layout_width="105dp"
+                android:layout_height="105dp"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="50dp"
+                android:background="#d3d3d3">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="64dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="13dp"
+                    app:srcCompat="@drawable/animal" />
+            </FrameLayout>
 
         </FrameLayout>
 
