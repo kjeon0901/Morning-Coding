@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 
 public class HomeActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,4 +86,17 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public void onClick(View view) {
+        // 버튼 id가져오기
+        switch (view.getId())
+        {
+            case R.id.java_button:
+                // 버튼 JAVA 눌렀을 때 처리
+                break;
+            case R.id.python_button:
+                break;
+            case R.id.c_button:
+                break;
+        }
+    }
 }
