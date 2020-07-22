@@ -27,6 +27,7 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
+
             <TextView
                 android:id="@+id/Title1"
                 android:layout_width="201dp"
@@ -67,12 +68,27 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_custom_login"
-            android:layout_width="204dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="카카오톡으로 간편 로그인" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <ImageView
+        android:id="@+id/loginImage"
+        android:layout_width="40dp"
+        android:layout_height="34dp"
+        android:layout_margin="5sp"
+        app:srcCompat="@drawable/flowerhead" />
+
+    <Button
+        android:id="@+id/btn_custom_login"
+        android:layout_width="187dp"
+        android:layout_height="41dp"
+        android:layout_gravity="center"
+        android:background="@drawable/buttonstyle"
+
+        android:text="카카오톡으로 간편 로그인"
+        android:textColor="#000000" />
+</LinearLayout>
 
 
         <Button
