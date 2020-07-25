@@ -14,8 +14,7 @@
         android:layout_height="?actionBarSize"
         android:background="#FECE22"
         tools:ignore="MissingConstraints"
-        app:subtitleTextColor="@android:color/black"
-        app:subtitle="C">
+        app:subtitleTextColor="@android:color/black">
 
     </androidx.appcompat.widget.Toolbar>
 

@@ -4,7 +4,6 @@
 
     <!-- "Mark Favorite", should appear as action button if possible -->
 
-
     <item android:id="@+id/SolutionCMenu"
         android:title="C"
         app:showAsAction="never"/>

@@ -31,6 +31,19 @@ public class SolutionToolbarActivity extends AppCompatActivity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.c_toolbar);
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
+            switch (layoutResID){
+                case R.layout.activity_solution_c:
+                    toolbar.setSubtitle("C");
+                    break;
+                case R.layout.activity_solution_java:
+                    toolbar.setSubtitle("JAVA");
+                    break;
+                case R.layout.activity_solution_python:
+                    toolbar.setSubtitle("PYTHON");
+                    break;
+                default:
+                    break;
+            }
             setSupportActionBar(toolbar);
             setTitle("언어별 풀이보기");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);//뒤로가기
@@ -68,7 +81,10 @@ public class SolutionToolbarActivity extends AppCompatActivity {
                 intent = new Intent(this, SolutionActivity_python.class);
                 startActivity(intent);
                 return true;
-        
+            case android.R.id.home:
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                return true;
             default:
 
                 return super.onOptionsItemSelected(item);
