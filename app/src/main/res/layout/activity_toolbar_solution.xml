@@ -13,7 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="#FECE22"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:subtitleTextColor="@android:color/black"
+        app:subtitle="C">
+
+    </androidx.appcompat.widget.Toolbar>
+
 
     <FrameLayout
         android:id="@+id/activity_content"
