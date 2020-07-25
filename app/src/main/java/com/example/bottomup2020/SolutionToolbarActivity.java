@@ -33,6 +33,7 @@ public class SolutionToolbarActivity extends AppCompatActivity {
         if(useToolbar()){
             setSupportActionBar(toolbar);
             setTitle("언어별 풀이보기");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);//뒤로가기
         }else{
             toolbar.setVisibility(View.GONE);
         }
@@ -67,6 +68,7 @@ public class SolutionToolbarActivity extends AppCompatActivity {
                 intent = new Intent(this, SolutionActivity_python.class);
                 startActivity(intent);
                 return true;
+        
             default:
 
                 return super.onOptionsItemSelected(item);
