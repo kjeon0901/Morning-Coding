@@ -1,23 +1,54 @@
 package com.example.bottomup2020;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.BufferedInputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 
 public class HomeActivity extends AppCompatActivity {
+    String profileUrl;
+    String nickName;
+    ImageView imageView5;
+    TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
+        imageView5=findViewById(R.id.imageView5);
+        userName = findViewById(R.id.userName);
+
+        Intent intent = getIntent();
+        profileUrl = intent.getStringExtra("profileUrl");
+        nickName = intent.getStringExtra("nickName");
+
+        userName.setText(nickName);
+
+        try {
+            URL url = new URL(profileUrl);
+            URLConnection conn = url.openConnection();
+            conn.connect();
+            BufferedInputStream bis = new BufferedInputStream(conn.getInputStream());
+            Bitmap bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            imageView5.setImageBitmap(bm);
+        } catch (Exception e) {
+        }
 
     }
 
