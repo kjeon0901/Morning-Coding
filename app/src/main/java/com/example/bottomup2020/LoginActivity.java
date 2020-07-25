@@ -109,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // 사용자 정보 요청
         public void requestMe() {
+
             UserManagement.getInstance()
                     .me(new MeV2ResponseCallback() {
                         @Override
@@ -121,14 +122,15 @@ public class LoginActivity extends AppCompatActivity {
                             Log.e("KAKAO_API", "사용자 정보 요청 실패: " + errorResult);
                         }
 
+                        //사용자 정보 요청에 성공한 경우
                         @Override
                         public void onSuccess(MeV2Response result) {
 
                             Log.i("KAKAO_API", "사용자 아이디: " + result.getId());
 
                             UserAccount kakaoAccount = result.getKakaoAccount();
-                            if (kakaoAccount != null) {
 
+                            if (kakaoAccount != null) {
                                 // 이메일
                                 String email = kakaoAccount.getEmail();
 
@@ -137,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 } else if (kakaoAccount.emailNeedsAgreement() == OptionalBoolean.TRUE) {
                                     // 동의 요청 후 이메일 획득 가능
-                                    // 단, 선택 동의로 설정되어 있다면 서비스 이용 시나리오 상에서 반드시 필요한 경우에만 요청해야 합니다.
+                                    // 단, 선택 동의로 th설정되어 있다면 서비스 이용 시나리오 상에서 반드시 필요한 경우에만 요청해야 합니다.
 
                                 } else {
                                     // 이메일 획득 불가
@@ -157,11 +159,9 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     // 프로필 획득 불가
                                 }
-
+                                redirectSignupActivity();
                             }
-                            redirectSignupActivity();
                         }
-
                     });
         }
     }
