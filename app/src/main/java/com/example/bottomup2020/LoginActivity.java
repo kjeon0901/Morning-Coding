@@ -10,11 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kakao.auth.AccessTokenCallback;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
-import com.kakao.auth.authorization.accesstoken.AccessToken;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
@@ -24,9 +22,6 @@ import com.kakao.usermgmt.response.model.Profile;
 import com.kakao.usermgmt.response.model.UserAccount;
 import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                 session = Session.getCurrentSession();
                 session.addCallback(sessionCallback);
                 session.open(AuthType.KAKAO_LOGIN_ALL, LoginActivity.this);
-
 
             }
 
@@ -130,26 +124,6 @@ public class LoginActivity extends AppCompatActivity {
 
                             Log.i("KAKAO_API", "사용자 아이디: " + result.getId());
                             UserAccount kakaoAccount = result.getKakaoAccount();
-                            // 필요한 동의항목의 scope ID (개발자사이트 해당 동의항목 설정에서 확인 가능)
-                            List<String> scopes = Arrays.asList("account_email");
-
-                            // 사용자 동의 요청
-                            Session.getCurrentSession()
-                                    .updateScopes(this, scopes, new AccessTokenCallback() {
-                                        @Override
-                                        public void onAccessTokenReceived(AccessToken accessToken) {
-                                            Log.i("KAKAO_SESSION", "새로운 동의항목 추가 완료");
-
-                                            // 요청한 scope이 추가되어 토큰이 재발급 됨
-
-                                            // TODO: 사용자 동의 획득 이후 프로세스
-                                        }
-
-                                        @Override
-                                        public void onAccessTokenFailure(ErrorResult errorResult) {
-                                            Log.e("KAKAO_SESSION", "사용자 동의 실패: " + errorResult);
-                                        }
-                                    });
 
                             if (kakaoAccount != null) {
                                 // 이메일
