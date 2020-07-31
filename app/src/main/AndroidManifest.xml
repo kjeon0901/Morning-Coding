@@ -14,8 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".FavouritesActivity"></activity>
+        <activity android:name=".LoginScreenActivity" />
         <activity android:name=".MK_profileActivity"></activity>
-        <activity android:name=".LoginScreenActivity"></activity>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -27,7 +29,7 @@
         <activity android:name=".SolutionActivity_java" />
         <activity android:name=".ProblemActivity_solution" />
         <activity android:name=".SolutionToolbarActivity" />
-        <activity android:name=".FavouritesActivity" />
+        <activity android:name=".FavouritesListActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

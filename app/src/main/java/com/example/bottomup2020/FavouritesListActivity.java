@@ -1,55 +1,43 @@
 package com.example.bottomup2020;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import com.example.bottomup2020.List.ListViewAdapter;
 
-import java.io.BufferedInputStream;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-
-public class HomeActivity extends AppCompatActivity {
-    String profileUrl;
-    String nickName;
-    ImageView imageView5;
-    TextView userName;
+public class FavouritesListActivity extends AppCompatActivity {
+    private ListView listview;
+    private ListViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home2);
-        imageView5=findViewById(R.id.imageView5);
-        userName = findViewById(R.id.userName);
+        setContentView(R.layout.activity_favourites);
 
-        Intent intent = getIntent();
-        profileUrl = intent.getStringExtra("profileUrl");
-        nickName = intent.getStringExtra("nickName");
+        // Adapter 생성
+        adapter = new ListViewAdapter();
 
-        userName.setText(nickName);
+        // 리스트뷰 참조 및 Adapter 달기
+        listview = (ListView) findViewById(R.id.listview);
+        listview.setAdapter(adapter);
 
-        try {
-            URL url = new URL(profileUrl);
-            URLConnection conn = url.openConnection();
-            conn.connect();
-            BufferedInputStream bis = new BufferedInputStream(conn.getInputStream());
-            Bitmap bm = BitmapFactory.decodeStream(bis);
-            bis.close();
-            imageView5.setImageBitmap(bm);
-        } catch (Exception e) {
-        }
+        adapter.addItem("JAVA", "01번");
+        adapter.addItem("JAVA", "02번");
+        adapter.addItem("JAVA", "03번");
 
+        adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
     }
 
     @Override
@@ -63,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-            setTitle("MorningCoding");
+            setTitle("즐겨찾는 문제");
         }else{
             toolbar.setVisibility(View.GONE);
         }
@@ -99,10 +87,10 @@ public class HomeActivity extends AppCompatActivity {
                 intent = new Intent(this, SolutionActivity_python.class);
                 startActivity(intent);
                 break;
-            case R.id.FavoritesMenu:
-                intent = new Intent(this, FavouritesListActivity.class);
-                startActivity(intent);
-                break;
+//            case R.id.FavoritesMenu:
+//                intent = new Intent(this, FavouritesActivity.class);
+//                startActivity(intent);
+//                break;
         }
         return true;
     }
@@ -111,21 +99,10 @@ public class HomeActivity extends AppCompatActivity {
     // 메뉴를 눌렀을 때 이미 적용되어있어야 하는 정보들(ex) 로그인안하면 로그아웃 버튼 없게)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.getItem(2).setEnabled(false);
         return super.onPrepareOptionsMenu(menu);
     }
 
 
-    public void onClick(View view) {
-        // 버튼 id가져오기
-        switch (view.getId())
-        {
-            case R.id.java_button:
-                // 버튼 JAVA 눌렀을 때 처리
-                break;
-            case R.id.python_button:
-                break;
-            case R.id.c_button:
-                break;
-        }
-    }
+
 }
