@@ -1,11 +1,10 @@
 package com.example.bottomup2020;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class ProblemActivity_solution extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+public class ProblemActivity_solution extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
