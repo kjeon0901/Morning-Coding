@@ -21,10 +21,7 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
-        <receiver android:name=".ScreenReceiver"/>
-        <service android:name=".ScreenService"/>
-        <activity android:name=".LockScreenActivity"
-            tools:ignore="DuplicateActivity" />
+
         <activity android:name=".SolutionActivity_python" />
         <activity android:name=".SolutionActivity_c" />
         <activity android:name=".SolutionActivity_java" />
