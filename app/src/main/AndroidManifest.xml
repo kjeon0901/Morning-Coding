@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MK_profilActivity"></activity>
+        <activity android:name=".MK_profileActivity"></activity>
         <activity android:name=".LoginScreenActivity"></activity>
 
         <meta-data
