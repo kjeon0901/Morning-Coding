@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_custom_login;
     private Button btn_custom_logout;
     private SessionCallback sessionCallback = new SessionCallback();
+    private String nickname,email;
     Session session;
 
 
@@ -155,17 +156,22 @@ public class LoginActivity extends AppCompatActivity {
                                 redirectSignupActivity();
                             }
 
-                        }
-                    });
+                        }});
 
         }
     }
 
 
     protected void redirectSignupActivity() {       //세션 연결 성공 시 profileActivity로 넘김
-        final Intent intent = new Intent(this, MK_profileActivity.class);
+        final Intent intent = new Intent(this, HomeActivity.class);
+        final Intent intent2 = new Intent(this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        //객체 생성
+
+        intent.putExtra("nickname",nickname); //데이터를 담는다.
+        intent2.putExtra("email",email);
+        startActivity(intent); //액티비티 이름
+        startActivity(intent2);
         finish();
     }
 }
