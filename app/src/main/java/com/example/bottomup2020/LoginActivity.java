@@ -28,9 +28,9 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_custom_login;
     private Button btn_custom_logout;
     private SessionCallback sessionCallback = new SessionCallback();
+    private String nickname,email;
     Session session;
-    private String url;
-    private String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,8 +119,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         //사용자 정보 요청에 성공한 경우
-                        @Override
-                        public void onSuccess(MeV2Response result) {
+                            @Override
+                            public void onSuccess(MeV2Response result) {
 
                             Log.i("KAKAO_API", "사용자 아이디: " + result.getId());
                             UserAccount kakaoAccount = result.getKakaoAccount();
@@ -147,9 +147,6 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d("KAKAO_API", "nickname: " + profile.getNickname());
                                     Log.d("KAKAO_API", "profile image: " + profile.getProfileImageUrl());
                                     Log.d("KAKAO_API", "thumbnail image: " + profile.getThumbnailImageUrl());
-                                    url = profile.getProfileImageUrl();
-                                    name = profile.getNickname();
-
                                 } else if (kakaoAccount.profileNeedsAgreement() == OptionalBoolean.TRUE) {
                                     // 동의 요청 후 프로필 정보 획득 가능
 
@@ -159,20 +156,22 @@ public class LoginActivity extends AppCompatActivity {
                                 redirectSignupActivity();
                             }
 
-                        }
-                    });
+                        }});
 
         }
-
     }
 
 
-    protected void redirectSignupActivity() {       //세션 연결 성공 시 HomeActivity로 넘김
+    protected void redirectSignupActivity() {       //세션 연결 성공 시 profileActivity로 넘김
         final Intent intent = new Intent(this, HomeActivity.class);
+        final Intent intent2 = new Intent(this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra("profileUrl",url);
-        intent.putExtra("nickName",name);
-        startActivity(intent);
+        //객체 생성
+
+        intent.putExtra("nickname",nickname); //데이터를 담는다.
+        intent2.putExtra("email",email);
+        startActivity(intent); //액티비티 이름
+        startActivity(intent2);
         finish();
     }
 }
