@@ -18,16 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".LockScreenActivity"></activity>
+
+
         <activity android:name=".MK_profileActivity" />
         <activity android:name=".LoginScreenActivity" />
-=======
-
         <activity android:name=".FavouritesActivity"></activity>
-        <activity android:name=".LoginScreenActivity" />
-        <activity android:name=".MK_profileActivity"></activity>
->>>>>>> master
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
