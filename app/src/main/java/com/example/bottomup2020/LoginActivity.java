@@ -23,11 +23,14 @@ import com.kakao.usermgmt.response.model.UserAccount;
 import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button btn_custom_login;
     private Button btn_custom_logout;
     private SessionCallback sessionCallback = new SessionCallback();
+    private String nickname,email;
     Session session;
 
 
@@ -126,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (kakaoAccount != null) {
                                 // 이메일
-                                String email = kakaoAccount.getEmail();
+                               email = kakaoAccount.getEmail();
 
                                 if (email != null) {
                                     Log.i("KAKAO_API", "email: " + email);
@@ -146,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d("KAKAO_API", "nickname: " + profile.getNickname());
                                     Log.d("KAKAO_API", "profile image: " + profile.getProfileImageUrl());
                                     Log.d("KAKAO_API", "thumbnail image: " + profile.getThumbnailImageUrl());
+                                    nickname=profile.getNickname();
                                 } else if (kakaoAccount.profileNeedsAgreement() == OptionalBoolean.TRUE) {
                                     // 동의 요청 후 프로필 정보 획득 가능
 
@@ -155,16 +159,20 @@ public class LoginActivity extends AppCompatActivity {
                                 redirectSignupActivity();
                             }
 
-                        }
-                    });
+                        }});
 
         }
     }
 
 
+
     protected void redirectSignupActivity() {       //세션 연결 성공 시 profileActivity로 넘김
-        final Intent intent = new Intent(this, MK_profileActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+        ArrayList<String> profile=new ArrayList<>();
+        profile.add(nickname);
+        profile.add(email);
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("profile",profile);
         startActivity(intent);
         finish();
     }
