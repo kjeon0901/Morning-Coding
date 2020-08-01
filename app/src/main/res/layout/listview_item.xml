@@ -34,14 +34,15 @@
 
             <LinearLayout
                 android:id="@+id/cmdArea"
-                android:layout_width="1dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/corner_shape">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="left"
+                    android:gravity="center"
+                    android:id="@+id/content"
                     android:text="테스트입니다." />
             </LinearLayout>
         </LinearLayout>

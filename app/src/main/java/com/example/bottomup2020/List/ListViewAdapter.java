@@ -10,9 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bottomup2020.FavouritesActivity;
 import com.example.bottomup2020.R;
-import com.example.bottomup2020.SolutionActivity_java;
 
 import java.util.ArrayList;
 
@@ -63,7 +61,7 @@ public class ListViewAdapter extends BaseAdapter {
             public void onClick(View v){
                 // 해당 리스트 클릭시 이벤트
                   Toast.makeText(v.getContext(), listViewItemList.get(pos).getContent(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(this, FavouritesActivity.class);
+//                Intent intent = new Intent(this, FavouritesListActivity.class);
 //                startActivity(intent);
             }
         });
