@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,13 +29,14 @@ public class HomeActivity extends AppCompatActivity {
         imageView5=findViewById(R.id.imageView5);
         userName = findViewById(R.id.userName);
 
-        Intent intent = getIntent();
-        Intent intent2 = getIntent();
-        nickName = intent.getStringExtra("nickname");
-        email=intent2.getStringExtra("email");
+        Intent intent=getIntent();
+        ArrayList<String> data= (ArrayList<String>) intent.getSerializableExtra("profile");
+        nickName=data.get(0);
+        email=data.get(1);
         userName.setText(nickName);
+        }
 
-    }
+
 
     @Override
     public void setContentView(int layoutResID){
