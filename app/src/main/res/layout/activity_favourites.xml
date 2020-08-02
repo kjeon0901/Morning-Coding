@@ -6,4 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".FavouritesActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/star_on_btn"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="44dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="295dp"
+            android:background="#ffffff"
+            app:srcCompat="@drawable/star_on" />
+
+        <TextView
+            android:id="@+id/problem_name"
+            android:textSize="25dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Java 01번" />
+
+        <FrameLayout
+            android:layout_width="328dp"
+            android:layout_height="645dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:background="#000000" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="48dp"
+                android:background="#000000" />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#000000" />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="right"
+                android:background="#000000" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="bottom"
+                android:background="#000000" />
+
+
+        </FrameLayout>
+    </FrameLayout>
+
 </LinearLayout>

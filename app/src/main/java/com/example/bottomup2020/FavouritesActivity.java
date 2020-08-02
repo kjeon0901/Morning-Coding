@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.bottomup2020.R;
@@ -19,6 +21,15 @@ public class FavouritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
+
+        final ImageButton imageBtn = findViewById(R.id.star_on_btn);
+        imageBtn.setOnClickListener(new View.OnClickListener() {
+            // 즐겨찾기 별 누르고 이벤트
+            @Override
+            public void onClick(View v) {
+                imageBtn.setImageResource(R.drawable.star_off);
+            }
+        });
     }
 
 
