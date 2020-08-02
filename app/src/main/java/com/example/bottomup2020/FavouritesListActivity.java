@@ -14,9 +14,6 @@ import android.widget.ListView;
 
 import com.example.bottomup2020.List.ListViewAdapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
     private ListViewAdapter adapter;
@@ -24,7 +21,7 @@ public class FavouritesListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favourites);
+        setContentView(R.layout.activity_favourites_list);
 
         // Adapter 생성
         adapter = new ListViewAdapter();
@@ -47,11 +44,12 @@ public class FavouritesListActivity extends AppCompatActivity {
         getLayoutInflater().inflate(layoutResID, activityContainer, true);
         super.setContentView(fullView);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.home_toolbar);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.c_toolbar);
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
             setTitle("즐겨찾는 문제");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);//뒤로가기
         }else{
             toolbar.setVisibility(View.GONE);
         }
@@ -88,7 +86,7 @@ public class FavouritesListActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 //            case R.id.FavoritesMenu:
-//                intent = new Intent(this, FavouritesActivity.class);
+//                intent = new Intent(this, FavouritesListActivity.class);
 //                startActivity(intent);
 //                break;
         }
@@ -99,7 +97,8 @@ public class FavouritesListActivity extends AppCompatActivity {
     // 메뉴를 눌렀을 때 이미 적용되어있어야 하는 정보들(ex) 로그인안하면 로그아웃 버튼 없게)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.getItem(2).setEnabled(false);
+
+        //menu.getItem(2).setEnabled(false);
         return super.onPrepareOptionsMenu(menu);
     }
 

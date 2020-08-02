@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home2);
+        setContentView(R.layout.activity_home);
         imageView5=findViewById(R.id.imageView5);
         userName = findViewById(R.id.userName);
 
@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         getLayoutInflater().inflate(layoutResID, activityContainer, true);
         super.setContentView(fullView);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.home_toolbar);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.c_toolbar);
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
