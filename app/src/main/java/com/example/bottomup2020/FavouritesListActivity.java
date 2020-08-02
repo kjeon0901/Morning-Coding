@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,7 +35,16 @@ public class FavouritesListActivity extends AppCompatActivity {
         adapter.addItem("JAVA", "02번");
         adapter.addItem("JAVA", "03번");
 
-        adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
+        // 아이템 클릭시 작동
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+       adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
     }
 
     @Override
