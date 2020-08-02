@@ -34,9 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         nickName=data.get(0);
         email=data.get(1);
         userName.setText(nickName);
-        }
 
-
+    }
 
     @Override
     public void setContentView(int layoutResID){
