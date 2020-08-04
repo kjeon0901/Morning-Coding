@@ -1,6 +1,7 @@
 package com.example.bottomup2020;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,14 @@ public class HomeActivity extends AppCompatActivity {
     String nickName,email;
     ImageView imageView5;
     TextView userName;
+    Cursor cursor;
+    Cursor selectCursor;
+
+    private MainActivity mainActivity=new MainActivity() ;
+    private DBHelper dbHelper=new DBHelper(this);
+
+    private MainActivity main() { return mainActivity; }
+    private DBHelper dbHelper(){ return dbHelper; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +43,27 @@ public class HomeActivity extends AppCompatActivity {
         nickName=data.get(0);
         email=data.get(1);
         userName.setText(nickName);
+        boolean found=false;
 
-    }
+        //같은 이메일이 db안에 없을 시에만 데이터 추가
+        cursor=dbHelper().getAllData();
+        while(cursor.moveToNext()){
+           if(email.equals(cursor.getString(2))) {
+               found = true;
+           }
+        }
+        if(found==false){
+            dbHelper().insertData(nickName,email,"#");
+        }
+
+            selectCursor= dbHelper().getOneData(email);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String email = cursor.getString(2);
+                String num = cursor.getString(3);
+                System.out.println(id + " " + name + " " + email + " " + num);
+        }
+
 
     @Override
     public void setContentView(int layoutResID){

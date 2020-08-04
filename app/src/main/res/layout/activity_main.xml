@@ -7,53 +7,19 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="164dp"
-        android:layout_height="61dp"
-        android:hint="name"
-        ></EditText>
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="174dp"
+    <TextView
+        android:id="@+id/attribute"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email">
-    </EditText>
-
-    <EditText
-        android:id="@+id/number"
-        android:layout_width="179dp"
-        android:layout_height="54dp"
-        android:hint="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        android:id="@+id/save"></Button>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="insert"
-        android:id="@+id/insert"></Button>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete"
-        android:id="@+id/delete"></Button>
-
-    <Button
-        android:id="@+id/select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="select"></Button>
+        android:text="1.ID  2.이름  3.이메일  4.문제 번호"
+        android:textSize="20sp">
+    </TextView>
 
     <TextView
-        android:id="@+id/result"
-        android:layout_width="170dp"
-        android:layout_height="53dp"></TextView>
+        android:id="@+id/database"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp">
+
+    </TextView>
 </LinearLayout>
