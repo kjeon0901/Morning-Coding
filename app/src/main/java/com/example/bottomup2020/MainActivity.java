@@ -6,71 +6,36 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText name;
-    EditText email;
-    EditText number;
-    TextView result;
-    Button insert;
-    Button select;
-    DBHelper dbHelper;
+
+    String name;
+    String email;
+    String num;
+    int id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name = findViewById(R.id.name);
-        email=findViewById(R.id.email);
-        number=findViewById(R.id.number);
-        insert=findViewById(R.id.insert);
-        select=findViewById(R.id.select);
-        result = (TextView) findViewById(R.id.result);
-        dbHelper=new DBHelper(this);
-
-        //데이터 삽입
-        insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 String userName=name.getText().toString();
-                 String userEmail=email.getText().toString();
-                 String userNum=number.getText().toString();
-
-                if(dbHelper.insertData(userName,userEmail,userNum)){
-                    Toast.makeText(getApplicationContext(),"insert 성공",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"insert 실패",Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-        //데이터 조회하기
-        select.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cursor cursor = dbHelper.getAllData();
-                while(cursor.moveToNext()){
-                    int no = cursor.getInt(0);
-                    String name= cursor.getString(1);
-                    String email = cursor.getString(2);
-                    String num= cursor.getString(3);
-                    result.setText(no+" "+name+" "+email+" "+num);
-                }
-            }
-        });
     }
+   /* public String showDatabase(Cursor cursor){
+        while(cursor.moveToNext()){
+            id = cursor.getInt(0);
+            name= cursor.getString(1);
+            email = cursor.getString(2);
+            num= cursor.getString(3);
+        }
+        return id+" "+name+" "+email+" "+num;
+    }*/
 }
+
 
 class DBHelper extends SQLiteOpenHelper{
 
@@ -116,12 +81,20 @@ class DBHelper extends SQLiteOpenHelper{
         }
     }
 
-    //데이터 조회
-    public Cursor getAllData(){
+    //선택한 데이터만 조회
+    public Cursor getOneData(String email){
         SQLiteDatabase db= this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME,null);
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME+ " where email='"+email+"'",null);
         return res;
     }
+
+    //데이터 전체 조회
+    public Cursor getAllData(){
+        SQLiteDatabase db= this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME ,null);
+        return res;
+    }
+
 
     //데이터 수정
     public boolean updateData(String id,String name,String email,String number){
