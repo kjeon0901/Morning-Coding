@@ -13,13 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    String name;
-    String email;
-    String num;
-    int id;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,26 +21,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-   /* public String showDatabase(Cursor cursor){
-        while(cursor.moveToNext()){
-            id = cursor.getInt(0);
-            name= cursor.getString(1);
-            email = cursor.getString(2);
-            num= cursor.getString(3);
-        }
-        return id+" "+name+" "+email+" "+num;
-    }*/
 }
 
 
 class DBHelper extends SQLiteOpenHelper{
 
-    public static final String DATABASE_NAME = "MorningCoding";
-    public static final String TABLE_NAME= "userProfile";
+    public static final String DATABASE_NAME = "Morning-Coding";
+    public static final String TABLE_NAME= "userdata";
     public static final String COL_1="ID";
     public static final String COL_2="name";
     public static final String COL_3="email";
-    public static final String COL_4="number";
+    public static final String COL_4="language";
+    public static final String COL_5="number";
 
     public DBHelper(@Nullable Context context){
         super(context,DATABASE_NAME,null,2);
@@ -57,7 +42,7 @@ class DBHelper extends SQLiteOpenHelper{
     //실행할 때 테이블 최초 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " +TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, number TEXT)");
+        db.execSQL("create table " +TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, number TEXT)");
     }
 
     //버전 업그레이드
@@ -68,12 +53,14 @@ class DBHelper extends SQLiteOpenHelper{
     }
 
     //테이블에 정보 넣기
-    public boolean insertData(String name, String email, String number){
+    public boolean insertData(String name, String email, String language, String number){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,email);
-        contentValues.put(COL_4,number);
+        contentValues.put(COL_4,language);
+        contentValues.put(COL_5,number);
+
         long result = db.insert(TABLE_NAME,null,contentValues);
 
         if(result == -1){
@@ -98,15 +85,15 @@ class DBHelper extends SQLiteOpenHelper{
         return res;
     }
 
-
     //데이터 수정
-    public boolean updateData(String id,String name,String email,String number){
+    public boolean updateData(String id,String name,String email,String language,String number){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,id);
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,email);
-        contentValues.put(COL_4,number);
+        contentValues.put(COL_4,language);
+        contentValues.put(COL_5,number);
         db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
         return true;
     }
