@@ -57,10 +57,10 @@ public class HomeActivity extends AppCompatActivity {
         }
 
             selectCursor= dbHelper().getOneData(email);
-                int id = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String email = cursor.getString(2);
-                String num = cursor.getString(3);
+                int id = selectCursor.getInt(0);
+                String name = selectCursor.getString(1);
+                String email = selectCursor.getString(2);
+                String num = selectCursor.getString(3);
                 System.out.println(id + " " + name + " " + email + " " + num);
         }
 
