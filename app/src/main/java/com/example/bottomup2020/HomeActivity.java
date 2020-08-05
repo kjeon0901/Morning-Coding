@@ -36,29 +36,29 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        imageView5=findViewById(R.id.imageView5);
+        imageView5 = findViewById(R.id.imageView5);
         userName = findViewById(R.id.userName);
 
-        Intent intent=getIntent();
-        ArrayList<String> data= (ArrayList<String>) intent.getSerializableExtra("profile");
-        nickName=data.get(0);
-        email=data.get(1);
+        Intent intent = getIntent();
+        ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
+        nickName = data.get(0);
+        email = data.get(1);
         userName.setText(nickName);
-        boolean found=false;
+        boolean found = false;
 
         //같은 이메일이 테이블에 있는지 검사
-        cursor=dbHelper().getAllData();
-        while(cursor.moveToNext()){
-           if(email.equals(cursor.getString(2))) {
-               found = true;
-               break;
-           }
+        cursor = dbHelper().getAllData();
+        while (cursor.moveToNext()) {
+            if (email.equals(cursor.getString(2))) {
+                found = true;
+                break;
+            }
         }
 
         //db에 없으면 데이터 추가
-        if(found==false){
-            dbHelper().insertData(nickName,email,"#");
-            cursor=dbHelper().getOneData(email);
+        if (found == false) {
+            dbHelper().insertData(nickName, email, "#");
+            cursor = dbHelper().getOneData(email);
         }
 
         int id = cursor.getInt(0);
@@ -66,12 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         String email = cursor.getString(2);
         String num = cursor.getString(3);
         System.out.println(id + " " + name + " " + email + " " + num);
-<<<<<<< Updated upstream
     }
-=======
-        }
-
->>>>>>> Stashed changes
 
     @Override
     public void setContentView(int layoutResID){
