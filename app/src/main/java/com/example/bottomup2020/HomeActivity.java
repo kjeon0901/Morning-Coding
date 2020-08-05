@@ -54,30 +54,18 @@ public class HomeActivity extends AppCompatActivity {
                break;
            }
         }
-<<<<<<< Updated upstream
 
-=======
         //db에 없으면 데이터 추가
->>>>>>> Stashed changes
         if(found==false){
             dbHelper().insertData(nickName,email,"#");
         }
 
-<<<<<<< Updated upstream
-                int id = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String email = cursor.getString(2);
-                String num = cursor.getString(3);
-                System.out.println(id + " " + name + " " + email + " " + num);
-=======
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
         String email = cursor.getString(2);
         String num = cursor.getString(3);
         System.out.println(id + " " + name + " " + email + " " + num);
->>>>>>> Stashed changes
-        }
-
+    }
 
     @Override
     public void setContentView(int layoutResID){
