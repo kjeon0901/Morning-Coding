@@ -56,15 +56,15 @@ public class ListViewAdapter extends BaseAdapter {
         contentTextView.setText(listViewItem.getContent());
 
 
-        LinearLayout cmdArea = (LinearLayout) convertView.findViewById(R.id.cmdArea);
-        cmdArea.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                // 해당 리스트 클릭시 이벤트
-                  Toast.makeText(v.getContext(), listViewItemList.get(pos).getContent(), Toast.LENGTH_SHORT).show();
+ //       LinearLayout cmdArea = (LinearLayout) convertView.findViewById(R.id.cmdArea);
+//        cmdArea.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v){
+//                // 해당 리스트 클릭시 이벤트
+//                  Toast.makeText(v.getContext(), listViewItemList.get(pos).getContent(), Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(this, FavouritesListActivity.class);
 //                startActivity(intent);
-            }
-        });
+//            }
+//        });
 
         return convertView;
     }

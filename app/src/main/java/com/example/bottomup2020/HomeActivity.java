@@ -2,10 +2,12 @@ package com.example.bottomup2020;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -127,17 +129,38 @@ public class HomeActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    int btn_click_num = 0;
 
     public void onClick(View view) {
+        btn_click_num++;
+        Button btn;
         // 버튼 id가져오기
         switch (view.getId())
         {
             case R.id.java_button:
                 // 버튼 JAVA 눌렀을 때 처리
+                btn = findViewById(R.id.java_button);
+                if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
+                    btn.setBackgroundResource(R.drawable.btn_margin);
+                }else {
+                    btn.setBackgroundResource(R.drawable.button_shape);
+                }
                 break;
             case R.id.python_button:
+                btn = findViewById(R.id.python_button);
+                if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
+                    btn.setBackgroundResource(R.drawable.btn_margin);
+                } else {
+                    btn.setBackgroundResource(R.drawable.button_shape);
+                }
                 break;
             case R.id.c_button:
+                btn = findViewById(R.id.c_button);
+                if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
+                    btn.setBackgroundResource(R.drawable.btn_margin);
+                } else {
+                    btn.setBackgroundResource(R.drawable.button_shape);
+                }
                 break;
         }
     }
