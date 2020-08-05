@@ -3,9 +3,8 @@
     package="com.example.bottomup2020">
 
     <uses-permission android:name="android.permission.INTERNET" />
-  
-    <application
 
+    <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".LockScreenActivity"
+            android:theme="@style/LockTheme"/>
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".FavouritesActivity" />
-
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
