@@ -2,7 +2,6 @@ package com.example.bottomup2020;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,17 +51,18 @@ public class HomeActivity extends AppCompatActivity {
         while(cursor.moveToNext()){
            if(email.equals(cursor.getString(2))) {
                found = true;
+               break;
            }
         }
+
         if(found==false){
             dbHelper().insertData(nickName,email,"#");
         }
 
-            selectCursor= dbHelper().getOneData(email);
-                int id = selectCursor.getInt(0);
-                String name = selectCursor.getString(1);
-                String email = selectCursor.getString(2);
-                String num = selectCursor.getString(3);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String email = cursor.getString(2);
+                String num = cursor.getString(3);
                 System.out.println(id + " " + name + " " + email + " " + num);
         }
 
