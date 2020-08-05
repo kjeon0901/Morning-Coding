@@ -22,7 +22,7 @@
                 android:id="@+id/userName"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="220dp"
                 android:layout_marginTop="50dp"
                 android:text="해바라기"
                 android:textSize="23dp"
@@ -32,7 +32,7 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="290dp"
+                android:layout_marginLeft="310dp"
                 android:layout_marginTop="53dp"
                 android:text="님"
                 android:textSize="20dp" />
@@ -41,7 +41,7 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="225dp"
                 android:layout_marginTop="90dp"
                 android:text="점수 :"
                 android:textSize="20dp" />
@@ -50,7 +50,7 @@
                 android:id="@+id/correct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="255dp"
+                android:layout_marginLeft="280dp"
                 android:layout_marginTop="90dp"
                 android:text="0"
                 android:textSize="20dp" />
@@ -59,7 +59,7 @@
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="295dp"
+                android:layout_marginLeft="315dp"
                 android:layout_marginTop="90dp"
                 android:text="0"
                 android:textSize="20dp" />
@@ -68,7 +68,7 @@
                 android:id="@+id/slash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="275dp"
+                android:layout_marginLeft="300dp"
                 android:layout_marginTop="90dp"
                 android:text="/"
                 android:textSize="20dp" />
@@ -77,7 +77,7 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="215dp"
                 android:layout_marginTop="130dp"
                 android:text="정답률: "
                 android:textSize="20dp" />
@@ -86,7 +86,7 @@
                 android:id="@+id/corrrectPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="270dp"
+                android:layout_marginLeft="285dp"
                 android:layout_marginTop="130dp"
                 android:text="100"
                 android:textSize="20dp" />
@@ -95,7 +95,7 @@
                 android:id="@+id/percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="310dp"
+                android:layout_marginLeft="325dp"
                 android:layout_marginTop="130dp"
                 android:text="%"
                 android:textSize="20dp" />
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:layout_marginTop="185dp"
+                android:layout_marginTop="190dp"
                 android:text="선택한 언어"
                 android:textSize="20dp" />
 
@@ -114,14 +114,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:layout_marginTop="315dp"
+                android:layout_marginTop="320dp"
                 android:text="오늘의 모닝코딩"
                 android:textSize="20dp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
-                android:layout_marginTop="220dp">
+                android:layout_marginTop="225dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -166,7 +166,7 @@
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="190dp"
                 app:srcCompat="@drawable/flowerhead" />
 
             <ImageView
@@ -174,22 +174,20 @@
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="310dp"
+                android:layout_marginTop="320dp"
                 app:srcCompat="@drawable/flowerhead" />
 
             <FrameLayout
-                android:layout_width="105dp"
-                android:layout_height="105dp"
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="50dp"
+                android:layout_width="134dp"
+                android:layout_height="137dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="35dp"
                 android:background="#d3d3d3">
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="55dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="13dp"
+                    android:layout_width="134dp"
+                    android:layout_height="137dp"
                     app:srcCompat="@drawable/animal" />
             </FrameLayout>
 
