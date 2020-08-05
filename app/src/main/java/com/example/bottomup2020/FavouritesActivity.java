@@ -29,7 +29,7 @@ public class FavouritesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imageBtn.setImageResource(R.drawable.star_off);
-                // favourites에서 문제 없애기.
+                // favourites에서 별 삭제 생성 둘다!
             }
         });
     }
