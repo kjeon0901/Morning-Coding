@@ -1,12 +1,16 @@
 package com.example.bottomup2020;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,7 +70,15 @@ public class HomeActivity extends AppCompatActivity {
         String email = cursor.getString(2);
         String num = cursor.getString(3);
         System.out.println(id + " " + name + " " + email + " " + num);
-    }
+
+        Button btn_java = findViewById(R.id.java_button);
+        Button btn_python = findViewById(R.id.python_button);
+        Button btn_c = findViewById(R.id.c_button);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("button_save", MODE_PRIVATE); // button 이름의 기본모드 설정
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
+
+            }
 
     @Override
     public void setContentView(int layoutResID){
