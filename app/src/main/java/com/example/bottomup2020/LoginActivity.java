@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_custom_login;
     private Button btn_custom_logout;
     private SessionCallback sessionCallback = new SessionCallback();
-    private String nickname,email;
+    private String nickname,email,image;
     Session session;
 
 
@@ -150,6 +150,8 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d("KAKAO_API", "profile image: " + profile.getProfileImageUrl());
                                     Log.d("KAKAO_API", "thumbnail image: " + profile.getThumbnailImageUrl());
                                     nickname=profile.getNickname();
+                                    image=profile.getProfileImageUrl();
+
                                 } else if (kakaoAccount.profileNeedsAgreement() == OptionalBoolean.TRUE) {
                                     // 동의 요청 후 프로필 정보 획득 가능
 
@@ -171,6 +173,8 @@ public class LoginActivity extends AppCompatActivity {
         ArrayList<String> profile=new ArrayList<>();
         profile.add(nickname);
         profile.add(email);
+        profile.add(image);
+
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile",profile);
         startActivity(intent);

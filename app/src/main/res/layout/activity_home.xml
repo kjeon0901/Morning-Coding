@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:layout_marginTop="185dp"
+                android:layout_marginTop="190dp"
                 android:text="선택한 언어"
                 android:textSize="20dp" />
 
@@ -114,14 +114,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:layout_marginTop="315dp"
+                android:layout_marginTop="320dp"
                 android:text="오늘의 모닝코딩"
                 android:textSize="20dp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
-                android:layout_marginTop="220dp">
+                android:layout_marginTop="225dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -166,7 +166,7 @@
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="190dp"
                 app:srcCompat="@drawable/flowerhead" />
 
             <ImageView
@@ -174,22 +174,20 @@
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="310dp"
+                android:layout_marginTop="320dp"
                 app:srcCompat="@drawable/flowerhead" />
 
             <FrameLayout
-                android:layout_width="105dp"
-                android:layout_height="105dp"
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="50dp"
+                android:layout_width="134dp"
+                android:layout_height="137dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="35dp"
                 android:background="#d3d3d3">
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="55dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="13dp"
+                    android:layout_width="134dp"
+                    android:layout_height="137dp"
                     app:srcCompat="@drawable/animal" />
             </FrameLayout>
 

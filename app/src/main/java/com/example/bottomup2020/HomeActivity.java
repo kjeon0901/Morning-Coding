@@ -2,6 +2,11 @@ package com.example.bottomup2020;
 
 import android.content.Intent;
 import android.database.Cursor;
+<<<<<<< Updated upstream
+=======
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+>>>>>>> Stashed changes
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,16 +20,21 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 
 public class HomeActivity extends AppCompatActivity {
 
-    String nickName,email;
+    String nickName,email,language,number,imagePath;
     ImageView imageView5;
     TextView userName;
     Cursor cursor;
-    Cursor selectCursor;
+    Bitmap bitmap;
 
     private MainActivity mainActivity=new MainActivity() ;
     private DBHelper dbHelper=new DBHelper(this);
@@ -43,7 +53,41 @@ public class HomeActivity extends AppCompatActivity {
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
         nickName = data.get(0);
         email = data.get(1);
+        imagePath=data.get(2);
+
+        language="C";
+        number="JAVA 01";
+
         userName.setText(nickName);
+        Thread mThread=new Thread(){
+            @Override
+            public void run() {
+                try{
+                    URL url= new URL(imagePath);
+
+                    HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+                    conn.setDoInput(true);
+                    conn.connect();
+
+                    InputStream is = conn.getInputStream();
+                    bitmap = BitmapFactory.decodeStream(is);
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        mThread.start();
+
+        try {
+            mThread.join(); // 메인 스레드는 별도의 작업 완료전까지 대기
+            imageView5.setImageBitmap(bitmap);
+            } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         boolean found = false;
 
         //같은 이메일이 테이블에 있는지 검사
@@ -57,16 +101,34 @@ public class HomeActivity extends AppCompatActivity {
 
         //db에 없으면 데이터 추가
         if (found == false) {
-            dbHelper().insertData(nickName, email, "#");
+            cursor.moveToFirst();
+            dbHelper().insertData(nickName, email, language, number);
             cursor = dbHelper().getOneData(email);
         }
 
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
         String email = cursor.getString(2);
+<<<<<<< Updated upstream
         String num = cursor.getString(3);
         System.out.println(id + " " + name + " " + email + " " + num);
     }
+=======
+        String language = cursor.getString(3);
+        String num = cursor.getString(4);
+
+        System.out.println(id + " " + name + " " + email + " "+ language+ " " + num);
+
+        Button btn_java = findViewById(R.id.java_button);
+        Button btn_python = findViewById(R.id.python_button);
+        Button btn_c = findViewById(R.id.c_button);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("button_save", MODE_PRIVATE); // button 이름의 기본모드 설정
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
+
+            }
+>>>>>>> Stashed changes
+
 
     @Override
     public void setContentView(int layoutResID){
