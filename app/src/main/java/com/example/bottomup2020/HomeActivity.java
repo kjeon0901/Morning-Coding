@@ -142,24 +142,30 @@ public class HomeActivity extends AppCompatActivity {
                 btn = findViewById(R.id.java_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 }else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
             case R.id.python_button:
                 btn = findViewById(R.id.python_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
             case R.id.c_button:
                 btn = findViewById(R.id.c_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
         }

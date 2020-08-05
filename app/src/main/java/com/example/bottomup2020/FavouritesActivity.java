@@ -23,11 +23,13 @@ public class FavouritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favourites);
 
         final ImageButton imageBtn = findViewById(R.id.star_on_btn);
+
         imageBtn.setOnClickListener(new View.OnClickListener() {
             // 즐겨찾기 별 누르고 이벤트
             @Override
             public void onClick(View v) {
                 imageBtn.setImageResource(R.drawable.star_off);
+                // favourites에서 문제 없애기.
             }
         });
     }
