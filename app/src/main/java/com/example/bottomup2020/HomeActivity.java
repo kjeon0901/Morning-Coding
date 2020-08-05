@@ -1,12 +1,10 @@
 package com.example.bottomup2020;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-<<<<<<< Updated upstream
-=======
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
->>>>>>> Stashed changes
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,17 +14,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -109,11 +104,6 @@ public class HomeActivity extends AppCompatActivity {
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
         String email = cursor.getString(2);
-<<<<<<< Updated upstream
-        String num = cursor.getString(3);
-        System.out.println(id + " " + name + " " + email + " " + num);
-    }
-=======
         String language = cursor.getString(3);
         String num = cursor.getString(4);
 
@@ -127,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
 
             }
->>>>>>> Stashed changes
+
 
 
     @Override
