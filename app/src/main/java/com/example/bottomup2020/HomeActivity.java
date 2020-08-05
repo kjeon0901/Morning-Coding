@@ -58,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
         //db에 없으면 데이터 추가
         if(found==false){
             dbHelper().insertData(nickName,email,"#");
+            cursor=dbHelper().getOneData(email);
         }
 
         int id = cursor.getInt(0);
@@ -65,7 +66,12 @@ public class HomeActivity extends AppCompatActivity {
         String email = cursor.getString(2);
         String num = cursor.getString(3);
         System.out.println(id + " " + name + " " + email + " " + num);
+<<<<<<< Updated upstream
     }
+=======
+        }
+
+>>>>>>> Stashed changes
 
     @Override
     public void setContentView(int layoutResID){
