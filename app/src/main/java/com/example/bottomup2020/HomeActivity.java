@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         userName.setText(nickName);
         boolean found=false;
 
-        //같은 이메일이 db안에 없을 시에만 데이터 추가
+        //같은 이메일이 테이블에 있는지 검사
         cursor=dbHelper().getAllData();
         while(cursor.moveToNext()){
            if(email.equals(cursor.getString(2))) {
@@ -54,16 +54,28 @@ public class HomeActivity extends AppCompatActivity {
                break;
            }
         }
+<<<<<<< Updated upstream
 
+=======
+        //db에 없으면 데이터 추가
+>>>>>>> Stashed changes
         if(found==false){
             dbHelper().insertData(nickName,email,"#");
         }
 
+<<<<<<< Updated upstream
                 int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String email = cursor.getString(2);
                 String num = cursor.getString(3);
                 System.out.println(id + " " + name + " " + email + " " + num);
+=======
+        int id = cursor.getInt(0);
+        String name = cursor.getString(1);
+        String email = cursor.getString(2);
+        String num = cursor.getString(3);
+        System.out.println(id + " " + name + " " + email + " " + num);
+>>>>>>> Stashed changes
         }
 
 
