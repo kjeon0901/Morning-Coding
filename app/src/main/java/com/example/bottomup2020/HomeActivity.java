@@ -1,17 +1,18 @@
 package com.example.bottomup2020;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-<<<<<<< Updated upstream
-=======
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
->>>>>>> Stashed changes
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -109,16 +110,10 @@ public class HomeActivity extends AppCompatActivity {
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
         String email = cursor.getString(2);
-<<<<<<< Updated upstream
-        String num = cursor.getString(3);
-        System.out.println(id + " " + name + " " + email + " " + num);
-    }
-=======
         String language = cursor.getString(3);
         String num = cursor.getString(4);
 
         System.out.println(id + " " + name + " " + email + " "+ language+ " " + num);
-
         Button btn_java = findViewById(R.id.java_button);
         Button btn_python = findViewById(R.id.python_button);
         Button btn_c = findViewById(R.id.c_button);
@@ -127,8 +122,6 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
 
             }
->>>>>>> Stashed changes
-
 
     @Override
     public void setContentView(int layoutResID){
@@ -205,24 +198,30 @@ public class HomeActivity extends AppCompatActivity {
                 btn = findViewById(R.id.java_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 }else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
             case R.id.python_button:
                 btn = findViewById(R.id.python_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
             case R.id.c_button:
                 btn = findViewById(R.id.c_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
         }
