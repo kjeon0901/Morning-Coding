@@ -2,7 +2,6 @@ package com.example.bottomup2020;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,25 +46,32 @@ public class HomeActivity extends AppCompatActivity {
         userName.setText(nickName);
         boolean found=false;
 
-        //같은 이메일이 db안에 없을 시에만 데이터 추가
+        //같은 이메일이 테이블에 있는지 검사
         cursor=dbHelper().getAllData();
         while(cursor.moveToNext()){
            if(email.equals(cursor.getString(2))) {
                found = true;
+               break;
            }
         }
+
+        //db에 없으면 데이터 추가
         if(found==false){
             dbHelper().insertData(nickName,email,"#");
+            cursor=dbHelper().getOneData(email);
         }
 
-            selectCursor= dbHelper().getOneData(email);
-                int id = selectCursor.getInt(0);
-                String name = selectCursor.getString(1);
-                String email = selectCursor.getString(2);
-                String num = selectCursor.getString(3);
-                System.out.println(id + " " + name + " " + email + " " + num);
+        int id = cursor.getInt(0);
+        String name = cursor.getString(1);
+        String email = cursor.getString(2);
+        String num = cursor.getString(3);
+        System.out.println(id + " " + name + " " + email + " " + num);
+<<<<<<< Updated upstream
+    }
+=======
         }
 
+>>>>>>> Stashed changes
 
     @Override
     public void setContentView(int layoutResID){
