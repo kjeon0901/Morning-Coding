@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +41,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private MainActivity main() { return mainActivity; }
     private DBHelper dbHelper(){ return dbHelper; }
+
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,14 +117,14 @@ public class HomeActivity extends AppCompatActivity {
         String num = cursor.getString(4);
 
         System.out.println(id + " " + name + " " + email + " "+ language+ " " + num);
-        Button btn_java = findViewById(R.id.java_button);
-        Button btn_python = findViewById(R.id.python_button);
-        Button btn_c = findViewById(R.id.c_button);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("button_save", MODE_PRIVATE); // button 이름의 기본모드 설정
-        SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
 
-            }
+        //기본 SharedPreferences 환경과 관련된 객체를 얻어옵니다.
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        // SharedPreferences 수정을 위한 Editor 객체를 얻어옵니다.
+        editor = preferences.edit();
+    }
+    
 
     @Override
     public void setContentView(int layoutResID){
