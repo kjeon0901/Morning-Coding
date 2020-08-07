@@ -54,33 +54,36 @@ public class HomeActivity extends AppCompatActivity {
         number="JAVA 01";
 
         userName.setText(nickName);
-        Thread mThread=new Thread(){
-            @Override
-            public void run() {
-                try{
-                    URL url= new URL(imagePath);
 
-                    HttpURLConnection conn= (HttpURLConnection) url.openConnection();
-                    conn.setDoInput(true);
-                    conn.connect();
+        if(imagePath!=null) {
+            Thread mThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        URL url = new URL(imagePath);
 
-                    InputStream is = conn.getInputStream();
-                    bitmap = BitmapFactory.decodeStream(is);
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setDoInput(true);
+                        conn.connect();
 
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        InputStream is = conn.getInputStream();
+                        bitmap = BitmapFactory.decodeStream(is);
+
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        };
-        mThread.start();
+            };
+            mThread.start();
 
-        try {
-            mThread.join(); // 메인 스레드는 별도의 작업 완료전까지 대기
-            imageView5.setImageBitmap(bitmap);
+            try {
+                mThread.join(); // 메인 스레드는 별도의 작업 완료전까지 대기
+                imageView5.setImageBitmap(bitmap);
             } catch (Exception e) {
-            e.printStackTrace();
+                e.printStackTrace();
+            }
         }
 
         boolean found = false;
