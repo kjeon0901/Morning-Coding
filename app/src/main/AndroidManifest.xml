@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LockScreenActivity"
-            android:theme="@style/LockTheme"/>
+            android:theme="@style/LockTheme"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".FavouritesActivity" />
 
