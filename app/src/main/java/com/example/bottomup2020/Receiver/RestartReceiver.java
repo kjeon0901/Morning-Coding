@@ -1,8 +1,10 @@
-package com.example.bottomup2020;
+package com.example.bottomup2020.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.example.bottomup2020.ScreenService;
 
 public class RestartReceiver extends BroadcastReceiver {
     static public final String ACTION_RESTART_SERVICE = "RestartReceiver.restart";
