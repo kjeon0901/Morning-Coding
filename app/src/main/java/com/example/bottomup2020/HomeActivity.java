@@ -49,11 +49,12 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
         nickName = data.get(0);
-        email = data.get(1);
+       // email = data.get(1);
+        email = "test@test";
         imagePath=data.get(2);
 
         language="C";
-        number="#JAVA 01 #";
+        number="#JAVA 01 #PYTHON 04";
         solvedProblem = "JAVA 02";
         userName.setText(nickName);
 
@@ -117,10 +118,11 @@ public class HomeActivity extends AppCompatActivity {
 
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
+        //#기준으로 푼 문제 문자열 잘라서 개수세기  
         String str =cursor.getString(5);
         String[] txtArr= str.split("#");
         solvedNum=txtArr.length;
-
+        solved.setText(String.valueOf(solvedNum));
     }
 
 
