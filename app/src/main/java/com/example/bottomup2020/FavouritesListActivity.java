@@ -19,22 +19,11 @@ import com.example.bottomup2020.List.ListViewAdapter;
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
     private ListViewAdapter adapter;
-    private Button onBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
-
-        onBtn= (Button)findViewById(R.id.lock_onBtn);
-        onBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ScreenService.class);
-
-                startService(intent);
-            }
-        });
 
         // Adapter 생성
         adapter = new ListViewAdapter();
@@ -52,8 +41,6 @@ public class FavouritesListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
-
-
                 startActivity(intent);
             }
         });
