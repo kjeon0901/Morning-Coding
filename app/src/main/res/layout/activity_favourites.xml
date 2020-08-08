@@ -14,20 +14,21 @@
         <ImageButton
             android:id="@+id/star_on_btn"
             android:layout_width="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="290dp"
+            android:layout_marginTop="30dp"
             android:background="#ffffff"
+            android:onClick="onClick"
             app:srcCompat="@drawable/star_on" />
 
         <TextView
             android:id="@+id/problem_name"
-            android:textSize="25dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Java 01번" />
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="35dp"
+            android:text="Java 01번"
+            android:textSize="25dp" />
 
         <FrameLayout
             android:id="@+id/whole_frame"
@@ -86,7 +87,7 @@
             <FrameLayout
                 android:id="@+id/problem_frame"
                 android:layout_width="match_parent"
-                android:layout_height="367dp"
+                android:layout_height="372dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginRight="15dp"
@@ -96,7 +97,33 @@
                     android:id="@+id/problem_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="15dp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/button1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/button3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton" />
+                </RadioGroup>
+
             </FrameLayout>
 
             <FrameLayout
@@ -110,8 +137,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="풀이"
+                    android:text="[풀이]"
                     android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/problem_solution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
             </FrameLayout>
 
 
