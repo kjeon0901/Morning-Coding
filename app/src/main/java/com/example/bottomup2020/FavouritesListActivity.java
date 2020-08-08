@@ -31,6 +31,7 @@ public class FavouritesListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ScreenService.class);
+
                 startService(intent);
             }
         });
@@ -51,6 +52,8 @@ public class FavouritesListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
+
+
                 startActivity(intent);
             }
         });
