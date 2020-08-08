@@ -125,9 +125,12 @@ public class HomeActivity extends AppCompatActivity {
         solvedNum=txtArr.length-1;
         solved.setText(String.valueOf(solvedNum));
 
+
         //문제를 맞혔을 경우
         //correctNum++;
+        //correct.setText(correctNum);
 
+        //즐겨찾기 버튼 누르면
     }
 
 
