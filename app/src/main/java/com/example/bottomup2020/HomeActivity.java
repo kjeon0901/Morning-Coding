@@ -154,9 +154,11 @@ public class HomeActivity extends AppCompatActivity {
 
         //스위치버튼이 체크되었는지 검사하여 각 경우에 맞게..
         if(switchButton.isChecked()){
-
+            Intent intent = new Intent(getApplicationContext(), ScreenService.class);
+            startService(intent);
         }else{
-
+            Intent intent = new Intent(getApplicationContext(), ScreenService.class);
+            stopService(intent);
         }
     }
 
