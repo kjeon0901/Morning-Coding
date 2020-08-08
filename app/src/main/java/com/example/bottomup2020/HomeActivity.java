@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String nickName,email,language,number,imagePath,solvedProblem;
+    String nickName,email,language,favouriteProblem,imagePath,solvedProblem;
     ImageView imageView5;
     TextView userName, solved, correct;
     Cursor cursor;
@@ -50,12 +50,13 @@ public class HomeActivity extends AppCompatActivity {
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
         nickName = data.get(0);
        // email = data.get(1);
-        email = "test@test";
+        email = "2@2";
         imagePath=data.get(2);
 
         language="C";
-        number="#JAVA 01 #PYTHON 04";
-        solvedProblem = "JAVA 02";
+        //문제들은 #붙여서 변수에 저장해주기
+        favouriteProblem="#JAVA 01 ";
+        solvedProblem = "#JAVA 01 #JAVA 02 #JAVA 03";
         userName.setText(nickName);
 
 
@@ -105,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
         //db에 없으면 데이터 추가
         if (found == false) {
             cursor.moveToFirst();
-            dbHelper().insertData(nickName, email, language,"#"+ number+" ","#"+solvedProblem+" ");
+            dbHelper().insertData(nickName, email, language, favouriteProblem,solvedProblem);
             cursor = dbHelper().getOneData(email);
         }
         //id  name email 선택한 언어  즐겨찾기문제 푼 문제
@@ -119,10 +120,14 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
         //#기준으로 푼 문제 문자열 잘라서 개수세기  
-        String str =cursor.getString(5);
+        String str =solvedProblem;
         String[] txtArr= str.split("#");
-        solvedNum=txtArr.length;
+        solvedNum=txtArr.length-1;
         solved.setText(String.valueOf(solvedNum));
+
+        //문제를 맞혔을 경우
+        //correctNum++;
+
     }
 
 
