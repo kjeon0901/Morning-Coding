@@ -1,19 +1,14 @@
 package com.example.bottomup2020;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,14 +28,13 @@ public class HomeActivity extends AppCompatActivity {
 
     String nickName,email,language,number,imagePath,solvedProblem;
     ImageView imageView5;
-    TextView userName;
+    TextView userName, solved, correct;
     Cursor cursor;
     Bitmap bitmap;
+    int solvedNum=0;
+    int correctNum=0;
 
-    private MainActivity mainActivity=new MainActivity() ;
     private DBHelper dbHelper=new DBHelper(this);
-
-    private MainActivity main() { return mainActivity; }
     private DBHelper dbHelper(){ return dbHelper; }
 
     @Override
@@ -49,6 +43,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         imageView5 = findViewById(R.id.imageView5);
         userName = findViewById(R.id.userName);
+        solved=findViewById(R.id.solved);
+        correct = findViewById(R.id.correct);
 
         Intent intent = getIntent();
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
@@ -57,10 +53,12 @@ public class HomeActivity extends AppCompatActivity {
         imagePath=data.get(2);
 
         language="C";
-        number="JAVA 01";
+        number="#JAVA 01 #";
         solvedProblem = "JAVA 02";
         userName.setText(nickName);
 
+
+        //카카오톡 프로필 사진 설정하기
         if(imagePath!=null) {
             Thread mThread = new Thread() {
                 @Override
@@ -106,18 +104,22 @@ public class HomeActivity extends AppCompatActivity {
         //db에 없으면 데이터 추가
         if (found == false) {
             cursor.moveToFirst();
-            dbHelper().insertData(nickName, email, language, number,solvedProblem);
+            dbHelper().insertData(nickName, email, language,"#"+ number+" ","#"+solvedProblem+" ");
             cursor = dbHelper().getOneData(email);
         }
-
+        //id  name email 선택한 언어  즐겨찾기문제 푼 문제
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
         String email = cursor.getString(2);
         String language = cursor.getString(3);
-        String num = cursor.getString(4);
+        String favouriteProblem = cursor.getString(4);
         String solvedProblem = cursor.getString(5);
 
-        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + num+" | "+solvedProblem);
+        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+
+        String str =cursor.getString(5);
+        String[] txtArr= str.split("#");
+        solvedNum=txtArr.length;
 
     }
 
