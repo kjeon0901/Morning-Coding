@@ -42,10 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     
     private DBHelper dbHelper(){ return dbHelper; }
 
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
