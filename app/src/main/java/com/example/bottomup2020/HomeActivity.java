@@ -2,7 +2,6 @@ package com.example.bottomup2020;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,8 +39,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private MainActivity mainActivity=new MainActivity() ;
     private DBHelper dbHelper=new DBHelper(this);
-
-    private MainActivity main() { return mainActivity; }
+    
     private DBHelper dbHelper(){ return dbHelper; }
 
     private SharedPreferences preferences;
@@ -122,10 +120,10 @@ public class HomeActivity extends AppCompatActivity {
         String num = cursor.getString(4);
         String solvedProblem = cursor.getString(5);
 
-
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + num+" | "+solvedProblem);
 
     }
+
 
     @Override
     public void setContentView(int layoutResID){
