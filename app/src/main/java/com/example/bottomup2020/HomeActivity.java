@@ -34,7 +34,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private MainActivity mainActivity=new MainActivity() ;
     private DBHelper dbHelper=new DBHelper(this);
-    
+
+    private MainActivity main() { return mainActivity; }
     private DBHelper dbHelper(){ return dbHelper; }
 
     @Override
