@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bottomup2020">
 
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".GlobalApplication"
@@ -18,6 +20,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".FavouritesActivity" />
+        <receiver android:name=".ScreenReceiver"></receiver>
+        <service android:name=".ScreenService"></service>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -37,13 +41,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
