@@ -1,7 +1,6 @@
 package com.example.bottomup2020;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,8 +34,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private MainActivity mainActivity=new MainActivity() ;
     private DBHelper dbHelper=new DBHelper(this);
-
-    private MainActivity main() { return mainActivity; }
+    
     private DBHelper dbHelper(){ return dbHelper; }
 
     @Override
@@ -113,25 +111,10 @@ public class HomeActivity extends AppCompatActivity {
         String num = cursor.getString(4);
         String solvedProblem = cursor.getString(5);
 
-<<<<<<< Updated upstream
-        System.out.println(id + " " + name + " " + email + " "+ language+ " " + num);
-
-        Button btn_java = findViewById(R.id.java_button);
-        Button btn_python = findViewById(R.id.python_button);
-        Button btn_c = findViewById(R.id.c_button);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("button_save", MODE_PRIVATE); // button 이름의 기본모드 설정
-        SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
-
-            }
-
-
-=======
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + num+" | "+solvedProblem);
 
     }
-    
->>>>>>> Stashed changes
+
 
     @Override
     public void setContentView(int layoutResID){

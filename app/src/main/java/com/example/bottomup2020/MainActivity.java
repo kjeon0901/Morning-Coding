@@ -93,7 +93,7 @@ class DBHelper extends SQLiteOpenHelper{
         contentValues.put(COL_3,email);
         contentValues.put(COL_4,language);
         contentValues.put(COL_5,number);
-        contentValues.put(COL_5,solvedProblem);
+        contentValues.put(COL_6,solvedProblem);
         db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
         return true;
     }
