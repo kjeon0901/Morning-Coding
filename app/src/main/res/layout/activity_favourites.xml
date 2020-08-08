@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="295dp"
+            android:layout_marginLeft="290dp"
             android:background="#ffffff"
             app:srcCompat="@drawable/star_on" />
 
@@ -24,16 +24,16 @@
             android:id="@+id/problem_name"
             android:textSize="25dp"
             android:layout_marginTop="35dp"
-            android:layout_marginLeft="55dp"
+            android:layout_marginLeft="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Java 01번" />
 
         <FrameLayout
             android:id="@+id/whole_frame"
-            android:layout_width="359dp"
-            android:layout_height="677dp"
-            android:layout_marginLeft="25dp"
+            android:layout_width="354dp"
+            android:layout_height="623dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="25dp">
 
             <View
@@ -72,7 +72,7 @@
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="130dp"
                 android:background="#000000" />
 
             <View
@@ -86,8 +86,8 @@
             <FrameLayout
                 android:id="@+id/problem_frame"
                 android:layout_width="match_parent"
-                android:layout_height="407dp"
-                android:layout_marginLeft="15dp"
+                android:layout_height="367dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp">
@@ -102,16 +102,16 @@
             <FrameLayout
                 android:id="@+id/solution_frame"
                 android:layout_width="330dp"
-                android:layout_height="169dp"
+                android:layout_height="165dp"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="풀이" />
+                    android:text="풀이"
+                    android:textSize="20dp" />
             </FrameLayout>
 
 
