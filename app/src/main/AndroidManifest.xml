@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".GlobalApplication"
@@ -18,27 +19,32 @@
             android:theme="@style/LockTheme"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".LoginScreenActivity" />
-        <activity android:name=".FavouritesActivity" />
-        <receiver android:name=".ScreenReceiver"></receiver>
-        <receiver android:name=".RestartReceiver"
+        <service android:name=".ScreenService"></service>
+        <receiver android:name=".Receiver.ScreenReceiver"></receiver>
+        <receiver android:name=".Receiver.RestartReceiver"
             android:process=".remote">//시스템의 알람을 받기 위해 추가, 10초에 한번씩 ScreenService 다시 실행
             <intent-filter>
                 <action android:name="RestartReceiver.restart"/>
             </intent-filter>
         </receiver>
-        <service android:name=".ScreenService"></service>
+        <receiver android:name=".Receiver.BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Receiver.PackageReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
 
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="@string/kakao_app_key" />
 
-        <activity android:name=".SolutionActivity_python" />
-        <activity android:name=".SolutionActivity_c" />
-        <activity android:name=".SolutionActivity_java" />
-        <activity android:name=".ProblemActivity_solution" />
-        <activity android:name=".SolutionToolbarActivity" />
-        <activity android:name=".FavouritesListActivity" />
+        <activity android:name=".LoginScreenActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,6 +52,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
+        <activity android:name=".FavouritesActivity" />
+        <activity android:name=".SolutionActivity_python" />
+        <activity android:name=".SolutionActivity_c" />
+        <activity android:name=".SolutionActivity_java" />
+        <activity android:name=".ProblemActivity_solution" />
+        <activity android:name=".SolutionToolbarActivity" />
+        <activity android:name=".FavouritesListActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
     </application>

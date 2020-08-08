@@ -12,12 +12,14 @@ import android.os.SystemClock;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
-import androidx.annotation.Nullable;
+import com.example.bottomup2020.Receiver.PackageReceiver;
+import com.example.bottomup2020.Receiver.RestartReceiver;
+import com.example.bottomup2020.Receiver.ScreenReceiver;
 
 public class ScreenService extends Service {
     private ScreenReceiver mReceiver = null;
+    private PackageReceiver pReceiver;
     boolean isPhoneIdle = true;
-
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -35,6 +37,14 @@ public class ScreenService extends Service {
         TelephonyManager telephonyManager=(TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
         //모니터링 할 이벤트를 리스너에 등록
         telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+
+        //앱 설치, 삭제, 업데이트 시 서비스 실행
+        pReceiver = new PackageReceiver();
+        IntentFilter pFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
+        pFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        pFilter.addAction(Intent.ACTION_PACKAGE_REPLACED);
+        pFilter.addDataScheme("package");
+        registerReceiver(pReceiver, pFilter);
     }
 
     //원래 @Override 하고 매개변수에 Context context는 없었는데, 아래 Builder(context)에서 오류나서 이렇게 해봄
@@ -67,6 +77,9 @@ public class ScreenService extends Service {
         if(mReceiver != null){
             mReceiver.reenableKeyguard();
             unregisterReceiver(mReceiver);
+        }
+        if(pReceiver != null){
+            unregisterReceiver(pReceiver);
         }
     }
 
