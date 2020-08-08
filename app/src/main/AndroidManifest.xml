@@ -21,6 +21,12 @@
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".FavouritesActivity" />
         <receiver android:name=".ScreenReceiver"></receiver>
+        <receiver android:name=".RestartReceiver"
+            android:process=".remote">//시스템의 알람을 받기 위해 추가, 10초에 한번씩 ScreenService 다시 실행
+            <intent-filter>
+                <action android:name="RestartReceiver.restart"/>
+            </intent-filter>
+        </receiver>
         <service android:name=".ScreenService"></service>
 
         <meta-data
