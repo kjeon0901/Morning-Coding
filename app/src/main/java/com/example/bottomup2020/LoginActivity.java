@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         btn_custom_login = (Button) findViewById(R.id.btn_custom_login);
         btn_custom_logout = (Button) findViewById(R.id.btn_custom_logout);
 
