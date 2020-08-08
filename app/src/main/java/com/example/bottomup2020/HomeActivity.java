@@ -1,15 +1,20 @@
 package com.example.bottomup2020;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,6 +43,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private MainActivity main() { return mainActivity; }
     private DBHelper dbHelper(){ return dbHelper; }
+
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,25 +122,10 @@ public class HomeActivity extends AppCompatActivity {
         String num = cursor.getString(4);
         String solvedProblem = cursor.getString(5);
 
-<<<<<<< Updated upstream
-        System.out.println(id + " " + name + " " + email + " "+ language+ " " + num);
 
-        Button btn_java = findViewById(R.id.java_button);
-        Button btn_python = findViewById(R.id.python_button);
-        Button btn_c = findViewById(R.id.c_button);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("button_save", MODE_PRIVATE); // button 이름의 기본모드 설정
-        SharedPreferences.Editor editor = sharedPreferences.edit(); //sharedPreferences를 제어할 editor를 선언
-
-            }
-
-
-=======
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + num+" | "+solvedProblem);
 
     }
-    
->>>>>>> Stashed changes
 
     @Override
     public void setContentView(int layoutResID){
@@ -208,24 +202,30 @@ public class HomeActivity extends AppCompatActivity {
                 btn = findViewById(R.id.java_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 }else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
             case R.id.python_button:
                 btn = findViewById(R.id.python_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
             case R.id.c_button:
                 btn = findViewById(R.id.c_button);
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
+                    btn_click_num = 1;
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
+                    btn_click_num = 2;
                 }
                 break;
         }
