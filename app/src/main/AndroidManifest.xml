@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bottomup2020">
 
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
-  
-    <application
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,10 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".LockScreenActivity"
+            android:theme="@style/LockTheme"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".FavouritesActivity" />
-
+        <receiver android:name=".ScreenReceiver"></receiver>
+        <receiver android:name=".RestartReceiver"
+            android:process=".remote">//시스템의 알람을 받기 위해 추가, 10초에 한번씩 ScreenService 다시 실행
+            <intent-filter>
+                <action android:name="RestartReceiver.restart"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".ScreenService"></service>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -36,13 +47,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
