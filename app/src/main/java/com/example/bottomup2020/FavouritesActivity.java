@@ -60,13 +60,18 @@ public class FavouritesActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
+//
+//            Intent intent = getIntent();
+//
+//            String language_name = intent.getExtras().getString("language_name");
+//            String button_number = intent.getExtras().getString("button_number");
 
-            Intent intent = getIntent();
-
-            String language_name = intent.getExtras().getString("language_name");
-            String button_number = intent.getExtras().getString("button_number");
-
-            setTitle(language_name + "___" + button_number + "번");
+//            if(language_name != null){
+//                setTitle(language_name + "___" + button_number + "번");
+//            }else{
+//                setTitle("JAVA 01번");
+//            }
+            setTitle("Java 01번");
         }else{
             toolbar.setVisibility(View.GONE);
         }
