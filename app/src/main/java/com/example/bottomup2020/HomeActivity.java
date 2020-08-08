@@ -14,8 +14,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String nickName,email,language,number,imagePath;
+    String nickName,email,language,number,imagePath,solvedProblem;
     ImageView imageView5;
     TextView userName;
     Cursor cursor;
@@ -52,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
 
         language="C";
         number="JAVA 01";
-
+        solvedProblem = "JAVA 02";
         userName.setText(nickName);
 
         if(imagePath!=null) {
@@ -88,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
 
         boolean found = false;
 
-        //같은 이메일이 테이블에 있는지 검사
+        //db에 데이터 있는지 검사
         cursor = dbHelper().getAllData();
         while (cursor.moveToNext()) {
             if (email.equals(cursor.getString(2))) {
@@ -100,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
         //db에 없으면 데이터 추가
         if (found == false) {
             cursor.moveToFirst();
-            dbHelper().insertData(nickName, email, language, number);
+            dbHelper().insertData(nickName, email, language, number,solvedProblem);
             cursor = dbHelper().getOneData(email);
         }
 
@@ -109,7 +111,9 @@ public class HomeActivity extends AppCompatActivity {
         String email = cursor.getString(2);
         String language = cursor.getString(3);
         String num = cursor.getString(4);
+        String solvedProblem = cursor.getString(5);
 
+<<<<<<< Updated upstream
         System.out.println(id + " " + name + " " + email + " "+ language+ " " + num);
 
         Button btn_java = findViewById(R.id.java_button);
@@ -122,6 +126,12 @@ public class HomeActivity extends AppCompatActivity {
             }
 
 
+=======
+        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + num+" | "+solvedProblem);
+
+    }
+    
+>>>>>>> Stashed changes
 
     @Override
     public void setContentView(int layoutResID){

@@ -23,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
 class DBHelper extends SQLiteOpenHelper{
 
-    public static final String DATABASE_NAME = "Morning-Coding";
-    public static final String TABLE_NAME= "userdata";
+    public static final String DATABASE_NAME = "GangSongChe";
+    public static final String TABLE_NAME= "userData";
     public static final String COL_1="ID";
     public static final String COL_2="name";
     public static final String COL_3="email";
     public static final String COL_4="language";
     public static final String COL_5="number";
+    public static final String COL_6="solvedProblem";
 
     public DBHelper(@Nullable Context context){
         super(context,DATABASE_NAME,null,2);
@@ -39,7 +40,7 @@ class DBHelper extends SQLiteOpenHelper{
     //실행할 때 테이블 최초 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " +TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, number TEXT)");
+        db.execSQL("create table " +TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, number TEXT, solvedProblem TEXT)");
     }
 
     //버전 업그레이드
@@ -50,13 +51,14 @@ class DBHelper extends SQLiteOpenHelper{
     }
 
     //테이블에 정보 넣기
-    public boolean insertData(String name, String email, String language, String number){
+    public boolean insertData(String name, String email, String language, String number, String solvedProblem){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,email);
         contentValues.put(COL_4,language);
         contentValues.put(COL_5,number);
+        contentValues.put(COL_6,solvedProblem);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
 
@@ -83,7 +85,7 @@ class DBHelper extends SQLiteOpenHelper{
     }
 
     //데이터 수정
-    public boolean updateData(String id,String name,String email,String language,String number){
+    public boolean updateData(String id,String name,String email,String language,String number,String solvedProblem){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,id);
@@ -91,6 +93,7 @@ class DBHelper extends SQLiteOpenHelper{
         contentValues.put(COL_3,email);
         contentValues.put(COL_4,language);
         contentValues.put(COL_5,number);
+        contentValues.put(COL_5,solvedProblem);
         db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
         return true;
     }
