@@ -1,8 +1,5 @@
 package com.example.bottomup2020;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,10 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.bottomup2020.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class FavouritesActivity extends AppCompatActivity {
 
@@ -22,18 +19,23 @@ public class FavouritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
-        final ImageButton imageBtn = findViewById(R.id.star_on_btn);
 
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            // 즐겨찾기 별 누르고 이벤트
-            @Override
-            public void onClick(View v) {
-                imageBtn.setImageResource(R.drawable.star_off);
-                // favourites에서 별 삭제 생성 둘다!
-            }
-        });
     }
 
+    int countClick_num = 0;
+
+    public void onClick(View view) {
+        ImageButton imageBtn = findViewById(R.id.star_on_btn);
+        countClick_num ++;
+        // 클릭 홀수면 별 없어진걸로!
+        if(countClick_num % 2 != 0){
+            imageBtn.setImageResource(R.drawable.star_off);
+            countClick_num = 1;
+        }else{
+            imageBtn.setImageResource(R.drawable.star_on);
+        }
+
+    }
 
     @Override
     public void setContentView(int layoutResID){
@@ -46,6 +48,17 @@ public class FavouritesActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
+//
+//            Intent intent = getIntent();
+//
+//            String language_name = intent.getExtras().getString("language_name");
+//            String button_number = intent.getExtras().getString("button_number");
+
+//            if(language_name != null){
+//                setTitle(language_name + "___" + button_number + "번");
+//            }else{
+//                setTitle("JAVA 01번");
+//            }
             setTitle("Java 01번");
         }else{
             toolbar.setVisibility(View.GONE);

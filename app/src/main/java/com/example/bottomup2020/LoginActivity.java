@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.usermgmt.response.model.Profile;
@@ -41,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         btn_custom_login = (Button) findViewById(R.id.btn_custom_login);
-        btn_custom_logout = (Button) findViewById(R.id.btn_custom_logout);
+      //  btn_custom_logout = (Button) findViewById(R.id.btn_custom_logout);
 
         //로그인 버튼
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
@@ -54,21 +52,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-
-        //로그아웃 버튼
-        btn_custom_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserManagement.getInstance()
-                        .requestLogout(new LogoutResponseCallback() {
-                            @Override
-                            public void onCompleteLogout() {
-                                Toast.makeText(LoginActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
-        });
-
     }
 
     @Override

@@ -49,4 +49,6 @@ dependencies {
     // 카카오내비
     implementation group: 'com.kakao.sdk', name: 'kakaonavi', version: '1.30.0'
 
+    // 스위치버튼
+    implementation 'com.kyleduo.switchbutton:library:2.0.0'
 }

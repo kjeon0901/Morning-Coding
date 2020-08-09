@@ -1,52 +1,54 @@
-package com.example.bottomup2020;
+package com.example.bottomup2020.Problems;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import com.example.bottomup2020.FavouritesListActivity;
+import com.example.bottomup2020.R;
+import com.example.bottomup2020.SolutionActivity_c;
+import com.example.bottomup2020.SolutionActivity_java;
+import com.example.bottomup2020.SolutionActivity_python;
 
-import com.example.bottomup2020.List.ListViewAdapter;
-
-public class FavouritesListActivity extends AppCompatActivity {
-    private ListView listview;
-    private ListViewAdapter adapter;
+public class Problems_python extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favourites_list);
+        setContentView(R.layout.activity_problems_python);
 
-        // Adapter 생성
-        adapter = new ListViewAdapter();
+        Intent intent = getIntent();
 
-        // 리스트뷰 참조 및 Adapter 달기
-        listview = (ListView) findViewById(R.id.listview);
-        listview.setAdapter(adapter);
+        TextView textView = (TextView) findViewById(R.id.problem_name);
 
-        adapter.addItem("JAVA", "01번");
-        adapter.addItem("JAVA", "02번");
-        adapter.addItem("JAVA", "03번");
+        String language_name_python = intent.getExtras().getString("language_name_python");
+        String button_number_python = intent.getExtras().getString("button_number_python");
 
-        // 아이템 클릭시 작동
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
+        textView.setText(language_name_python + "   " + button_number_python + "번");
+    }
 
+    int countClick_num = 0;
 
-                startActivity(intent);
-            }
-        });
+    public void onClick(View view) {
+        ImageButton imageBtn = findViewById(R.id.star_on_btn);
+        countClick_num ++;
+        // 클릭 홀수면 별 없어진걸로!
+        if(countClick_num % 2 != 0){
+            imageBtn.setImageResource(R.drawable.star_off);
+            countClick_num = 1;
+        }else{
+            imageBtn.setImageResource(R.drawable.star_on);
+        }
 
-       adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
     }
 
     @Override
@@ -60,8 +62,14 @@ public class FavouritesListActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-            setTitle("즐겨찾는 문제");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);//뒤로가기
+
+            Intent intent = getIntent();
+
+            String language_name_python = intent.getExtras().getString("language_name_python");
+            String button_number_python = intent.getExtras().getString("button_number_python");
+
+            setTitle(language_name_python + "   " + button_number_python + "번");
+
         }else{
             toolbar.setVisibility(View.GONE);
         }
@@ -97,10 +105,10 @@ public class FavouritesListActivity extends AppCompatActivity {
                 intent = new Intent(this, SolutionActivity_python.class);
                 startActivity(intent);
                 break;
-//            case R.id.FavoritesMenu:
-//                intent = new Intent(this, FavouritesListActivity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.FavoritesMenu:
+                intent = new Intent(this, FavouritesListActivity.class);
+                startActivity(intent);
+                break;
         }
         return true;
     }
@@ -109,11 +117,7 @@ public class FavouritesListActivity extends AppCompatActivity {
     // 메뉴를 눌렀을 때 이미 적용되어있어야 하는 정보들(ex) 로그인안하면 로그아웃 버튼 없게)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-
-        //menu.getItem(2).setEnabled(false);
         return super.onPrepareOptionsMenu(menu);
     }
-
-
 
 }
