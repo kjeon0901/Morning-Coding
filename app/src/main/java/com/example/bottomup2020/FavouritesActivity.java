@@ -60,7 +60,7 @@ public class FavouritesActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-<<<<<<< Updated upstream
+
 //
 //            Intent intent = getIntent();
 //
@@ -73,7 +73,7 @@ public class FavouritesActivity extends AppCompatActivity {
 //                setTitle("JAVA 01번");
 //            }
             setTitle("Java 01번");
-=======
+
 
             Intent intent = getIntent();
 
@@ -81,7 +81,7 @@ public class FavouritesActivity extends AppCompatActivity {
             String button_number = intent.getExtras().getString("button_number");
 
             setTitle(language_name + "___" + button_number + "번");
->>>>>>> Stashed changes
+
         }else{
             toolbar.setVisibility(View.GONE);
         }
