@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 public class FavouritesActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +19,14 @@ public class FavouritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
+        Intent intent = getIntent();
+
+        TextView textView = (TextView) findViewById(R.id.problem_name);
+
+        String language_name_favourites = intent.getExtras().getString("language_name_favourites");
+        String button_number_favourites = intent.getExtras().getString("button_number_favourites");
+
+        textView.setText(language_name_favourites + "   " + button_number_favourites + "번");
 
     }
 
@@ -48,18 +56,14 @@ public class FavouritesActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-//
-//            Intent intent = getIntent();
-//
-//            String language_name = intent.getExtras().getString("language_name");
-//            String button_number = intent.getExtras().getString("button_number");
 
-//            if(language_name != null){
-//                setTitle(language_name + "___" + button_number + "번");
-//            }else{
-//                setTitle("JAVA 01번");
-//            }
-            setTitle("Java 01번");
+            Intent intent = getIntent();
+
+            String language_name_favourites = intent.getExtras().getString("language_name_favourites");
+            String button_number_favourites = intent.getExtras().getString("button_number_favourites");
+
+            setTitle(language_name_favourites + "   " + button_number_favourites);
+
         }else{
             toolbar.setVisibility(View.GONE);
         }

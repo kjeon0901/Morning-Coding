@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //스위치 버튼
         switchButton = (Switch) findViewById(R.id.sb_use_listener);
+        //switchButton.setChecked(true);
         CheckSwitchState();
 
         switchButton.setOnClickListener(new View.OnClickListener() {
