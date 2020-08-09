@@ -8,17 +8,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
     Bitmap bitmap;
     int solvedNum=0;
     int correctNum=0;
-
+    boolean found=false;
     private DBHelper dbHelper=new DBHelper(this);
     private DBHelper dbHelper(){ return dbHelper; }
     Switch switchButton;
@@ -69,7 +71,6 @@ public class HomeActivity extends AppCompatActivity {
         email = data.get(1);
         imagePath=data.get(2);
 
-        language="C";
         //문제들은 #붙여서 변수에 저장해주기
         favouriteProblem="#JAVA 01 ";
         solvedProblem = "#JAVA 01 #JAVA 02 #JAVA 03";
@@ -108,10 +109,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
-        boolean found = false;
+        //#기준으로 푼 문제 문자열 잘라서 개수세기  
+        String str =solvedProblem;
+        String[] txtArr= str.split("#");
+        solvedNum=txtArr.length-1;
+        solved.setText(String.valueOf(solvedNum));
+
+
+        //문제를 맞혔을 경우
+        //correctNum++;
+        //correct.setText(correctNum);
+
+        //즐겨찾기 버튼 누르면
+
+        checkDuplicate();
+    }
+
+    private void checkDuplicate(){
 
         //db에 데이터 있는지 검사
-        cursor = dbHelper().getAllData();
+        cursor=dbHelper().getAllData();
         while (cursor.moveToNext()) {
             if (email.equals(cursor.getString(2))) {
                 found = true;
@@ -135,22 +152,9 @@ public class HomeActivity extends AppCompatActivity {
 
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
-        //#기준으로 푼 문제 문자열 잘라서 개수세기  
-        String str =solvedProblem;
-        String[] txtArr= str.split("#");
-        solvedNum=txtArr.length-1;
-        solved.setText(String.valueOf(solvedNum));
-
-
-        //문제를 맞혔을 경우
-        //correctNum++;
-        //correct.setText(correctNum);
-
-        //즐겨찾기 버튼 누르면
     }
 
     private void CheckSwitchState() {
-
 
         //스위치버튼이 체크되었는지 검사하여 각 경우에 맞게..
         if(switchButton.isChecked()){
@@ -213,6 +217,15 @@ public class HomeActivity extends AppCompatActivity {
                 intent = new Intent(this, FavouritesListActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.LogoutMenu:
+                UserManagement.getInstance()
+                        .requestLogout(new LogoutResponseCallback() {
+                            @Override
+                            public void onCompleteLogout() {
+                                Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
         }
         return true;
     }
@@ -238,6 +251,7 @@ public class HomeActivity extends AppCompatActivity {
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
                     btn_click_num = 1;
+                    language = "JAVA";
                 }else {
                     btn.setBackgroundResource(R.drawable.button_shape);
                     btn_click_num = 2;
@@ -248,9 +262,11 @@ public class HomeActivity extends AppCompatActivity {
                 if(btn_click_num %2 != 0) { // 클릭횟수가 홀수면
                     btn.setBackgroundResource(R.drawable.btn_margin);
                     btn_click_num = 1;
+                    language="PYTHON";
                 } else {
                     btn.setBackgroundResource(R.drawable.button_shape);
                     btn_click_num = 2;
+                    language="C";
                 }
                 break;
             case R.id.c_button:
