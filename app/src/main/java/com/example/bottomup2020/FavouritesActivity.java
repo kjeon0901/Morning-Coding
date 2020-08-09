@@ -2,9 +2,11 @@ package com.example.bottomup2020;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -12,6 +14,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 public class FavouritesActivity extends AppCompatActivity {
 
     @Override
@@ -19,16 +25,86 @@ public class FavouritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
+        // getIntent()로 FavouritesListActivity가 준 정보 받기
         Intent intent = getIntent();
 
         TextView textView = (TextView) findViewById(R.id.problem_name);
 
+        // 준 정보중에서 원하는 key의 값을 찾음
         String language_name_favourites = intent.getExtras().getString("language_name_favourites");
         String button_number_favourites = intent.getExtras().getString("button_number_favourites");
 
-        textView.setText(language_name_favourites + "   " + button_number_favourites);
+        textView.setText(language_name_favourites + "  " + button_number_favourites + "번");
+
+
+        Button button1 = (Button) findViewById(R.id.button1);
+        Button button2 = (Button) findViewById(R.id.button2);
+        Button button3 = (Button) findViewById(R.id.button3);
+        TextView problem_text = (TextView) findViewById(R.id.problem_text);
+        TextView problem_solution = (TextView) findViewById(R.id.problem_solution);
+
+        String s = readTxt(language_name_favourites);
+        String[] array = s.split("#"); // 문제 구분
+        // System.out.println(array[0]);
+
+        //언어+문제 번호, 문제, 선지 구분하는 코드
+        int i = 0;
+        while(i < array.length){
+            String name_compare = "JAVA  "+ button_number_favourites;
+            if(array[i].equals(name_compare)){
+                String[] str = array[i+1].split("\\|\\|");   // 선지 구분
+                problem_text.setText(str[0]);
+                button1.setText(str[1]);
+                button2.setText(str[2]);
+                button3.setText(str[3]);
+                problem_solution.setText("답 :" + str[4] + "번");
+                break;
+            }
+
+            i += 2;
+        }
+        // text에 스크롤 쓰는 코드
+        problem_text.setMovementMethod(new ScrollingMovementMethod());
+        problem_solution.setMovementMethod(new ScrollingMovementMethod());
 
     }
+
+
+    // txt에서 String 추출
+    private String readTxt(String language_name_favourites){
+        // getResources().openRawResource()로 raw 폴더의 원본 파일을 가져온다.
+        // txt 파일을 InpuStream에 넣는다. (open 한다)
+        String readData;
+
+        try {
+            InputStream inputStream = null;
+            if(language_name_favourites.equals("JAVA")){
+                inputStream = getResources().openRawResource(R.raw.java_mcproblems);
+            }else if(language_name_favourites.equals("C")){
+                inputStream = getResources().openRawResource(R.raw.c_mcproblems);
+            }else if(language_name_favourites.equals("PYTHON")){
+                inputStream = getResources().openRawResource(R.raw.python_mcproblems);
+            }
+
+            byte[] data = new byte[inputStream.available()];
+
+            while(inputStream.read(data)!=-1){;}
+
+            readData = new String(data);
+
+        } catch (IOException e) {
+
+            readData = "failed read";
+
+            e.printStackTrace();
+
+        }
+
+        return readData;
+
+    }
+
+
 
     int countClick_num = 0;
 
@@ -62,7 +138,7 @@ public class FavouritesActivity extends AppCompatActivity {
             String language_name_favourites = intent.getExtras().getString("language_name_favourites");
             String button_number_favourites = intent.getExtras().getString("button_number_favourites");
 
-            setTitle(language_name_favourites + "   " + button_number_favourites);
+            setTitle(language_name_favourites + "   " + button_number_favourites + "번");
 
         }else{
             toolbar.setVisibility(View.GONE);
