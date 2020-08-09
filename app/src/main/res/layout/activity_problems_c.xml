@@ -23,6 +23,7 @@
 
         <TextView
             android:id="@+id/problem_name"
+            android:fontFamily="@font/fontstyle_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
@@ -95,32 +96,39 @@
 
                 <TextView
                     android:id="@+id/problem_text"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:scrollbars="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:text="TextView"
-                    android:textSize="15dp" />
+                    android:textSize="20dp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_gravity="bottom"
+                    android:fontFamily="@font/fontstyle_2"
                     android:layout_height="wrap_content">
 
                     <RadioButton
                         android:id="@+id/button1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="15dp"
                         android:text="RadioButton" />
 
                     <RadioButton
                         android:id="@+id/button2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="15dp"
                         android:text="RadioButton" />
 
                     <RadioButton
                         android:id="@+id/button3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="15dp"
                         android:text="RadioButton" />
                 </RadioGroup>
 
@@ -137,16 +145,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[풀이]"
-                    android:textSize="20dp" />
+                    android:text="풀이"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/problem_solution"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:scrollbars="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:textColor="#000000"
                     android:text="TextView"
-                    android:textSize="15dp" />
+                    android:textSize="20dp" />
             </FrameLayout>
 
 

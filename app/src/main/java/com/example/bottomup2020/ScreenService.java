@@ -70,7 +70,16 @@ public class ScreenService extends Service {
         }
         return START_REDELIVER_INTENT;
     }
-    //@Override
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+    @Override
+=======
+   //@Override
+>>>>>>> 66099ec9bd9a5f67d192ef8b875040d9ef133a48
+=======
+   //@Override
+>>>>>>> 66099ec9bd9a5f67d192ef8b875040d9ef133a48
     public void onDestroy(){
         super.onDestroy();
         registerRestartAlarm(false);

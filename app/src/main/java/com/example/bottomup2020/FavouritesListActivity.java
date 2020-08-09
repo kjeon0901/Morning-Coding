@@ -43,7 +43,7 @@ public class FavouritesListActivity extends AppCompatActivity {
                 ListViewItem item = (ListViewItem) listview.getAdapter().getItem(position);
 
                 String title_text = item.getTitle();
-                String content_text = item.getContent();
+                String content_text = item.getContent().replace("번","");
 
                 Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
 
