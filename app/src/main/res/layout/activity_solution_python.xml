@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button1"
-                android:text="1"
+                android:text="01"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button2"
-                android:text="2"
+                android:text="02"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -48,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button3"
-                android:text="3"
+                android:text="03"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -59,7 +59,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button4"
-                android:text="4"
+                android:text="04"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button5"
-                android:text="5"
+                android:text="05"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -91,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button6"
-                android:text="6"
+                android:text="06"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -102,7 +102,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button7"
-                android:text="7"
+                android:text="07"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -113,7 +113,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button8"
-                android:text="8"
+                android:text="08"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -124,7 +124,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button9"
-                android:text="9"
+                android:text="09"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 

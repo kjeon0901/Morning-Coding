@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Problems.Problems_c">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/star_on_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="30dp"
+            android:background="#ffffff"
+            android:onClick="onClick"
+            app:srcCompat="@drawable/star_on" />
+
+        <TextView
+            android:id="@+id/problem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="35dp"
+            android:text="Java 01번"
+            android:textSize="25dp" />
+
+        <FrameLayout
+            android:id="@+id/whole_frame"
+            android:layout_width="354dp"
+            android:layout_height="623dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp">
+
+            <View
+                android:id="@+id/horizon1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:background="#000000" />
+
+            <View
+                android:id="@+id/horizon2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="50dp"
+                android:background="#000000" />
+
+            <View
+                android:id="@+id/vertical1"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#000000" />
+
+            <View
+                android:id="@+id/vertical2"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="right"
+                android:background="#000000" />
+
+            <View
+                android:id="@+id/horizon3"
+                android:layout_width="330dp"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="130dp"
+                android:background="#000000" />
+
+            <View
+                android:id="@+id/horizon4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="bottom"
+                android:background="#000000" />
+
+            <FrameLayout
+                android:id="@+id/problem_frame"
+                android:layout_width="match_parent"
+                android:layout_height="372dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:id="@+id/problem_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/button1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/button3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton" />
+                </RadioGroup>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/solution_frame"
+                android:layout_width="330dp"
+                android:layout_height="165dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[풀이]"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/problem_solution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    android:textSize="15dp" />
+            </FrameLayout>
+
+
+        </FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>
