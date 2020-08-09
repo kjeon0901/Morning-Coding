@@ -20,8 +20,11 @@
                 android:id="@+id/sb_use_listener"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
+<<<<<<< Updated upstream
                 android:layout_marginLeft="310dp"
                 android:layout_marginTop="20dp"
+=======
+>>>>>>> Stashed changes
                 android:track="@drawable/switch_track_selector"
                 android:thumb="@drawable/switch_thumb"
                 android:switchMinWidth="0dp"
