@@ -18,13 +18,13 @@
         <activity android:name=".LockScreenActivity"
             android:theme="@style/LockTheme"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <service android:name=".ScreenService"></service>
         <receiver android:name=".Receiver.ScreenReceiver"></receiver>
         <receiver android:name=".Receiver.RestartReceiver"
             android:process=".remote">//시스템의 알람을 받기 위해 추가, 10초에 한번씩 ScreenService 다시 실행
             <intent-filter>
-                <action android:name="RestartReceiver.restart"/>
+                <action android:name="RestartReceiver.restart" />
             </intent-filter>
         </receiver>
         <receiver android:name=".Receiver.BootReceiver"
