@@ -66,7 +66,7 @@ public class FavouritesActivity extends AppCompatActivity {
             String language_name_favourites = intent.getExtras().getString("language_name_favourites");
             String button_number_favourites = intent.getExtras().getString("button_number_favourites");
 
-            setTitle(language_name_favourites + "   " + button_number_favourites + "번");
+            setTitle(language_name_favourites + "   " + button_number_favourites);
 
         }else{
             toolbar.setVisibility(View.GONE);
