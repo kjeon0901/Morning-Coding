@@ -14,12 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.bottomup2020.List.ListViewAdapter;
+import com.example.bottomup2020.List.ListViewItem;
+
+import java.util.List;
 
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
     private ListViewAdapter adapter;
 
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
@@ -39,8 +42,15 @@ public class FavouritesListActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
+                ListViewItem item = (ListViewItem) listview.getAdapter().getItem(position);
+
+                String title_text = item.getTitle();
+                String content_text = item.getContent();
+
                 Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
 
+                intent.putExtra("language_name_favourites", title_text);
+                intent.putExtra("button_number_favourites", content_text);
 
                 startActivity(intent);
             }
@@ -48,7 +58,7 @@ public class FavouritesListActivity extends AppCompatActivity {
 
        adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
     }
-
+  
     @Override
     public void setContentView(int layoutResID){
         LinearLayout fullView = (LinearLayout)getLayoutInflater().inflate(R.layout.activity_home_toolbar, null);
