@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.bottomup2020.List.ListViewAdapter;
+import com.example.bottomup2020.List.ListViewItem;
+
+import java.util.List;
 
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
@@ -40,7 +43,16 @@ public class FavouritesListActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
+                ListViewItem item = (ListViewItem) listview.getAdapter().getItem(position);
+
+                String title_text = item.getTitle();
+                String content_text = item.getContent();
+
                 Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
+
+                intent.putExtra("language_name_favourites", title_text);
+                intent.putExtra("button_number_favourites", content_text);
+
                 startActivity(intent);
             }
         });
