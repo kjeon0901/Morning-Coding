@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
 class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "GangSongChe";
+    public static final String DATABASE_NAME = "GSC";
     public static final String TABLE_NAME = "userData";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "name";
     public static final String COL_3 = "email";
     public static final String COL_4 = "language";
-    public static final String COL_5 = "number";
+    public static final String COL_5 = "favouriteProblem";
     public static final String COL_6 = "solvedProblem";
 
     public DBHelper(@Nullable Context context) {
@@ -42,7 +42,7 @@ class DBHelper extends SQLiteOpenHelper {
     //실행할 때 테이블 최초 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, number TEXT, solvedProblem TEXT)");
+        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, favouriteProblem TEXT, solvedProblem TEXT)");
     }
 
     //버전 업그레이드
@@ -53,13 +53,13 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     //테이블에 정보 넣기
-    public boolean insertData(String name, String email, String language, String number, String solvedProblem) {
+    public boolean insertData(String name, String email, String language, String favouriteProblem, String solvedProblem) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, name);
         contentValues.put(COL_3, email);
         contentValues.put(COL_4, language);
-        contentValues.put(COL_5, number);
+        contentValues.put(COL_5, favouriteProblem);
         contentValues.put(COL_6, solvedProblem);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
@@ -86,23 +86,20 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     //데이터 수정
-    public boolean updateData(String id, String name, String email, String language, String number, String solvedProblem) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void updateData(String email, String language, String favouriteProblem, String solvedProblem) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1, id);
-        contentValues.put(COL_2, name);
-        contentValues.put(COL_3, email);
-        contentValues.put(COL_4, language);
-        contentValues.put(COL_5, number);
-        contentValues.put(COL_6, solvedProblem);
-        db.update(TABLE_NAME, contentValues, "ID=?", new String[]{id});
-        return true;
+        SQLiteDatabase db = this.getWritableDatabase();
+        contentValues.put("language",language);
+        contentValues.put("favouriteProblem",favouriteProblem);
+        contentValues.put("solvedProblem",solvedProblem);
+        db.update("userData",contentValues,"email=?",new String[] {email});
+
     }
 
     //테이블 전체 데이터 삭제
     public void deleteData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String sqlDelete = "DELETE FROM userData";
+        String sqlDelete = "DELETE FROM "+TABLE_NAME;
         db.execSQL(sqlDelete);
     }
 
@@ -114,4 +111,5 @@ class DBHelper extends SQLiteOpenHelper {
         String sqlDelete = "DELETE FROM userData WHERE no=?";
         db.execSQL(sqlDelete);
     }*/
+
 }
