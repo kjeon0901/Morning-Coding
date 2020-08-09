@@ -70,6 +70,7 @@ public class ScreenService extends Service {
         }
         return START_REDELIVER_INTENT;
     }
+
     @Override
     public void onDestroy(){
         super.onDestroy();
