@@ -21,6 +21,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -31,6 +32,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -41,6 +43,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -51,6 +54,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -61,6 +65,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -81,6 +86,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -91,6 +97,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -101,6 +108,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -111,6 +119,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -121,6 +130,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -142,6 +152,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button11"
@@ -151,6 +162,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -161,6 +173,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -171,6 +184,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -181,6 +195,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -202,6 +217,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button16"
@@ -212,6 +228,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button17"
@@ -242,6 +259,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/python_button20"
@@ -261,6 +279,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -271,6 +290,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -281,6 +301,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -291,6 +312,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -301,6 +323,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -321,6 +344,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -331,6 +355,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -341,6 +366,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -351,6 +377,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -361,6 +388,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -381,6 +409,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -391,6 +420,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -401,6 +431,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -411,6 +442,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -421,6 +453,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"

@@ -29,8 +29,8 @@ public class SolutionActivity_c extends SolutionToolbarActivity {
 
         Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
 
-        intent.putExtra("button_number", btn_text);
-        intent.putExtra("language_name", "C");
+        intent.putExtra("button_number_c", btn_text);
+        intent.putExtra("language_name_c", "C");
 
         startActivity(intent);
     }
