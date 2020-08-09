@@ -27,8 +27,8 @@ public class FavouritesActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String language_name = intent.getExtras().getString("language_name");
-        String button_number = intent.getExtras().getString("button_number");
+        String language_name = intent.getExtras().getString("language_name_c");
+        String button_number = intent.getExtras().getString("button_number_c");
 
         problem_name.setText(language_name + "___" +button_number + "번");
 
