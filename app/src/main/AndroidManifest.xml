@@ -15,19 +15,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LockScreenActivity"
-            android:theme="@style/LockTheme"
+        <activity android:name=".Problems.Problems_python"></activity>
+        <activity android:name=".Problems.Problems_java" />
+        <activity android:name=".Problems.Problems_c" />
+        <activity
+            android:name=".LockScreenActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <service android:name=".ScreenService"></service>
-        <receiver android:name=".Receiver.ScreenReceiver"></receiver>
-        <receiver android:name=".Receiver.RestartReceiver"
+            android:screenOrientation="portrait"
+            android:theme="@style/LockTheme" />
+
+        <service android:name=".ScreenService" />
+
+        <receiver android:name=".Receiver.ScreenReceiver" />
+        <receiver
+            android:name=".Receiver.RestartReceiver"
             android:process=".remote">
             <intent-filter>
-                <action android:name="RestartReceiver.restart"/>
+                <action android:name="RestartReceiver.restart" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".Receiver.BootReceiver"
+        <receiver
+            android:name=".Receiver.BootReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -39,10 +47,10 @@
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-
 
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".LoginActivity">
@@ -52,6 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />

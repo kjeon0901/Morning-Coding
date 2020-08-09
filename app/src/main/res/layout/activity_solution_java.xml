@@ -21,51 +21,56 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button1"
-                android:text="1"
+                android:text="01"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button2"
-                android:text="2"
+                android:text="02"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button3"
-                android:text="3"
+                android:text="03"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button4"
-                android:text="4"
+                android:text="04"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button5"
-                android:text="5"
+                android:text="05"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
@@ -82,45 +87,50 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button6"
-                android:text="6"
+                android:text="06"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button7"
-                android:text="7"
+                android:text="07"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button8"
-                android:text="8"
+                android:text="08"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button9"
-                android:text="9"
+                android:text="09"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints"/>
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -142,6 +152,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button11"
@@ -152,6 +163,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button12"
@@ -162,6 +174,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button13"
@@ -172,6 +185,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button14"
@@ -182,6 +196,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button15"
@@ -202,6 +217,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button16"
@@ -212,6 +228,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button17"
@@ -222,6 +239,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button18"
@@ -232,6 +250,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button19"
@@ -242,6 +261,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button20"
@@ -261,6 +281,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -271,6 +292,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -281,6 +303,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -291,6 +314,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -301,6 +325,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -321,6 +346,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -331,6 +357,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -341,6 +368,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -351,6 +379,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -361,6 +390,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -382,6 +412,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
                 android:id="@+id/java_button31"
@@ -391,6 +422,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -401,6 +433,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -411,6 +444,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"
@@ -421,6 +455,7 @@
 
             <Button
                 android:layout_width="0dp"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@drawable/yellowpaint"

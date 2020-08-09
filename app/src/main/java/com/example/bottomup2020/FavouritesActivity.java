@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.bottomup2020.R;
 
@@ -22,18 +23,31 @@ public class FavouritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
-        final ImageButton imageBtn = findViewById(R.id.star_on_btn);
+        Intent intent = getIntent();
 
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            // 즐겨찾기 별 누르고 이벤트
-            @Override
-            public void onClick(View v) {
-                imageBtn.setImageResource(R.drawable.star_off);
-                // favourites에서 별 삭제 생성 둘다!
-            }
-        });
+        TextView textView = (TextView) findViewById(R.id.problem_name);
+
+        String language_name_favourites = intent.getExtras().getString("language_name_favourites");
+        String button_number_favourites = intent.getExtras().getString("button_number_favourites");
+
+        textView.setText(language_name_favourites + "   " + button_number_favourites + "번");
+
     }
 
+    int countClick_num = 0;
+
+    public void onClick(View view) {
+        ImageButton imageBtn = findViewById(R.id.star_on_btn);
+        countClick_num ++;
+        // 클릭 홀수면 별 없어진걸로!
+        if(countClick_num % 2 != 0){
+            imageBtn.setImageResource(R.drawable.star_off);
+            countClick_num = 1;
+        }else{
+            imageBtn.setImageResource(R.drawable.star_on);
+        }
+
+    }
 
     @Override
     public void setContentView(int layoutResID){
@@ -46,7 +60,14 @@ public class FavouritesActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-            setTitle("Java 01번");
+
+            Intent intent = getIntent();
+
+            String language_name_favourites = intent.getExtras().getString("language_name_favourites");
+            String button_number_favourites = intent.getExtras().getString("button_number_favourites");
+
+            setTitle(language_name_favourites + "   " + button_number_favourites);
+
         }else{
             toolbar.setVisibility(View.GONE);
         }

@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private DBHelper dbHelper=new DBHelper(this);
     private DBHelper dbHelper(){ return dbHelper; }
+    Switch switchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,19 @@ public class HomeActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         solved=findViewById(R.id.solved);
         correct = findViewById(R.id.correct);
+
+        //스위치 버튼
+        switchButton = (Switch) findViewById(R.id.sb_use_listener);
+        //switchButton.setChecked(true);
+        CheckSwitchState();
+
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckSwitchState();
+            }
+
+        });
 
         Intent intent = getIntent();
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
@@ -132,6 +149,18 @@ public class HomeActivity extends AppCompatActivity {
         //즐겨찾기 버튼 누르면
     }
 
+    private void CheckSwitchState() {
+
+
+        //스위치버튼이 체크되었는지 검사하여 각 경우에 맞게..
+        if(switchButton.isChecked()){
+            Intent intent = new Intent(getApplicationContext(), ScreenService.class);
+            startService(intent);
+        }else{
+            Intent intent = new Intent(getApplicationContext(), ScreenService.class);
+            stopService(intent);
+        }
+    }
 
     @Override
     public void setContentView(int layoutResID){
