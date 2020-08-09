@@ -1,8 +1,5 @@
 package com.example.bottomup2020;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,12 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.bottomup2020.R;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 public class FavouritesActivity extends AppCompatActivity {
 
     @Override
@@ -30,7 +26,7 @@ public class FavouritesActivity extends AppCompatActivity {
         String language_name_favourites = intent.getExtras().getString("language_name_favourites");
         String button_number_favourites = intent.getExtras().getString("button_number_favourites");
 
-        textView.setText(language_name_favourites + "   " + button_number_favourites + "번");
+        textView.setText(language_name_favourites + "   " + button_number_favourites);
 
     }
 
@@ -66,7 +62,7 @@ public class FavouritesActivity extends AppCompatActivity {
             String language_name_favourites = intent.getExtras().getString("language_name_favourites");
             String button_number_favourites = intent.getExtras().getString("button_number_favourites");
 
-            setTitle(language_name_favourites + "   " + button_number_favourites + "번");
+            setTitle(language_name_favourites + "   " + button_number_favourites);
 
         }else{
             toolbar.setVisibility(View.GONE);
