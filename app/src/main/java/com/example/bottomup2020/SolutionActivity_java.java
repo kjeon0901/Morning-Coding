@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bottomup2020.Problems.Problems_java;
+
 public class SolutionActivity_java extends SolutionToolbarActivity {
 
     @Override
@@ -20,7 +22,7 @@ public class SolutionActivity_java extends SolutionToolbarActivity {
         Button btn = (Button) view;
         String btn_text = btn.getText().toString();
 
-        Intent intent = new Intent(getApplicationContext(), FavouritesActivity.class);
+        Intent intent = new Intent(getApplicationContext(), Problems_java.class);
 
         intent.putExtra("button_number_java", btn_text);
         intent.putExtra("language_name_java", "JAVA");

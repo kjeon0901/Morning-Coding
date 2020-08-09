@@ -1,4 +1,4 @@
-package com.example.bottomup2020;
+package com.example.bottomup2020.Problems;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,19 +10,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.bottomup2020.FavouritesListActivity;
 import com.example.bottomup2020.R;
+import com.example.bottomup2020.SolutionActivity_c;
+import com.example.bottomup2020.SolutionActivity_java;
+import com.example.bottomup2020.SolutionActivity_python;
 
-public class FavouritesActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
+
+public class Problems_c extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favourites);
+        setContentView(R.layout.activity_problems_c);
 
+        Intent intent = getIntent();
+
+        TextView textView = (TextView) findViewById(R.id.problem_name);
+
+        String language_name_c = intent.getExtras().getString("language_name_c");
+        String button_number_c = intent.getExtras().getString("button_number_c");
+
+        textView.setText(language_name_c + "   " + button_number_c + "번");
 
     }
 
@@ -52,18 +65,13 @@ public class FavouritesActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-//
-//            Intent intent = getIntent();
-//
-//            String language_name = intent.getExtras().getString("language_name");
-//            String button_number = intent.getExtras().getString("button_number");
 
-//            if(language_name != null){
-//                setTitle(language_name + "___" + button_number + "번");
-//            }else{
-//                setTitle("JAVA 01번");
-//            }
-            setTitle("Java 01번");
+            Intent intent = getIntent();
+
+           String language_name_c = intent.getExtras().getString("language_name_c");
+            String button_number_c = intent.getExtras().getString("button_number_c");
+            setTitle(language_name_c + "   " + button_number_c + "번");
+
         }else{
             toolbar.setVisibility(View.GONE);
         }
