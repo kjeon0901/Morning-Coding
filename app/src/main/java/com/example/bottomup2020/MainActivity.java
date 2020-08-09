@@ -108,9 +108,9 @@ class DBHelper extends SQLiteOpenHelper{
     }
 
     //특정 id 데이터 삭제하기
-    public void deleteOneData(){
+   /* public void deleteOneData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlDelete = "DELETE FROM userData WHERE no=?";
         db.execSQL(sqlDelete);
-    }
+    }*/
 }

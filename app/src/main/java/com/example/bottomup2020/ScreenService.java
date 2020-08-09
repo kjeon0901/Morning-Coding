@@ -70,8 +70,8 @@ public class ScreenService extends Service {
         }
         return START_REDELIVER_INTENT;
     }
-    @Override
-    public void onDestroy(){
+    //@Override
+   /* public void onDestroy(){
         super.onDestroy();
         registerRestartAlarm(false);
         if(mReceiver != null){
@@ -81,7 +81,7 @@ public class ScreenService extends Service {
         if(pReceiver != null){
             unregisterReceiver(pReceiver);
         }
-    }
+    }*/
 
     PhoneStateListener phoneListener = new PhoneStateListener(){
         @Override
