@@ -23,7 +23,7 @@ public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
     private ListViewAdapter adapter;
 
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
@@ -59,7 +59,7 @@ public class FavouritesListActivity extends AppCompatActivity {
 
        adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
     }
-
+  
     @Override
     public void setContentView(int layoutResID){
         LinearLayout fullView = (LinearLayout)getLayoutInflater().inflate(R.layout.activity_home_toolbar, null);
