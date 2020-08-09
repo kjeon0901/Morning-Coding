@@ -20,6 +20,7 @@
             android:paddingLeft="0dp">
             <TextView
                 android:id="@+id/title"
+                android:fontFamily="@font/fontstyle_2"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="test"
@@ -40,6 +41,7 @@
                 android:background="@drawable/corner_shape">
                 <TextView
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/fontstyle_2"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:id="@+id/content"
