@@ -49,8 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
         nickName = data.get(0);
-       // email = data.get(1);
-        email = "2@2";
+        email = data.get(1);
         imagePath=data.get(2);
 
         language="C";
