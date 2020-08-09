@@ -2,7 +2,6 @@ package com.example.bottomup2020;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -100,11 +99,18 @@ class DBHelper extends SQLiteOpenHelper{
         db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
         return true;
     }
-    //테이블 삭제
-    public int deleteData(String id){
+
+    //테이블 전체 데이터 삭제
+    public void deleteData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME,"ID=?",new String[] {id});
+        String sqlDelete = "DELETE FROM userData";
+        db.execSQL(sqlDelete);
     }
 
-
+    //특정 id 데이터 삭제하기
+    public void deleteOneData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlDelete = "DELETE FROM userData WHERE no=?";
+        db.execSQL(sqlDelete);
+    }
 }
