@@ -39,7 +39,7 @@ public class LockScreenActivity extends AppCompatActivity {
         Time.setText(time);
         Date.setText(date);
 
-        final ImageButton imageBtn = findViewById(R.id.star_off_btn);
+        final ImageButton imageBtn = findViewById(R.id.lock_star_off_btn);
         imageBtn.setOnClickListener(new View.OnClickListener() {
             // 즐겨찾기 별 누르고 이벤트
             @Override

@@ -157,7 +157,7 @@
                 <FrameLayout
                     android:id="@+id/home_whole_frame"
                     android:layout_width="359dp"
-                    android:layout_height="340dp"
+                    android:layout_height="320dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="25dp">
 
@@ -202,7 +202,7 @@
                     <FrameLayout
                         android:id="@+id/home_problem_frame"
                         android:layout_width="match_parent"
-                        android:layout_height="270dp"
+                        android:layout_height="250dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="65dp"
                         android:layout_marginRight="15dp"

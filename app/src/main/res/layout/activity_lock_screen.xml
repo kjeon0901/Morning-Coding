@@ -26,7 +26,7 @@
         android:layout_height="match_parent">
 
         <ImageButton
-            android:id="@+id/star_off_btn"
+            android:id="@+id/lock_star_off_btn"
             android:layout_width="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             app:srcCompat="@drawable/star_off" />
 
         <TextView
-            android:id="@+id/problem_name"
+            android:id="@+id/lock_problem_name"
             android:textSize="25dp"
             android:layout_marginTop="35dp"
             android:layout_marginLeft="55dp"
@@ -44,21 +44,21 @@
             android:text="Java 01번" />
 
         <FrameLayout
-            android:id="@+id/whole_frame"
+            android:id="@+id/lock_whole_frame"
             android:layout_width="359dp"
             android:layout_height="500dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp">
 
             <View
-                android:id="@+id/horizon1"
+                android:id="@+id/lock_horizon1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
                 android:background="#000000" />
 
             <View
-                android:id="@+id/horizon2"
+                android:id="@+id/lock_horizon2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
@@ -66,14 +66,14 @@
                 android:background="#000000" />
 
             <View
-                android:id="@+id/vertical1"
+                android:id="@+id/lock_vertical1"
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="#000000" />
 
             <View
-                android:id="@+id/vertical2"
+                android:id="@+id/lock_vertical2"
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -81,7 +81,7 @@
                 android:background="#000000" />
 
             <View
-                android:id="@+id/horizon3"
+                android:id="@+id/lock_horizon3"
                 android:layout_width="330dp"
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
@@ -90,7 +90,7 @@
                 android:background="#000000" />
 
             <View
-                android:id="@+id/horizon4"
+                android:id="@+id/lock_horizon4"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
@@ -98,7 +98,7 @@
                 android:background="#000000" />
 
             <FrameLayout
-                android:id="@+id/problem_frame"
+                android:id="@+id/lock_problem_frame"
                 android:layout_width="match_parent"
                 android:layout_height="407dp"
                 android:layout_marginLeft="15dp"
@@ -107,10 +107,39 @@
                 android:layout_marginBottom="15dp">
 
                 <TextView
-                    android:id="@+id/problem_text"
+                    android:id="@+id/lock_problem_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_gravity="bottom"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/home_radiobutton1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/home_radiobutton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/home_radiobutton3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="RadioButton" />
+                </RadioGroup>
+
             </FrameLayout>
         </FrameLayout>
     </FrameLayout>
