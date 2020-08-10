@@ -5,9 +5,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,6 +22,9 @@ import com.example.bottomup2020.SolutionActivity_java;
 import com.example.bottomup2020.SolutionActivity_python;
 
 import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Problems_c extends AppCompatActivity {
 
@@ -35,9 +40,73 @@ public class Problems_c extends AppCompatActivity {
         String language_name_c = intent.getExtras().getString("language_name_c");
         String button_number_c = intent.getExtras().getString("button_number_c");
 
-        textView.setText(language_name_c + "   " + button_number_c + "번");
+        textView.setText(language_name_c + "  " + button_number_c + "번");
+
+        Button button1 = (Button) findViewById(R.id.button1);
+        Button button2 = (Button) findViewById(R.id.button2);
+        Button button3 = (Button) findViewById(R.id.button3);
+        TextView problem_text = (TextView) findViewById(R.id.problem_text);
+        TextView problem_solution = (TextView) findViewById(R.id.problem_solution);
+
+        String s = readTxt();
+        String[] array = s.split("#"); // 문제 구분
+        // System.out.println(array[0]);
+
+
+        int i = 0;
+        while(i < array.length){
+            String name_compare = "C  "+ button_number_c;
+            if(array[i].equals(name_compare)){
+                String[] str = array[i+1].split("\\|\\|");   // 선지 구분
+                problem_text.setText(str[0]);
+                button1.setText(str[1]);
+                button2.setText(str[2]);
+                button3.setText(str[3]);
+                problem_solution.setText("답 :" + str[4] + "번");
+
+                break;
+            }
+
+            i += 2;
+        }
+        problem_text.setMovementMethod(new ScrollingMovementMethod());
+        problem_solution.setMovementMethod(new ScrollingMovementMethod());
+
 
     }
+
+
+
+
+    // txt에서 String 추출
+    private String readTxt(){
+        // getResources().openRawResource()로 raw 폴더의 원본 파일을 가져온다.
+        // txt 파일을 InpuStream에 넣는다. (open 한다)
+        String readData;
+
+        try {
+
+            InputStream fis = getResources().openRawResource(R.raw.c_mcproblems);
+
+            byte[] data = new byte[fis.available()];
+
+            while(fis.read(data)!=-1){;}
+
+            readData = new String(data);
+
+        } catch (IOException e) {
+
+            readData = "failed read";
+
+            e.printStackTrace();
+
+        }
+
+        return readData;
+
+    }
+
+
 
     int countClick_num = 0;
 

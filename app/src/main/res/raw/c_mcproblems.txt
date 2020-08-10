@@ -1,0 +1,24 @@
+C 01#여러 형의 입출력 함수가 포함된 헤더 파일은 무엇인가? ||stdio.h ||math.h ||stdlib.h ||1#C 02#잘못된 코드는 무엇인가? ||char str[] = "abcde"; ||char str[10] = ""; ||char str[10] = "My name is Claire"; ||3#C 03#다음의 코드에 의하여 생성되는 출력은 무엇인가? 
+#include <stdio.h>
+
+int main(void){
+	int a = 10;
+	if(a-- == 10){
+		prinf("*");
+	}else if(a-- == 9){
+		prinf("**");
+	}else{
+		printf("error");
+	}
+}||* ||** ||error ||1||
+a는 10인지 확인하고 난 후 --를 진행한다.#C 04#다음 코드에서 잘못된 줄을 고르시오 
+#include<stdio.h>
+
+int main(void)
+{
+	int x = 10;
+	int *p = &x;	------①
+	\n	*x = 30;	------②
+	*p = 20;	------③
+} ||1 ||2 ||3 ||2||
+포인터가 아닌 변수나 수식에는 *을 사용할 수 없다.
