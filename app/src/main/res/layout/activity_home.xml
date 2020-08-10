@@ -20,7 +20,7 @@
                 android:id="@+id/sb_use_listener"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
-                android:layout_marginLeft="240dp"
+                android:layout_marginLeft="200dp"
                 android:layout_marginTop="20dp"
                 android:text="잠금화면 사용  "
                 android:textColor="#9b9b9b"
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:layout_marginTop="340dp"
+                android:layout_marginTop="320dp"
                 android:text="오늘의 모닝코딩"
                 android:textSize="20dp" />
 
@@ -139,16 +139,18 @@
                 <ImageButton
                     android:id="@+id/home_star_off_btn"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="295dp"
                     android:background="#ffffff"
-                    app:srcCompat="@drawable/star_off" />
+                    app:srcCompat="@drawable/star_off"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"/>
 
                 <TextView
                     android:id="@+id/home_problem_name"
                     android:textSize="25dp"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="55dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -157,9 +159,9 @@
                 <FrameLayout
                     android:id="@+id/home_whole_frame"
                     android:layout_width="359dp"
-                    android:layout_height="320dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="25dp">
+                    android:layout_height="310dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp">
 
                     <View
                         android:id="@+id/home_horizon1"
@@ -203,8 +205,8 @@
                         android:id="@+id/home_problem_frame"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="65dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="55dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginBottom="15dp">
 
@@ -250,7 +252,7 @@
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="77dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="245dp">
 
                 <LinearLayout
@@ -260,9 +262,9 @@
 
                     <Button
                         android:id="@+id/java_button"
-                        android:layout_width="76dp"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="80dp"
                         android:layout_weight="1"
                         android:background="@drawable/button_shape"
                         android:onClick="onClick"
@@ -270,9 +272,9 @@
 
                     <Button
                         android:id="@+id/python_button"
-                        android:layout_width="76dp"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="27dp"
                         android:layout_weight="1"
                         android:background="@drawable/button_shape"
                         android:onClick="onClick"
@@ -280,9 +282,9 @@
 
                     <Button
                         android:id="@+id/c_button"
-                        android:layout_width="76dp"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="27dp"
                         android:layout_weight="1"
                         android:background="@drawable/button_shape"
                         android:onClick="onClick"
@@ -304,7 +306,7 @@
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="340dp"
+                android:layout_marginTop="320dp"
                 app:srcCompat="@drawable/flowerhead" />
 
             <FrameLayout
