@@ -120,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
         solvedProblem = "#JAVA 01 #JAVA 02 #JAVA 03";
         language="JAVA PYTHON C";
         userName.setText(nickName);
-        
+
         if(language==null) {
             language = "JAVA PYTHON C";
             dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
