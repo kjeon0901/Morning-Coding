@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="295dp"
             android:background="#ffffff"
-            app:srcCompat="@drawable/star_off" />
+            app:srcCompat="@drawable/star_off"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/lock_problem_name"
