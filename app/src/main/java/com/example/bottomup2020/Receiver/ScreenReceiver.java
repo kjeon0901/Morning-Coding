@@ -4,10 +4,15 @@ import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
+import androidx.annotation.RequiresApi;
+
 import com.example.bottomup2020.LockScreenActivity;
+
+import javax.security.auth.callback.Callback;
 
 public class ScreenReceiver extends BroadcastReceiver {
 
@@ -16,13 +21,16 @@ public class ScreenReceiver extends BroadcastReceiver {
     private TelephonyManager telephonyManager=null;
     private boolean isPhoneIdle = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             if(km == null)
                 km=(KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
-            if(keyLock == null)
+            if(keyLock == null) {
                 keyLock = km.newKeyguardLock(Context.KEYGUARD_SERVICE);
+                //keyLock = km.requestDismissKeyguard(, null);
+            }
             if(telephonyManager==null){
                 telephonyManager=(TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
                 telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);

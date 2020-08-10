@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
 
     private Button btn_custom_login;
-    private Button btn_custom_logout;
     private SessionCallback sessionCallback = new SessionCallback();
     private String nickname,email,image;
     Session session;

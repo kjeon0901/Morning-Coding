@@ -39,7 +39,7 @@ dependencies {
     implementation project(':libraries:push')
 
     implementation 'com.mcxiaoke.volley:library:1.0.19'
-    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.appcompat:appcompat:1.0.0-alpha02"
 
     /**
      * Below dependencies should be in this gradle file even though they are already in
