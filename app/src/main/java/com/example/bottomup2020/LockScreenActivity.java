@@ -62,9 +62,6 @@ public class LockScreenActivity extends AppCompatActivity {
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
         // | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
-
         textset();
 
     }

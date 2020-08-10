@@ -1,4 +1,5 @@
 package com.example.bottomup2020;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -44,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
     int btn_python = 1;
     int btn_c = 1;
     TextView tViewLog;
+    public static Context hContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -236,6 +239,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ScreenService.class);
             stopService(intent);
         }
+        hContext=this;
     }
     @Override
     public void setContentView(int layoutResID){
