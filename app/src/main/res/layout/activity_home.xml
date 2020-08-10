@@ -20,8 +20,10 @@
                 android:id="@+id/sb_use_listener"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
-                android:layout_marginLeft="310dp"
+                android:layout_marginLeft="240dp"
                 android:layout_marginTop="20dp"
+                android:text="잠금화면 사용  "
+                android:textColor="#9b9b9b"
                 android:track="@drawable/switch_track_selector"
                 android:thumb="@drawable/switch_thumb"
                 android:switchMinWidth="0dp"
@@ -129,6 +131,122 @@
                 android:text="오늘의 모닝코딩"
                 android:textSize="20dp" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="355dp">
+
+                <ImageButton
+                    android:id="@+id/star_off_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="295dp"
+                    android:background="#ffffff"
+                    app:srcCompat="@drawable/star_off" />
+
+                <TextView
+                    android:id="@+id/problem_name"
+                    android:textSize="25dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginLeft="55dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Java 01번" />
+
+                <FrameLayout
+                    android:id="@+id/whole_frame"
+                    android:layout_width="359dp"
+                    android:layout_height="340dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp">
+
+                    <View
+                        android:id="@+id/horizon1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_centerInParent="true"
+                        android:background="#000000" />
+
+                    <View
+                        android:id="@+id/horizon2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:background="#000000" />
+
+                    <View
+                        android:id="@+id/vertical1"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:background="#000000" />
+
+                    <View
+                        android:id="@+id/vertical2"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="right"
+                        android:background="#000000" />
+
+                    <View
+                        android:id="@+id/horizon3"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="bottom"
+                        android:background="#000000" />
+
+                    <FrameLayout
+                        android:id="@+id/problem_frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="65dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp">
+
+                        <TextView
+                            android:id="@+id/problem_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_gravity="bottom"
+                            android:fontFamily="@font/fontstyle_2"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/button1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/button2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/button3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="RadioButton" />
+                        </RadioGroup>
+                    </FrameLayout>
+                </FrameLayout>
+
+            </FrameLayout>
+
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
@@ -191,7 +309,7 @@
             <FrameLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="60dp"
                 android:layout_marginTop="65dp"
                 android:background="#d3d3d3">
 
@@ -201,6 +319,7 @@
                     android:layout_height="120dp"
                     app:srcCompat="@drawable/animal" />
             </FrameLayout>
+
 
         </FrameLayout>
 
