@@ -245,6 +245,9 @@ public class HomeActivity extends AppCompatActivity {
                             }
                         });
                 Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent intentHome= new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intentHome);
+
                 break;
         }
         return true;
