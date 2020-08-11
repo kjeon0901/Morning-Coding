@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="#FECE22"
+        android:theme="@style/ToolbarTheme"
         tools:ignore="MissingConstraints" />
 
     <FrameLayout

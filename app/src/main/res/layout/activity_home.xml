@@ -138,12 +138,13 @@
 
                 <TextView
                     android:id="@+id/home_problem_name"
-                    android:textSize="25dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="55dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Java 01번" />
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:text="Java 01번"
+                    android:textSize="25dp" />
 
                 <FrameLayout
                     android:id="@+id/home_whole_frame"
@@ -201,6 +202,7 @@
 
                         <TextView
                             android:id="@+id/home_problem_text"
+                            android:fontFamily="@font/fontstyle_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:scrollbars="vertical"
@@ -216,6 +218,7 @@
                                 android:id="@+id/home_radiobutton1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/fontstyle_2"
                                 android:text="RadioButton"
                                 android:textSize="15dp" />
 
@@ -223,6 +226,7 @@
                                 android:id="@+id/home_radiobutton2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/fontstyle_2"
                                 android:text="RadioButton"
                                 android:textSize="15dp" />
 
@@ -230,6 +234,7 @@
                                 android:id="@+id/home_radiobutton3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/fontstyle_2"
                                 android:text="RadioButton"
                                 android:textSize="15dp" />
                         </RadioGroup>

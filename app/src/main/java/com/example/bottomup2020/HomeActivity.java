@@ -109,7 +109,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
         if(language==null) {
             language = "JAVA PYTHON C";
             dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
@@ -161,10 +160,10 @@ public class HomeActivity extends AppCompatActivity {
         String solvedProblem = cursor.getString(5);
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
-        textset();
+        textSet(); // 랜덤 모닝코딩 출력
     }
 
-    private void textset() { //txt 나누기
+    private void textSet() { //txt 나누기
         TextView textView = (TextView) findViewById(R.id.home_problem_name);
         Button button1 = (Button) findViewById(R.id.home_radiobutton1);
         Button button2 = (Button) findViewById(R.id.home_radiobutton2);
@@ -174,6 +173,10 @@ public class HomeActivity extends AppCompatActivity {
         String txt = readRandomTxt();
         String[] array = txt.split("#"); // 문제 구분
         //System.out.println(array[0]);
+
+        if(checkDuplicate(array[0].charAt(0))){//C면 ##으로 구분
+            array=txt.split("##");
+        }
 
         int i =(int)(Math.random()*3);//문제번호는 0~3
         i=i*2;//문제번호는 0,2,4,6
@@ -194,7 +197,7 @@ public class HomeActivity extends AppCompatActivity {
         // getResources().openRawResource()로 raw 폴더의 원본 파일을 가져온다.
         // txt 파일을 InpuStream에 넣는다. (open 한다)
         String readData;
-        int num= (int) (Math.random()*2);  // 0~2 사이의 난수 발생
+        int num= (int)(Math.random()*3);  // 0~2 사이의 난수 발생
         try {
             if(num==0) { //num이 0이면 java txt 가져옴
                 InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
@@ -248,7 +251,7 @@ public class HomeActivity extends AppCompatActivity {
         //툴바 사용여부 결정(기본=사용)
         if(useToolbar()){
             setSupportActionBar(toolbar);
-            setTitle("MorningCoding");
+            setTitle("Morning Coding");
         }else{
             toolbar.setVisibility(View.GONE);
         }
