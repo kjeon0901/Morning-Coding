@@ -10,7 +10,7 @@
 
     <FrameLayout
         android:layout_width="423dp"
-        android:layout_height="519dp"
+        android:layout_height="536dp"
         android:orientation="vertical">
 
 
@@ -23,7 +23,7 @@
         <LinearLayout
 
             android:layout_width="309dp"
-            android:layout_height="163dp"
+            android:layout_height="205dp"
             android:layout_gravity="center"
             android:orientation="vertical">
 
@@ -31,12 +31,12 @@
             <TextView
                 android:id="@+id/Title1"
                 android:layout_width="201dp"
-                android:layout_height="60dp"
+                android:layout_height="82dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/blue"
                 android:gravity="right"
                 android:text="Morning"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
                 android:textColor="#090000"
                 android:textSize="45sp"
 
@@ -47,12 +47,12 @@
                 android:id="@+id/title2"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="60sp"
                 android:fontFamily="@font/blue"
                 android:gravity="center"
                 android:text="Coding"
                 android:textColor="#090000"
                 android:textSize="45sp"
-                android:layout_marginLeft="40sp"
                 tools:layout_editor_absoluteX="150dp"
                 tools:layout_editor_absoluteY="313dp" />
         </LinearLayout>
