@@ -49,7 +49,7 @@ public class Problems_c extends AppCompatActivity {
         TextView problem_solution = (TextView) findViewById(R.id.problem_solution);
 
         String s = readTxt();
-        String[] array = s.split("#"); // 문제 구분
+        String[] array = s.split("##"); // 문제 구분
         //System.out.println(array[0]);
 
 
@@ -103,23 +103,6 @@ public class Problems_c extends AppCompatActivity {
         }
 
         return readData;
-
-    }
-
-
-
-    int countClick_num = 0;
-
-    public void onClick(View view) {
-        ImageButton imageBtn = findViewById(R.id.star_on_btn);
-        countClick_num ++;
-        // 클릭 홀수면 별 없어진걸로!
-        if(countClick_num % 2 != 0){
-            imageBtn.setImageResource(R.drawable.star_off);
-            countClick_num = 1;
-        }else{
-            imageBtn.setImageResource(R.drawable.star_on);
-        }
 
     }
 

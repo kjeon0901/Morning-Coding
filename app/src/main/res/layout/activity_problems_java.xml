@@ -11,16 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/star_on_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="290dp"
-            android:layout_marginTop="30dp"
-            android:background="#ffffff"
-            android:onClick="onClick"
-            app:srcCompat="@drawable/star_on" />
-
         <TextView
             android:id="@+id/problem_name"
             android:fontFamily="@font/fontstyle_2"
@@ -87,8 +77,8 @@
 
             <FrameLayout
                 android:id="@+id/problem_frame"
-                android:layout_width="match_parent"
-                android:layout_height="372dp"
+                android:layout_width="332dp"
+                android:layout_height="265dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginRight="15dp"
@@ -96,41 +86,13 @@
 
                 <TextView
                     android:id="@+id/problem_text"
-                    android:fontFamily="@font/fontstyle_2"
-                    android:scrollbars="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:text="TextView"
-                    android:textSize="20dp" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_gravity="bottom"
                     android:fontFamily="@font/fontstyle_2"
-                    android:layout_height="wrap_content">
-
-                    <RadioButton
-                        android:id="@+id/button1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/button2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/button3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="RadioButton" />
-                </RadioGroup>
+                    android:scrollbars="vertical"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
 
             </FrameLayout>
 
@@ -160,6 +122,36 @@
                     android:text="TextView"
                     android:textSize="20dp" />
             </FrameLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="180dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="bottom"
+                android:fontFamily="@font/fontstyle_2">
+
+                <RadioButton
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RadioButton"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RadioButton"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RadioButton"
+                    android:textSize="15dp" />
+            </RadioGroup>
 
 
         </FrameLayout>
