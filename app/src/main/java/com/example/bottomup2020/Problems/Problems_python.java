@@ -53,14 +53,14 @@ public class Problems_python extends AppCompatActivity {
 
         int i = 0;
         while(i < array.length){
-            String name_compare = "JAVA  "+ button_number_python;
+            String name_compare = "PYTHON  "+ button_number_python;
             if(array[i].equals(name_compare)){
                 String[] str = array[i+1].split("\\|\\|");   // 선지 구분
                 problem_text.setText(str[0]);
                 button1.setText(str[1]);
                 button2.setText(str[2]);
                 button3.setText(str[3]);
-                problem_solution.setText("답 :" + str[4] + "번");
+                problem_solution.setText("답 : " + str[4]);
                 break;
             }
 

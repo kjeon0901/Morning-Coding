@@ -65,7 +65,7 @@ public class Problems_java extends AppCompatActivity {
                     button1.setText(str[1]);
                     button2.setText(str[2]);
                     button3.setText(str[3]);
-                    problem_solution.setText("답 :" + str[4] + "번");
+                    problem_solution.setText("답 : " + str[4]);
                     break;
                 }
 
