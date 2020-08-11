@@ -15,4 +15,8 @@
         <item name="android:background">#4D000000</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/fontstyle_3</item>
+    </style>
+
 </resources>

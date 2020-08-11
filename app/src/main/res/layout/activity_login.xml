@@ -10,7 +10,7 @@
 
     <FrameLayout
         android:layout_width="423dp"
-        android:layout_height="549dp"
+        android:layout_height="519dp"
         android:orientation="vertical">
 
 
@@ -22,7 +22,7 @@
 
         <LinearLayout
 
-            android:layout_width="230dp"
+            android:layout_width="309dp"
             android:layout_height="163dp"
             android:layout_gravity="center"
             android:orientation="vertical">
@@ -32,24 +32,27 @@
                 android:id="@+id/Title1"
                 android:layout_width="201dp"
                 android:layout_height="60dp"
-                android:fontFamily="@font/font"
+                android:fontFamily="@font/blue"
                 android:gravity="right"
                 android:text="Morning"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
                 android:textColor="#090000"
-                android:textSize="40sp"
+                android:textSize="45sp"
 
                 tools:layout_editor_absoluteX="131dp"
                 tools:layout_editor_absoluteY="246dp" />
 
             <TextView
                 android:id="@+id/title2"
-                android:layout_width="match_parent"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font"
+                android:fontFamily="@font/blue"
                 android:gravity="center"
                 android:text="Coding"
                 android:textColor="#090000"
-                android:textSize="40sp"
+                android:textSize="45sp"
+                android:layout_marginLeft="40sp"
                 tools:layout_editor_absoluteX="150dp"
                 tools:layout_editor_absoluteY="313dp" />
         </LinearLayout>
@@ -68,27 +71,27 @@
         android:gravity="center"
         android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
-    <ImageView
-        android:id="@+id/loginImage"
-        android:layout_width="40dp"
-        android:layout_height="34dp"
-        android:layout_margin="5sp"
-        app:srcCompat="@drawable/flowerhead" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_custom_login"
-        android:layout_width="179dp"
-        android:layout_height="31dp"
-        android:layout_gravity="center"
-        android:background="@drawable/buttonstyle"
+            <ImageView
+                android:id="@+id/loginImage"
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:layout_margin="5sp"
+                app:srcCompat="@drawable/flowerhead" />
 
-        android:text="카카오톡으로 간편 로그인"
-        android:textColor="#000000" />
-</LinearLayout>
+            <Button
+                android:id="@+id/btn_custom_login"
+                android:layout_width="179dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonstyle"
+
+                android:text="카카오톡으로 간편 로그인"
+                android:textColor="#000000" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="228dp"
