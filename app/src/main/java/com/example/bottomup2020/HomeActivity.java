@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     Cursor cursor;
     Bitmap bitmap;
     Button java_btn , python_btn, c_btn;
+    Switch lock;
     int solvedNum=0;
     int correctNum=0;
     boolean found=false;
@@ -58,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         solved=findViewById(R.id.solved);
         correct = findViewById(R.id.correct);
+        lock=findViewById(R.id.sb_use_listener);
         tViewLog = (TextView) findViewById(R.id.home_problem_text);
         tViewLog.setMovementMethod(new ScrollingMovementMethod());
         Intent intent = getIntent();
@@ -161,6 +164,16 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
         textSet(); // 랜덤 모닝코딩 출력
+
+        lock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    Intent intent = new Intent(getApplicationContext(), ScreenService.class);
+                    startService(intent);
+                }
+            }
+        });
     }
 
     private void textSet() { //txt 나누기
