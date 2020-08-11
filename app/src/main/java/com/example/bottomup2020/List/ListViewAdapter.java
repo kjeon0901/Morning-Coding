@@ -22,7 +22,7 @@ public class ListViewAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
-    //현재 listviewItemList가 해당 key갖고 있는지 반환
+    //현재 listviewItemList가 해당 item을 갖고 있는지 반환
     public boolean haveItem(ListViewItem item){
         if(listViewItemList.contains(item)){
             return true;

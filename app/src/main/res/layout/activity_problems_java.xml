@@ -132,7 +132,7 @@
                 android:fontFamily="@font/fontstyle_2">
 
                 <RadioButton
-                    android:id="@+id/button3"
+                    android:id="@+id/button1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="RadioButton"
@@ -146,7 +146,7 @@
                     android:textSize="15dp" />
 
                 <RadioButton
-                    android:id="@+id/button1"
+                    android:id="@+id/button3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="RadioButton"
