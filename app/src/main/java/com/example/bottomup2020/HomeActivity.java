@@ -174,7 +174,7 @@ public class HomeActivity extends AppCompatActivity {
         String[] array = txt.split("#"); // 문제 구분
         //System.out.println(array[0]);
 
-        if(checkDuplicate(array[0].charAt(0))){//C면 ##으로 구분
+        if(array[0].charAt(0)=='C'){//C면 ##으로 구분
             array=txt.split("##");
         }
 
