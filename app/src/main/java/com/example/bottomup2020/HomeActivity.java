@@ -164,56 +164,62 @@ public class HomeActivity extends AppCompatActivity {
         textset();
     }
 
-    private void textset() {
-        Intent intent = getIntent();
-
+    private void textset() { //txt 나누기
         TextView textView = (TextView) findViewById(R.id.home_problem_name);
-
-        String language_name_lock = intent.getExtras().getString("language_name_java");
-        String button_number_lock = intent.getExtras().getString("button_number_java");
-
-        textView.setText(language_name_lock + "  " + button_number_lock + "번");
-
-
         Button button1 = (Button) findViewById(R.id.home_radiobutton1);
         Button button2 = (Button) findViewById(R.id.home_radiobutton2);
         Button button3 = (Button) findViewById(R.id.home_radiobutton3);
         TextView problem_text = (TextView) findViewById(R.id.home_problem_text);
 
-        String s = readTxt();
-        String[] array = s.split("#"); // 문제 구분
-        // System.out.println(array[0]);
+        String txt = readRandomTxt();
+        String[] array = txt.split("#"); // 문제 구분
+        //System.out.println(array[0]);
 
-
-        int i = 0;
+        int i =(int)(Math.random()*3);//문제번호는 0~3
+        i=i*2;//문제번호는 0,2,4,6
         while (i < array.length) {
-            String name_compare = "JAVA  " + button_number_lock;
-            if (array[i].equals(name_compare)) {
+                textView.setText(array[i]);
                 String[] str = array[i + 1].split("\\|\\|");   // 선지 구분
                 problem_text.setText(str[0]);
                 button1.setText(str[1]);
                 button2.setText(str[2]);
                 button3.setText(str[3]);
                 break;
-            }
-
-            i += 2;
         }
         problem_text.setMovementMethod(new ScrollingMovementMethod());
     }
 
     // txt에서 String 추출
-    private String readTxt() {
+    private String readRandomTxt() {
         // getResources().openRawResource()로 raw 폴더의 원본 파일을 가져온다.
         // txt 파일을 InpuStream에 넣는다. (open 한다)
         String readData;
-
+        int num= (int) (Math.random()*2);  // 0~2 사이의 난수 발생
         try {
-            InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
-            byte[] data = new byte[fis.available()];
-            while (fis.read(data) != -1) { ;
+            if(num==0) { //num이 0이면 java txt 가져옴
+                InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
+                byte[] data = new byte[fis.available()];
+                while (fis.read(data) != -1) {
+                    ;
+                }
+                readData = new String(data);
             }
-            readData = new String(data);
+            else if(num==1){ //num이 1이면 python txt 가져옴
+                InputStream fis = getResources().openRawResource(R.raw.python_mcproblems);
+                byte[] data = new byte[fis.available()];
+                while (fis.read(data) != -1) {
+                    ;
+                }
+                readData = new String(data);
+            }
+            else{ //num이 2이면 c txt 가져옴
+                InputStream fis = getResources().openRawResource(R.raw.c_mcproblems);
+                byte[] data = new byte[fis.available()];
+                while (fis.read(data) != -1) {
+                    ;
+                }
+                readData = new String(data);
+            }
         } catch (IOException e) {
             readData = "failed read";
             e.printStackTrace();
