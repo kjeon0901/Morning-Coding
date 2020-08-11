@@ -81,8 +81,8 @@
 
     <Button
         android:id="@+id/btn_custom_login"
-        android:layout_width="187dp"
-        android:layout_height="41dp"
+        android:layout_width="179dp"
+        android:layout_height="31dp"
         android:layout_gravity="center"
         android:background="@drawable/buttonstyle"
 
@@ -90,7 +90,28 @@
         android:textColor="#000000" />
 </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="228dp"
+            android:layout_height="39dp">
+
+            <ImageView
+                android:id="@+id/loginImage2"
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:layout_margin="5sp"
+                app:srcCompat="@drawable/flowerhead" />
+
+            <Button
+                android:id="@+id/btn_custom_logout"
+                android:layout_width="114dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonstyle"
+
+                android:text="로그아웃"
+                android:textColor="#000000" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-
 
