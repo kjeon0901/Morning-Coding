@@ -30,11 +30,46 @@ public class FavouritesListActivity extends AppCompatActivity {
 
         // 리스트뷰 참조 및 Adapter 달기
         listview = (ListView) findViewById(R.id.listview);
+
         listview.setAdapter(adapter);
 
         adapter.addItem("JAVA", "01번");
         adapter.addItem("JAVA", "02번");
         adapter.addItem("JAVA", "03번");
+       adapter.addItem("JAVA", "04번");
+
+       adapter.addItem("C", "01번");
+       adapter.addItem("C", "02번");
+       adapter.addItem("C", "03번");
+       adapter.addItem("C", "04번");
+
+       adapter.addItem("PYTHON", "01번");
+       adapter.addItem("PYTHON", "02번");
+       adapter.addItem("PYTHON", "03번");
+       adapter.addItem("PYTHON", "04번");
+
+//
+//       Intent intent = getIntent();
+//        FavouritesActivity favourite = new FavouritesActivity();
+//        favourite.
+//       // 즐겨찾는 문제에서 별 없앤게 있을 때
+//       if(intent != null){
+//           // 준 정보중에서 원하는 key의 값을 찾음
+//           String Title_favouritesList = intent.getExtras().getString("Title_favouritesList");
+//           String Content_favouritesList = intent.getExtras().getString("Content_favouritesList");
+//
+//           ListViewItem item = null;
+//           item.setContent(Content_favouritesList);
+//           item.setTitle(Title_favouritesList);
+//
+//           for(int i = 0; i < adapter.getCount(); i++){
+//               if(adapter.haveItem((ListViewItem) adapter.getItem(i))==true){
+//                   adapter.removeItem(Title_favouritesList, Content_favouritesList);
+//                   adapter.notifyDataSetChanged();
+//                   break;
+//               }
+//           }
+//       }
 
         // 아이템 클릭시 작동
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

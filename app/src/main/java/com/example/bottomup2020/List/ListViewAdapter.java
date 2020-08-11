@@ -22,6 +22,15 @@ public class ListViewAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
+    //현재 listviewItemList가 해당 key갖고 있는지 반환
+    public boolean haveItem(ListViewItem item){
+        if(listViewItemList.contains(item)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     // ListViewAdapter의 생성자
     public ListViewAdapter() {
 
@@ -91,5 +100,13 @@ public class ListViewAdapter extends BaseAdapter {
         listViewItemList.add(item);
     }
 
+    public void removeItem(String title, String content){
+        ListViewItem item = new ListViewItem();
+
+        item.setTitle(title);
+        item.setContent(content);
+
+        listViewItemList.remove(item);
+    }
 
 }

@@ -50,7 +50,7 @@ public class Problems_c extends AppCompatActivity {
 
         String s = readTxt();
         String[] array = s.split("#"); // 문제 구분
-        System.out.println(array[0]);
+        //System.out.println(array[0]);
 
 
         int i = 0;
@@ -58,12 +58,11 @@ public class Problems_c extends AppCompatActivity {
             String name_compare = "C  "+ button_number_c;
             if(array[i].equals(name_compare)){
                 String[] str = array[i+1].split("\\|\\|");   // 선지 구분
-                System.out.println(str[0]);
                 problem_text.setText(str[0]);
                 button1.setText(str[1]);
                 button2.setText(str[2]);
                 button3.setText(str[3]);
-                problem_solution.setText("답 :" + str[4] + "번");
+                problem_solution.setText("답 : " + str[4]);
 
                 break;
             }
