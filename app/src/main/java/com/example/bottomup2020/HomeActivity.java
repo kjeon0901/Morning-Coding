@@ -77,10 +77,15 @@ public class HomeActivity extends AppCompatActivity {
         //db에 없으면 데이터 추가
         if (found == false) {
             cursor.moveToFirst();
+            favouriteProblem="#JAVA 01 ";
+            solvedProblem = "#JAVA 01 #JAVA 02 #JAVA 03";
+            language="JAVA PYTHON C";
             dbHelper().insertData(nickName, email, language, favouriteProblem,solvedProblem);
             cursor = dbHelper().getOneData(email);
         }
         //=============================
+        userName.setText(nickName);
+
         if(checkDuplicate('J')){
             java_btn.setBackgroundResource(R.drawable.btn_margin);
             btn_java=0;
@@ -103,11 +108,6 @@ public class HomeActivity extends AppCompatActivity {
                 CheckSwitchState();
             }
         });
-        //문제들은 #붙여서 변수에 저장해주기
-        favouriteProblem="#JAVA 01 ";
-        solvedProblem = "#JAVA 01 #JAVA 02 #JAVA 03";
-        language="JAVA PYTHON C";
-        userName.setText(nickName);
 
 
         if(language==null) {
@@ -141,11 +141,13 @@ public class HomeActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
         //#기준으로 푼 문제 문자열 잘라서 개수세기
-        String str =solvedProblem;
+        String str =cursor.getString(3);
         String[] txtArr= str.split("#");
         solvedNum=txtArr.length-1;
         solved.setText(String.valueOf(solvedNum));
+
         //문제를 맞혔을 경우
         //correctNum++;
         //correct.setText(correctNum);
@@ -207,27 +209,16 @@ public class HomeActivity extends AppCompatActivity {
         String readData;
 
         try {
-
             InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
-
             byte[] data = new byte[fis.available()];
-
-            while (fis.read(data) != -1) {
-                ;
+            while (fis.read(data) != -1) { ;
             }
-
             readData = new String(data);
-
         } catch (IOException e) {
-
             readData = "failed read";
-
             e.printStackTrace();
-
         }
-
         return readData;
-
     }
 
     private void CheckSwitchState() {
