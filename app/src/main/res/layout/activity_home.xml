@@ -136,17 +136,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="355dp">
 
-                <ImageButton
-                    android:id="@+id/home_star_off_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="295dp"
-                    android:background="#ffffff"
-                    app:srcCompat="@drawable/star_off"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"/>
-
                 <TextView
                     android:id="@+id/home_problem_name"
                     android:textSize="25dp"
@@ -214,35 +203,35 @@
                             android:id="@+id/home_problem_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:scrollbars="vertical" />
+                            android:scrollbars="vertical"
+                            android:text="TextView" />
 
                         <RadioGroup
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
-                            android:fontFamily="@font/fontstyle_2"
-                            android:layout_height="wrap_content">
+                            android:fontFamily="@font/fontstyle_2">
 
                             <RadioButton
                                 android:id="@+id/home_radiobutton1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp"
-                                android:text="RadioButton" />
+                                android:text="RadioButton"
+                                android:textSize="15dp" />
 
                             <RadioButton
                                 android:id="@+id/home_radiobutton2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp"
-                                android:text="RadioButton" />
+                                android:text="RadioButton"
+                                android:textSize="15dp" />
 
                             <RadioButton
                                 android:id="@+id/home_radiobutton3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp"
-                                android:text="RadioButton" />
+                                android:text="RadioButton"
+                                android:textSize="15dp" />
                         </RadioGroup>
                     </FrameLayout>
                 </FrameLayout>
