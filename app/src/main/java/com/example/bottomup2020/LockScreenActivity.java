@@ -1,9 +1,5 @@
 package com.example.bottomup2020;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActionBar;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +11,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,8 +58,8 @@ public class LockScreenActivity extends AppCompatActivity {
 
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         keyguardManager.requestDismissKeyguard(this, null);
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-        // | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+         | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
         textset();
 

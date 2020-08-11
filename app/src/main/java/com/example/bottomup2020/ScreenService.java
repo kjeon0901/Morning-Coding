@@ -1,7 +1,6 @@
 package com.example.bottomup2020;
 
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -47,10 +46,10 @@ public class ScreenService extends Service {
         registerReceiver(pReceiver, pFilter);
     }
 
-    //원래 @Override 하고 매개변수에 Context context는 없었는데, 아래 Builder(context)에서 오류나서 이렇게 해봄
-    public int onStartCommand(Intent intent, int flags, int startId, Context context){
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId){
         super.onStartCommand(intent, flags, startId);
-        Notification.Builder builder = new Notification.Builder(context)
+    /*    Notification.Builder builder = new Notification.Builder(context)
                 .setContentIntent(null)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("Screen Service")
@@ -58,7 +57,7 @@ public class ScreenService extends Service {
                 .setTicker("Service is running");
         Notification notification = builder.build();
         startForeground(1, notification);//TaskKiller에 거의 죽지 않고 계속 백그라운드에 살아 있음
-
+*/
         if(intent != null){
             if(intent.getAction()==null){
                 if(mReceiver==null){
