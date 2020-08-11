@@ -5,7 +5,8 @@ z=x+y ||int ||float ||complex ||2번#PYTHON  02#다음의 코드에 의하여 �
 total=0
 for i in range(1, 13):
 	if 12%i==0:
-		total+=i\nprint(total) ||12 ||14 ||28 ||3번#PYTHON  03#다음 빈칸에 알맞는 것을 고르시오.
+		total+=i
+		print(total) ||12 ||14 ||28 ||3번#PYTHON  03#다음 빈칸에 알맞는 것을 고르시오.
 a = [3,'hello','song','ganster','vegetable']
 a[1:3] = [_____] ||'hello','song','ganster' ||'hello','song' ||'3','hello','song' ||2번
 Slice는 item중 index의 구간을 정하여 동시에 불러오는 작업이다. 

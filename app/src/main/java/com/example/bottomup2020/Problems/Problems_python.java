@@ -103,21 +103,21 @@ public class Problems_python extends AppCompatActivity {
         return readData;
 
     }
-
-    int countClick_num = 0;
-
-    public void onClick(View view) {
-        ImageButton imageBtn = findViewById(R.id.star_on_btn);
-        countClick_num ++;
-        // 클릭 홀수면 별 없어진걸로!
-        if(countClick_num % 2 != 0){
-            imageBtn.setImageResource(R.drawable.star_off);
-            countClick_num = 1;
-        }else{
-            imageBtn.setImageResource(R.drawable.star_on);
-        }
-
-    }
+//
+//    int countClick_num = 0;
+//
+//    public void onClick(View view) {
+//        ImageButton imageBtn = findViewById(R.id.star_on_btn);
+//        countClick_num ++;
+//        // 클릭 홀수면 별 없어진걸로!
+//        if(countClick_num % 2 != 0){
+//            imageBtn.setImageResource(R.drawable.star_off);
+//            countClick_num = 1;
+//        }else{
+//            imageBtn.setImageResource(R.drawable.star_on);
+//        }
+//
+//    }
 
     @Override
     public void setContentView(int layoutResID){

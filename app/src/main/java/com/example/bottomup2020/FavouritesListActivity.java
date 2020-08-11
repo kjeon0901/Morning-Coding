@@ -13,14 +13,19 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.bottomup2020.FavouritesActivity;
 import com.example.bottomup2020.List.ListViewAdapter;
 import com.example.bottomup2020.List.ListViewItem;
+import com.example.bottomup2020.R;
+import com.example.bottomup2020.SolutionActivity_c;
+import com.example.bottomup2020.SolutionActivity_java;
+import com.example.bottomup2020.SolutionActivity_python;
 
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
     private ListViewAdapter adapter;
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
@@ -36,17 +41,17 @@ public class FavouritesListActivity extends AppCompatActivity {
         adapter.addItem("JAVA", "01번");
         adapter.addItem("JAVA", "02번");
         adapter.addItem("JAVA", "03번");
-       adapter.addItem("JAVA", "04번");
+        adapter.addItem("JAVA", "04번");
 
-       adapter.addItem("C", "01번");
-       adapter.addItem("C", "02번");
-       adapter.addItem("C", "03번");
-       adapter.addItem("C", "04번");
+        adapter.addItem("C", "01번");
+        adapter.addItem("C", "02번");
+        adapter.addItem("C", "03번");
+        adapter.addItem("C", "04번");
 
-       adapter.addItem("PYTHON", "01번");
-       adapter.addItem("PYTHON", "02번");
-       adapter.addItem("PYTHON", "03번");
-       adapter.addItem("PYTHON", "04번");
+        adapter.addItem("PYTHON", "01번");
+        adapter.addItem("PYTHON", "02번");
+        adapter.addItem("PYTHON", "03번");
+        adapter.addItem("PYTHON", "04번");
 
 //
 //       Intent intent = getIntent();
@@ -89,9 +94,9 @@ public class FavouritesListActivity extends AppCompatActivity {
             }
         });
 
-       adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
+        adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
     }
-  
+
     @Override
     public void setContentView(int layoutResID){
         LinearLayout fullView = (LinearLayout)getLayoutInflater().inflate(R.layout.activity_home_toolbar, null);

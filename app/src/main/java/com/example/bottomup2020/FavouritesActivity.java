@@ -15,6 +15,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.bottomup2020.R;
+import com.example.bottomup2020.SolutionActivity_c;
+import com.example.bottomup2020.SolutionActivity_java;
+import com.example.bottomup2020.SolutionActivity_python;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -105,32 +110,12 @@ public class FavouritesActivity extends AppCompatActivity {
     }
 
 
-
-    int countClick_num = 0;
-
     public void onClick(View view) {
-        Intent intent = getIntent();
-
-        // 준 정보중에서 원하는 key의 값을 찾음
-        String language_name_favourites = intent.getExtras().getString("language_name_favourites");
-        String button_number_favourites = intent.getExtras().getString("button_number_favourites");
-
-        ImageButton imageBtn = findViewById(R.id.star_on_btn);
-        countClick_num ++;
-        // 클릭 홀수면 별 없어진걸로!
-        if(countClick_num % 2 != 0){
-            imageBtn.setImageResource(R.drawable.star_off);
-            countClick_num = 1;
-            // 별 없어지면 리스트에서 그 문제가 빠져야함.
-            intent = new Intent(this, FavouritesListActivity.class);
-
-            intent.putExtra("Title_favouritesList",language_name_favourites);
-            intent.putExtra("content_favouritesList",button_number_favourites);
-
-
-        }else{
-            imageBtn.setImageResource(R.drawable.star_on);
-        }
+//        Intent intent = getIntent();
+//
+//        // 준 정보중에서 원하는 key의 값을 찾음
+//        String language_name_favourites = intent.getExtras().getString("language_name_favourites");
+//        String button_number_favourites = intent.getExtras().getString("button_number_favourites");
 
     }
 
@@ -189,7 +174,7 @@ public class FavouritesActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.FavoritesMenu:
-                intent = new Intent(this, FavouritesListActivity.class);
+                intent = new Intent(this, FavouritesActivity.class);
                 startActivity(intent);
                 break;
         }
