@@ -1,37 +1,26 @@
 package com.example.bottomup2020.List;
-import android.content.Intent;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.bottomup2020.R;
 
 import java.util.ArrayList;
 
 public class ListViewAdapter extends BaseAdapter {
 
-    private TextView titleTextView;
-    private TextView contentTextView;
+
+    TextView titleTextView;
+    TextView contentTextView;
 
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
+    private ArrayList<ListViewItem> listViewItemList =  new ArrayList<ListViewItem>();
 
-    //현재 listviewItemList가 해당 item을 갖고 있는지 반환
-    public boolean haveItem(ListViewItem item){
-        if(listViewItemList.contains(item)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    // ListViewAdapter의 생성자
+// ListViewAdapter의 생성자
     public ListViewAdapter() {
 
     }
@@ -44,43 +33,52 @@ public class ListViewAdapter extends BaseAdapter {
 
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final int pos = position;
         final Context context = parent.getContext();
 
         // "listview_item" Layout을 inflate하여 convertView 참조 획득.
         if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_item, parent, false);
+            LayoutInflater Inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = Inflater.inflate(R.layout.listview_item, parent, false);
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
         titleTextView = (TextView) convertView.findViewById(R.id.title);
         contentTextView = (TextView) convertView.findViewById(R.id.content);
+        final Button delbtn = (Button) convertView.findViewById(R.id.delete);
 
-        ListViewItem listViewItem = listViewItemList.get(position);
+        final ListViewItem listViewItem = listViewItemList.get(position);
 
         //아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());
         contentTextView.setText(listViewItem.getContent());
 
+        delbtn.setTag(position);
 
- //       LinearLayout cmdArea = (LinearLayout) convertView.findViewById(R.id.cmdArea);
-//        cmdArea.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v){
-//                // 해당 리스트 클릭시 이벤트
-//                  Toast.makeText(v.getContext(), listViewItemList.get(pos).getContent(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(this, FavouritesListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        delbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int pos = Integer.parseInt(v.getTag().toString());
+                Toast.makeText(context, listViewItemList.get(pos).getTitle() + " " + listViewItemList.get(pos).getContent() + "이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+                listViewItemList.remove(pos);
+
+                notifyDataSetChanged();
+
+
+            }
+        });
+
 
         return convertView;
     }
 
+
     // 지정한 위치에 있는 데이터 리턴
     @Override
-    public Object getItem(int position) {
+    public ListViewItem getItem(int position) {
         return listViewItemList.get(position);
     }
 
@@ -100,13 +98,25 @@ public class ListViewAdapter extends BaseAdapter {
         listViewItemList.add(item);
     }
 
-    public void removeItem(String title, String content){
+    public void remove(int pos) {
+        String t = listViewItemList.get(pos).getTitle();
+        String c = listViewItemList.get(pos).getContent();
+
         ListViewItem item = new ListViewItem();
+        item.setTitle("송이");
+        item.setContent("바보");
 
-        item.setTitle(title);
-        item.setContent(content);
+        listViewItemList.add(item);
 
-        listViewItemList.remove(item);
     }
+//
+//    public void removeItem(String title, String content){
+//        ListViewItem item = new ListViewItem(title, content);
+//
+//        item.setTitle(title);
+//        item.setContent(content);
+//
+//        listViewItemList.remove(item);
+//    }
 
 }
