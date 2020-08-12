@@ -2,6 +2,8 @@ package com.example.bottomup2020;
 
 import android.app.KeyguardManager;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -33,6 +35,10 @@ public class LockScreenActivity extends AppCompatActivity {
     String answer;
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     String time = sdf.format(new Date(System.currentTimeMillis()));
+    Cursor cursor;
+    private DBHelper dbHelper=new DBHelper(this);
+    DBHelper dbHelper(){ return this.dbHelper; }
+    String shared = "file";
     //sdf = new SimpleDateFormat("yyyy/MM/dd");
     //String date = sdf.format(new Date(System.currentTimeMillis()));
 
@@ -40,13 +46,15 @@ public class LockScreenActivity extends AppCompatActivity {
     //String timeGre = String.format("%d:%d", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
     String date = String.format("%d/%d/%d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
     TextView tViewLock;
+    public static int correctNum=0;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
-
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,0);
+        correctNum =sharedPreferences.getInt("solvedNum",0);
         textView = findViewById(R.id.lock_problem_name);
         one =  findViewById(R.id.one);
         two =  findViewById(R.id.two);
@@ -72,14 +80,39 @@ public class LockScreenActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
          | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
-        textSet(); //문제 띄우기
+        String email = HomeActivity.showEmail();
 
+        cursor=dbHelper().getAllData();
+        while (cursor.moveToNext()) {
+            if (email.equals(cursor.getString(2))) {
+                break;
+            }
+        }
+
+        textSet(); //문제 띄우기
         answer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String id = cursor.getString(0);
+                String nickName = cursor.getString(1);
+                String email= cursor.getString(2);
+                String language = cursor.getString(3);
+                String favouriteProblem=cursor.getString(4);
+                String solvedProblem;
+                if(cursor.getString(5)==null){
+                    solvedProblem = " #" +textView.getText().toString();
+                    dbHelper().updateSolved(email,solvedProblem);
+                }
+                else {
+                    solvedProblem = cursor.getString(5) + " #" + textView.getText().toString();
+                    dbHelper().updateSolved(email,solvedProblem);
+                }
+                System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                System.out.println(correctNum);
                 if(one.isChecked()){
                     if(answer.equals("1번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                        correctNum++;
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -88,6 +121,7 @@ public class LockScreenActivity extends AppCompatActivity {
                 else if(two.isChecked()){
                     if(answer.equals("2번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                        correctNum++;
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -96,6 +130,7 @@ public class LockScreenActivity extends AppCompatActivity {
                 else{
                     if(answer.equals("3번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                        correctNum++;
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -105,9 +140,9 @@ public class LockScreenActivity extends AppCompatActivity {
         });
 
     }
+    public static int getCorrectNum(){ return correctNum; }
 
     private void textSet() { //txt 나누기
-
 
         String txt = readRandomTxt();
         String[] array = txt.split("#"); // 문제 구분
@@ -171,10 +206,20 @@ public class LockScreenActivity extends AppCompatActivity {
     }
 
     private void timeset() {
-        Time = (TextView) findViewById(R.id.Time);
-        Date = (TextView) findViewById(R.id.Date);
+        Time = findViewById(R.id.Time);
+        Date = findViewById(R.id.Date);
 
         Time.setText(time);
         Date.setText(date);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences=getSharedPreferences(shared,0);
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //에디터 연결
+        int num=correctNum;
+        editor.putInt("solvedNum",num);
+        editor.commit();
     }
 }

@@ -1,4 +1,5 @@
 package com.example.bottomup2020;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,7 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
-    String nickName,email,language,favouriteProblem,imagePath,solvedProblem;
+    String name,language,favouriteProblem,imagePath,solvedProblem;
     ImageView imageView5;
     TextView userName, solved, correct;
     Cursor cursor;
@@ -41,9 +43,10 @@ public class HomeActivity extends AppCompatActivity {
     int solvedNum=0;
     int correctNum=0;
     boolean found=false;
+    public static String email;
     private DBHelper dbHelper=new DBHelper(this);
-    private DBHelper dbHelper(){ return dbHelper; }
-    Switch switchButton;
+    DBHelper dbHelper(){ return dbHelper; }
+
     String Shared= "file";
     int id;
     int btn_java = 1;
@@ -68,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         tViewLog.setMovementMethod(new ScrollingMovementMethod());
         Intent intent = getIntent();
         ArrayList<String> data = (ArrayList<String>) intent.getSerializableExtra("profile");
-        nickName = data.get(0);
+        name = data.get(0);
         email = data.get(1);
         imagePath=data.get(2);
         //===================DB=====================
@@ -83,14 +86,14 @@ public class HomeActivity extends AppCompatActivity {
         //db에 없으면 데이터 추가
         if (found == false) {
             cursor.moveToFirst();
-            favouriteProblem="#JAVA 01 ";
-            solvedProblem = "#JAVA 01 #JAVA 02 #JAVA 03";
+            favouriteProblem = null;
+            solvedProblem = null;
             language="JAVA PYTHON C";
-            dbHelper().insertData(nickName, email, language, favouriteProblem,solvedProblem);
+            dbHelper().insertData(name, email, language, favouriteProblem,solvedProblem);
             cursor = dbHelper().getOneData(email);
         }
         //==============================================
-        userName.setText(nickName);
+        userName.setText(name);
 
         if(checkDuplicate('J')){
             java_btn.setBackgroundResource(R.drawable.btn_margin);
@@ -105,10 +108,6 @@ public class HomeActivity extends AppCompatActivity {
             btn_c=0;
         }
 
-        if(language==null) {
-            language = "JAVA PYTHON C";
-            dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-        }
         //카카오톡 프로필 사진 설정하기
         if(imagePath!=null) {
             Thread mThread = new Thread() {
@@ -137,11 +136,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
-        //#기준으로 푼 문제 문자열 잘라서 개수세기
-        String str =cursor.getString(3);
-        String[] txtArr= str.split("#");
-        solvedNum=txtArr.length-1;
-        solved.setText(String.valueOf(solvedNum));
+        //맞은 문제 개수 표시
+        if(cursor.getString(5)==null){
+            solved.setText("0");
+            correct.setText("0");
+        }
+        else {
+            String str = cursor.getString(5);
+            String[] txtArr = str.split("#");
+            solvedNum = txtArr.length - 1;
+            solved.setText(String.valueOf(solvedNum));
+            correct.setText(String.valueOf(LockScreenActivity.getCorrectNum()));
+        }
 
         //문제를 맞혔을 경우
         //correctNum++;
@@ -149,11 +155,11 @@ public class HomeActivity extends AppCompatActivity {
         //즐겨찾기 버튼 누르면
         //id  name email 선택한 언어  즐겨찾기문제 푼 문제
         id = cursor.getInt(0);
-        String name = cursor.getString(1);
-        String email = cursor.getString(2);
-        String language = cursor.getString(3);
-        String favouriteProblem = cursor.getString(4);
-        String solvedProblem = cursor.getString(5);
+        name = cursor.getString(1);
+        email = cursor.getString(2);
+        language = cursor.getString(3);
+        favouriteProblem = cursor.getString(4);
+        solvedProblem = cursor.getString(5);
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
         textSet(); // 랜덤 오늘의 모닝코딩 출력
@@ -162,15 +168,19 @@ public class HomeActivity extends AppCompatActivity {
         startService(intentLock);
 
         //잠금화면 스위치
-       /* lock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       lock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(!isChecked){ //스위치 끔
                     Intent intent = new Intent(getApplicationContext(), ScreenService.class);
-                    startService(intent);
+                    stopService(intent);
                 }
             }
-        });*/
+        });
+    }
+
+    public static String showEmail(){
+        return email;
     }
 
     private void textSet() { //txt 나누기
@@ -309,6 +319,7 @@ public class HomeActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
     public void onClick(View view){
+
         // 버튼 id가져오기
         switch (view.getId())
         {
@@ -318,8 +329,8 @@ public class HomeActivity extends AppCompatActivity {
                     java_btn.setBackgroundResource(R.drawable.button_shape);
                     if(checkDuplicate('J')){
                         language= cursor.getString(3).replace("JAVA","");
-                        dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-                        System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                        dbHelper().updateLanguage(email, language);
+                        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
                     }
                 }
                 else if(btn_java==2){ //다시 클릭
@@ -327,8 +338,8 @@ public class HomeActivity extends AppCompatActivity {
                     java_btn.setBackgroundResource(R.drawable.btn_margin);
                     if(!checkDuplicate('J')) {
                         language = cursor.getString(3)+ " JAVA";
-                        dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-                        System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                        dbHelper().updateLanguage(email, language);
+                        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
                     }
                 }
                 break;
@@ -338,8 +349,8 @@ public class HomeActivity extends AppCompatActivity {
                     python_btn.setBackgroundResource(R.drawable.button_shape);
                     if(checkDuplicate('P')){
                         language= cursor.getString(3).replace("PYTHON","");
-                        dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-                        System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                        dbHelper().updateLanguage(email, language);
+                        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
                     }
                 }
                 else if(btn_python==2){ //다시 클릭
@@ -347,8 +358,8 @@ public class HomeActivity extends AppCompatActivity {
                     python_btn.setBackgroundResource(R.drawable.btn_margin);
                     if(!checkDuplicate('P')) {
                         language = cursor.getString(3)+" PYTHON";
-                        dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-                        System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                        dbHelper().updateLanguage(email, language);
+                        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
                     }
                 }
                 break;
@@ -358,8 +369,8 @@ public class HomeActivity extends AppCompatActivity {
                     c_btn.setBackgroundResource(R.drawable.button_shape);
                     if(checkDuplicate('C')){
                         language= cursor.getString(3).replace("C","");
-                        dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-                        System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                        dbHelper().updateLanguage(email, language);
+                        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
                     }
                 }
                 else if(btn_c==2){ //다시 클릭
@@ -367,8 +378,8 @@ public class HomeActivity extends AppCompatActivity {
                     c_btn.setBackgroundResource(R.drawable.btn_margin);
                     if(!checkDuplicate('C')) {
                         language = cursor.getString(3)+" C";
-                        dbHelper().updateData(email, language, favouriteProblem, solvedProblem);
-                        System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                        dbHelper().updateLanguage(email, language);
+                        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
                     }
                 }
                 break;

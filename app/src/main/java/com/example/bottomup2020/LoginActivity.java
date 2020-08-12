@@ -32,15 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     private String nickname,email,image;
     Session session;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
 
-        btn_custom_login = (Button) findViewById(R.id.btn_custom_login);
-        btn_custom_logout = (Button) findViewById(R.id.btn_custom_logout);
+        btn_custom_login =  findViewById(R.id.btn_custom_login);
+        btn_custom_logout =  findViewById(R.id.btn_custom_logout);
 
         //로그인 버튼
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
@@ -168,10 +167,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-
     protected void redirectSignupActivity() {       //세션 연결 성공 시 profileActivity로 넘김
-
         ArrayList<String> profile=new ArrayList<>();
         profile.add(nickname);
         profile.add(email);
