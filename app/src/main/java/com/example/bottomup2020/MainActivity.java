@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +35,9 @@ class DBHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "favouriteProblem";
     public static final String COL_6 = "solvedProblem";
 
+
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 2);
-
     }
 
     //실행할 때 테이블 최초 생성
@@ -86,14 +87,18 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     //데이터 수정
-    public void updateData(String email, String language, String favouriteProblem, String solvedProblem) {
+    public void updateLanguage(String email, String language) {
         ContentValues contentValues = new ContentValues();
         SQLiteDatabase db = this.getWritableDatabase();
         contentValues.put("language",language);
-        contentValues.put("favouriteProblem",favouriteProblem);
-        contentValues.put("solvedProblem",solvedProblem);
         db.update("userData",contentValues,"email=?",new String[] {email});
 
+    }
+    public void updateSolved(String email,String solvedProblem){
+        ContentValues contentValues = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+        contentValues.put("solvedProblem",solvedProblem);
+        db.update("userData",contentValues,"email=?",new String[] {email});
     }
 
     //테이블 전체 데이터 삭제
