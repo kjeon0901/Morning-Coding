@@ -25,6 +25,8 @@ public class LockScreenActivity extends AppCompatActivity {
 
     TextView Time;
     TextView Date;
+    TextView textView,problem_text;
+    Button button1,button2,button3;
 
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     String time = sdf.format(new Date(System.currentTimeMillis()));
@@ -41,6 +43,12 @@ public class LockScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
+
+        textView = (TextView) findViewById(R.id.lock_problem_name);
+        button1 = (Button) findViewById(R.id.lock_radiobutton1);
+        button2 = (Button) findViewById(R.id.lock_radiobutton2);
+        button3 = (Button) findViewById(R.id.lock_radiobutton3);
+        problem_text = (TextView) findViewById(R.id.lock_problem_text);
 
         timeset();
         tViewLock = (TextView) findViewById(R.id.lock_problem_text);
@@ -65,11 +73,7 @@ public class LockScreenActivity extends AppCompatActivity {
     }
 
     private void textSet() { //txt 나누기
-        TextView textView = (TextView) findViewById(R.id.home_problem_name);
-        Button button1 = (Button) findViewById(R.id.home_radiobutton1);
-        Button button2 = (Button) findViewById(R.id.home_radiobutton2);
-        Button button3 = (Button) findViewById(R.id.home_radiobutton3);
-        TextView problem_text = (TextView) findViewById(R.id.home_problem_text);
+
 
         String txt = readRandomTxt();
         String[] array = txt.split("#"); // 문제 구분
