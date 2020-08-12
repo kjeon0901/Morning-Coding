@@ -49,13 +49,18 @@ public class FavouritesActivity extends AppCompatActivity {
         TextView problem_solution = (TextView) findViewById(R.id.problem_solution);
 
         String s = readTxt(language_name_favourites);
-        String[] array = s.split("#"); // 문제 구분
-        // System.out.println(array[0]);
+        String[] array;
+        if(language_name_favourites.equals("C")){
+            array = s.split("##"); // 문제 구분
+        }else{
+            array = s.split("#"); // 문제 구분
+        }
+
 
         //언어+문제 번호, 문제, 선지 구분하는 코드
         int i = 0;
         while(i < array.length){
-            String name_compare = "JAVA  "+ button_number_favourites;
+            String name_compare = language_name_favourites+ "  " +  button_number_favourites;
             if(array[i].equals(name_compare)){
                 String[] str = array[i+1].split("\\|\\|");   // 선지 구분
                 problem_text.setText(str[0]);

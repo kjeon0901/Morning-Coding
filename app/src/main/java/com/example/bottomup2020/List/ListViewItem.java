@@ -1,9 +1,17 @@
 package com.example.bottomup2020.List;
 
+import android.widget.Button;
+
 public class ListViewItem {
 
     private String contentStr;
     private String titleStr;
+
+//    public ListViewItem() {
+//        this.contentStr = contentStr;
+//        this.titleStr = titleStr;
+//    }
+
 
     public void setTitle(String title){
         titleStr = title;

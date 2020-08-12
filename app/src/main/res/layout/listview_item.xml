@@ -35,18 +35,33 @@
 
             <LinearLayout
                 android:id="@+id/cmdArea"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/corner_shape">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/fontstyle_2"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
                     android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:gravity="center"
                     android:text="테스트입니다." />
+                <Button
+                    android:id="@+id/delete"
+                    android:fontFamily="@font/fontstyle_2"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:layout_width="49dp"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190dp"
+                    android:text="삭제"
+                    android:textSize="10dp" />
+
+
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

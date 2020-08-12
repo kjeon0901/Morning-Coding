@@ -1,43 +1,55 @@
 package com.example.bottomup2020;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.bottomup2020.FavouritesActivity;
+
 import com.example.bottomup2020.List.ListViewAdapter;
 import com.example.bottomup2020.List.ListViewItem;
-import com.example.bottomup2020.R;
-import com.example.bottomup2020.SolutionActivity_c;
-import com.example.bottomup2020.SolutionActivity_java;
-import com.example.bottomup2020.SolutionActivity_python;
+
+
+import java.util.ArrayList;
+
+import static android.R.layout.simple_list_item_single_choice;
 
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
-    private ListViewAdapter adapter;
+    ArrayList<ListViewItem> list = new ArrayList<ListViewItem>();
+    ListViewAdapter adapter;
+    Button delBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
+        ListViewItem item = new ListViewItem();
 
-        // Adapter 생성
-        adapter = new ListViewAdapter();
 
-        // 리스트뷰 참조 및 Adapter 달기
         listview = (ListView) findViewById(R.id.listview);
+        delBtn = (Button) findViewById(R.id.delete);
 
-        listview.setAdapter(adapter);
-
+         adapter = new ListViewAdapter();
+//        listview.setAdapter(adapter);
+//
+//        item.setTitle("JAVA");
+//        item.setContent("01번");
+//
+//        list.add(item);
         adapter.addItem("JAVA", "01번");
         adapter.addItem("JAVA", "02번");
         adapter.addItem("JAVA", "03번");
@@ -53,28 +65,8 @@ public class FavouritesListActivity extends AppCompatActivity {
         adapter.addItem("PYTHON", "03번");
         adapter.addItem("PYTHON", "04번");
 
-//
-//       Intent intent = getIntent();
-//        FavouritesActivity favourite = new FavouritesActivity();
-//        favourite.
-//       // 즐겨찾는 문제에서 별 없앤게 있을 때
-//       if(intent != null){
-//           // 준 정보중에서 원하는 key의 값을 찾음
-//           String Title_favouritesList = intent.getExtras().getString("Title_favouritesList");
-//           String Content_favouritesList = intent.getExtras().getString("Content_favouritesList");
-//
-//           ListViewItem item = null;
-//           item.setContent(Content_favouritesList);
-//           item.setTitle(Title_favouritesList);
-//
-//           for(int i = 0; i < adapter.getCount(); i++){
-//               if(adapter.haveItem((ListViewItem) adapter.getItem(i))==true){
-//                   adapter.removeItem(Title_favouritesList, Content_favouritesList);
-//                   adapter.notifyDataSetChanged();
-//                   break;
-//               }
-//           }
-//       }
+
+        listview.setAdapter(adapter);
 
         // 아이템 클릭시 작동
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,7 +87,40 @@ public class FavouritesListActivity extends AppCompatActivity {
         });
 
         adapter.notifyDataSetChanged(); // 어댑터의 변경을 알림.
-    }
+//
+//        delBtn = (Button) findViewById(R.id.delete);
+//        delBtn.setOnClickListener(new Button.OnClickListener() {
+//            public void onClick(View v) {
+//                int pos = Integer.parseInt(v.getTag().toString());
+//                Context context = getParent();
+//                Toast.makeText(context, "Item in position " + pos + " clicked", Toast.LENGTH_LONG).show();
+////                final ListViewItem remove = listViewItemList.remove(pos);
+////                listViewItemList.set(pos,remove);
+//                // listViewItemList.get(0);
+//                adapter.remove(pos);
+                //ListViewAdapter adapter = new ListViewAdapter();
+                // adapter.notifyDataSetChanged();
+//                int count, checked ;
+//                count = adapter.getCount() ;
+//
+//                if (count > 0) {
+//                    // 현재 선택된 아이템의 position 획득.
+//                    checked = listview.getCheckedItemPosition();
+//
+//                    if (checked > -1 && checked < count) {
+//                        // 아이템 삭제
+//                        list.remove(checked) ;
+//
+//                        // listview 선택 초기화.
+//                        listview.clearChoices();
+//
+//                        // listview 갱신.
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                }
+           }
+//       }) ;
+//    }
 
     @Override
     public void setContentView(int layoutResID){
@@ -161,6 +186,7 @@ public class FavouritesListActivity extends AppCompatActivity {
         //menu.getItem(2).setEnabled(false);
         return super.onPrepareOptionsMenu(menu);
     }
+
 
 
 
