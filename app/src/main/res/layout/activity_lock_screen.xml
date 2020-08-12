@@ -9,22 +9,29 @@
     style="@style/LockTheme">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/Time"
-        android:textSize="50dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_width="148dp"
+        android:layout_height="77dp"
+        android:textColor="#000000"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40sp"
+        android:textSize="55dp" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:id="@+id/Date"
-        android:textSize="20dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_width="129dp"
+        android:layout_height="39dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        >
 
         <ImageButton
             android:id="@+id/lock_star_off_btn"
@@ -42,14 +49,15 @@
             android:textSize="25dp"
             android:layout_marginTop="35dp"
             android:layout_marginLeft="55dp"
+            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Java 01번" />
 
         <FrameLayout
             android:id="@+id/lock_whole_frame"
-            android:layout_width="359dp"
-            android:layout_height="500dp"
+            android:layout_width="343dp"
+            android:layout_height="473dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp">
 
@@ -77,8 +85,8 @@
 
             <View
                 android:id="@+id/lock_vertical2"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
+                android:layout_width="3dp"
+                android:layout_height="494dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="right"
                 android:background="#000000" />
@@ -89,7 +97,7 @@
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:background="#000000" />
 
             <View
@@ -102,50 +110,65 @@
 
             <FrameLayout
                 android:id="@+id/lock_problem_frame"
-                android:layout_width="match_parent"
-                android:layout_height="407dp"
-                android:layout_marginLeft="15dp"
+                android:layout_width="343dp"
+                android:layout_height="385dp"
                 android:layout_marginTop="65dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp">
 
                 <TextView
                     android:id="@+id/lock_problem_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:scrollbars="vertical"/>
+                    android:layout_margin="10dp"
+                    android:textColor="#000000"
+                    android:scrollbars="vertical"
+                    android:text="TextView" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:fontFamily="@font/fontstyle_2"
-                    android:layout_height="wrap_content">
+                    android:fontFamily="@font/fontstyle_2">
 
                     <RadioButton
-                        android:id="@+id/lock_radiobutton1"
+                        android:id="@+id/one"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="RadioButton" />
+                        android:text="RadioButton"
+                        android:textSize="15dp" />
 
                     <RadioButton
-                        android:id="@+id/lock_radiobutton2"
+                        android:id="@+id/two"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="RadioButton" />
+                        android:text="RadioButton"
+                        android:textSize="15dp" />
 
                     <RadioButton
-                        android:id="@+id/lock_radiobutton3"
+                        android:id="@+id/three"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="RadioButton" />
+                        android:text="RadioButton"
+                        android:textSize="15dp" />
                 </RadioGroup>
 
             </FrameLayout>
         </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="510dp">
+
+            <Button
+                android:id="@+id/answer"
+                android:layout_width="96dp"
+                android:layout_height="38dp"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/buttonstyle"
+                android:text="정답확인" />
+        </FrameLayout>
+
     </FrameLayout>
 
 </LinearLayout>

@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +28,9 @@ public class LockScreenActivity extends AppCompatActivity {
     TextView Time;
     TextView Date;
     TextView textView,problem_text;
-    Button button1,button2,button3;
-
+    RadioButton one,two,three;
+    Button answer_btn;
+    String answer;
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     String time = sdf.format(new Date(System.currentTimeMillis()));
     //sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -44,14 +47,15 @@ public class LockScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
 
-        textView = (TextView) findViewById(R.id.lock_problem_name);
-        button1 = (Button) findViewById(R.id.lock_radiobutton1);
-        button2 = (Button) findViewById(R.id.lock_radiobutton2);
-        button3 = (Button) findViewById(R.id.lock_radiobutton3);
-        problem_text = (TextView) findViewById(R.id.lock_problem_text);
+        textView = findViewById(R.id.lock_problem_name);
+        one =  findViewById(R.id.one);
+        two =  findViewById(R.id.two);
+        three =  findViewById(R.id.three);
+        problem_text =  findViewById(R.id.lock_problem_text);
+        answer_btn=findViewById(R.id.answer);
 
         timeset();
-        tViewLock = (TextView) findViewById(R.id.lock_problem_text);
+        tViewLock =  findViewById(R.id.lock_problem_text);
         tViewLock.setMovementMethod(new ScrollingMovementMethod());
 
         final ImageButton imageBtn = findViewById(R.id.lock_star_off_btn);
@@ -68,7 +72,37 @@ public class LockScreenActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
          | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
-        textSet();
+        textSet(); //문제 띄우기
+
+        answer_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(one.isChecked()){
+                    if(answer.equals("1번")){
+                        Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
+                    }
+                }
+                else if(two.isChecked()){
+                    if(answer.equals("2번")){
+                        Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    if(answer.equals("3번")){
+                        Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
 
     }
 
@@ -89,9 +123,10 @@ public class LockScreenActivity extends AppCompatActivity {
             textView.setText(array[i]);
             String[] str = array[i + 1].split("\\|\\|");   // 선지 구분
             problem_text.setText(str[0]);
-            button1.setText(str[1]);
-            button2.setText(str[2]);
-            button3.setText(str[3]);
+            one.setText(str[1]);
+            two.setText(str[2]);
+            three.setText(str[3]);
+            answer=str[4];
             break;
         }
         problem_text.setMovementMethod(new ScrollingMovementMethod());

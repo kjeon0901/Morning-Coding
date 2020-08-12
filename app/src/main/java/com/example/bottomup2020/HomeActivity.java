@@ -1,6 +1,7 @@
 package com.example.bottomup2020;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,17 +11,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -68,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         nickName = data.get(0);
         email = data.get(1);
         imagePath=data.get(2);
-        //=============DB=============
+        //===================DB=====================
         // db에 데이터 있는지 검사
         cursor=dbHelper().getAllData();
         while (cursor.moveToNext()) {
@@ -86,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
             dbHelper().insertData(nickName, email, language, favouriteProblem,solvedProblem);
             cursor = dbHelper().getOneData(email);
         }
-        //=============================
+        //==============================================
         userName.setText(nickName);
 
         if(checkDuplicate('J')){
@@ -101,16 +104,6 @@ public class HomeActivity extends AppCompatActivity {
             c_btn.setBackgroundResource(R.drawable.btn_margin);
             btn_c=0;
         }
-        //스위치 버튼
-        switchButton = (Switch) findViewById(R.id.sb_use_listener);
-        //switchButton.setChecked(true);
-        CheckSwitchState();
-        switchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckSwitchState();
-            }
-        });
 
         if(language==null) {
             language = "JAVA PYTHON C";
@@ -163,25 +156,29 @@ public class HomeActivity extends AppCompatActivity {
         String solvedProblem = cursor.getString(5);
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
 
-        textSet(); // 랜덤 모닝코딩 출력
+        textSet(); // 랜덤 오늘의 모닝코딩 출력
+        lock.setChecked(true); //잠금화면은 항상 ON 으로
+        Intent intentLock = new Intent(getApplicationContext(), ScreenService.class);
+        startService(intentLock);
 
-        lock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        //잠금화면 스위치
+       /* lock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
+                if(!isChecked){ //스위치 끔
                     Intent intent = new Intent(getApplicationContext(), ScreenService.class);
                     startService(intent);
                 }
             }
-        });
+        });*/
     }
 
     private void textSet() { //txt 나누기
-        TextView textView = (TextView) findViewById(R.id.home_problem_name);
-        Button button1 = (Button) findViewById(R.id.home_radiobutton1);
-        Button button2 = (Button) findViewById(R.id.home_radiobutton2);
-        Button button3 = (Button) findViewById(R.id.home_radiobutton3);
-        TextView problem_text = (TextView) findViewById(R.id.home_problem_text);
+        TextView textView =  findViewById(R.id.home_problem_name);
+        Button button1 = findViewById(R.id.home_radiobutton1);
+        Button button2 = findViewById(R.id.home_radiobutton2);
+        Button button3 =  findViewById(R.id.home_radiobutton3);
+        TextView problem_text = findViewById(R.id.home_problem_text);
 
         String txt = readRandomTxt();
         String[] array = txt.split("#"); // 문제 구분
@@ -243,17 +240,6 @@ public class HomeActivity extends AppCompatActivity {
         return readData;
     }
 
-    private void CheckSwitchState() {
-        //스위치버튼이 체크되었는지 검사하여 각 경우에 맞게..
-        if(switchButton.isChecked()){
-            Intent intent = new Intent(getApplicationContext(), ScreenService.class);
-            startService(intent);
-        }else{
-            Intent intent = new Intent(getApplicationContext(), ScreenService.class);
-            stopService(intent);
-        }
-        hContext=this;
-    }
     @Override
     public void setContentView(int layoutResID){
         LinearLayout fullView = (LinearLayout)getLayoutInflater().inflate(R.layout.activity_home_toolbar, null);
@@ -391,6 +377,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        //스위치 저장
+        SharedPreferences sharedPreferences = getSharedPreferences(Shared,0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("checked",true);
+        editor.commit();
     }
     protected boolean checkDuplicate(char s){
         boolean check = false;
