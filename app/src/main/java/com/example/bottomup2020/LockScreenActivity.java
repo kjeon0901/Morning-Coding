@@ -3,6 +3,7 @@ package com.example.bottomup2020;
 
 import android.app.KeyguardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +28,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class LockScreenActivity extends AppCompatActivity {
+
+public class LockScreenActivity extends AppCompatActivity  {
 
     TextView Time;
     TextView Date;
@@ -109,6 +112,7 @@ public class LockScreenActivity extends AppCompatActivity {
                 if(one.isChecked()){
                     if(answer.equals("1번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                        answer_btn.setEnabled(false);
                         if(cursor.getString(6)==null){
                             correctProblem = " #" +textView.getText().toString();
                             dbHelper().updateCorrect(email,correctProblem);
@@ -120,11 +124,13 @@ public class LockScreenActivity extends AppCompatActivity {
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
+                        answer_btn.setEnabled(false);
                     }
                 }
                 else if(two.isChecked()){
                     if(answer.equals("2번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                        answer_btn.setEnabled(false);
                         if(cursor.getString(6)==null){
                             correctProblem = " #" +textView.getText().toString();
                             dbHelper().updateCorrect(email,correctProblem);
@@ -136,11 +142,13 @@ public class LockScreenActivity extends AppCompatActivity {
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
+                        answer_btn.setEnabled(false);
                     }
                 }
                 else{
                     if(answer.equals("3번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
+                        answer_btn.setEnabled(false);
                         if(cursor.getString(6)==null){
                             correctProblem = " #" +textView.getText().toString();
                             dbHelper().updateCorrect(email,correctProblem);
@@ -152,6 +160,7 @@ public class LockScreenActivity extends AppCompatActivity {
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
+                        answer_btn.setEnabled(false);
                     }
                 }
             }
@@ -167,6 +176,20 @@ public class LockScreenActivity extends AppCompatActivity {
                     String favouriteProblem = cursor.getString(4) + "#" + textView.getText().toString() + " ";
                     dbHelper().updateFavourite(email, favouriteProblem);
                 }
+            }
+        });
+
+        // 밀어서 잠금해제!!
+        LinearLayout view = (LinearLayout) findViewById(R.id.swipe_layout);
+        view.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            @Override
+            public void onSwipeLeft() {
+                // Whatever
+//                Intent mainActivity = new Intent(Intent.ACTION_MAIN);
+//                mainActivity.addCategory(Intent.CATEGORY_HOME);
+//                mainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(mainActivity);
+                finish();
             }
         });
     }
@@ -298,5 +321,7 @@ public class LockScreenActivity extends AppCompatActivity {
         editor.putInt("solvedNum",num);
         editor.commit();
     }
+
+
 
 }
