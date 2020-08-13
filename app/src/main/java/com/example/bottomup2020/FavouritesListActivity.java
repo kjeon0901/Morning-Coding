@@ -15,8 +15,10 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 import com.example.bottomup2020.ListView.ListViewAdapter;
 import com.example.bottomup2020.ListView.ListViewItem;
+
 
 import java.util.ArrayList;
 
@@ -28,7 +30,6 @@ public class FavouritesListActivity extends AppCompatActivity {
 
     DBHelper dbHelper = new DBHelper(this);
     public DBHelper dbHelper(){return this.dbHelper;}
-    String favouriteProblem;
     String email = HomeActivity.showEmail();
     Cursor cursor;
     @Override
@@ -56,6 +57,8 @@ public class FavouritesListActivity extends AppCompatActivity {
                 adapter.addItem(number[0], number[1] + "번");
             }
         }
+
+
 //        listview.setAdapter(adapter);
 //
 //        item.setTitle("JAVA");
@@ -77,7 +80,6 @@ public class FavouritesListActivity extends AppCompatActivity {
         adapter.addItem("PYTHON", "03번");
         adapter.addItem("PYTHON", "04번");
 */
-
         listview.setAdapter(adapter);
 
         // 아이템 클릭시 작동

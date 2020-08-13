@@ -74,6 +74,7 @@
         <activity android:name=".FavouritesListActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".ListViewAdapter" />
     </application>
 
 </manifest>
