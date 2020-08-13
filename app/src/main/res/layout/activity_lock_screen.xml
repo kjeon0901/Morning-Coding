@@ -2,20 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_layout"
+    style="@style/LockTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LockScreenActivity"
-    style="@style/LockTheme">
+    tools:context=".LockScreenActivity">
 
     <TextView
         android:id="@+id/Time"
         android:layout_width="148dp"
         android:layout_height="77dp"
-        android:textColor="#000000"
-        android:layout_marginLeft="5dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="40sp"
+        android:textColor="#000000"
         android:textSize="55dp" />
 
     <TextView
@@ -29,8 +30,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <ImageButton
             android:id="@+id/lock_star_off_btn"
@@ -170,8 +170,8 @@
                 android:layout_width="92dp"
                 android:layout_height="38dp"
                 android:layout_marginLeft="150dp"
-                android:fontFamily="@font/fontstyle_2"
                 android:background="@drawable/buttonstyle"
+                android:fontFamily="@font/fontstyle_2"
                 android:text="정답확인" />
         </FrameLayout>
 
@@ -184,10 +184,10 @@
                 android:id="@+id/unlocking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fontstyle_2"
                 android:layout_marginLeft="110dp"
-                android:textSize="20dp"
-                android:text="\u003C\u003C 밀어서 잠금해제" />
+                android:fontFamily="@font/fontstyle_2"
+                android:text="\u003C\u003C 밀어서 잠금해제"
+                android:textSize="20dp" />
         </FrameLayout>
 
     </FrameLayout>
