@@ -25,5 +25,5 @@ class Problem {
 			System.out.print("x");
 			break;
 	}
-} ||일 ||일이 ||일이x ||2번
+} ||일 ||일이 ||일이x ||2번||
 a에 1을 대입했기 때문에 '일'이 출력되고, case 1에 break문이 없기 때문에 '이'도 출력된다.
