@@ -32,13 +32,14 @@ public class LockScreenActivity extends AppCompatActivity {
     TextView textView,problem_text;
     RadioButton one,two,three;
     Button answer_btn;
-    String answer;
+    String answer,email;
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     String time = sdf.format(new Date(System.currentTimeMillis()));
     Cursor cursor;
     private DBHelper dbHelper=new DBHelper(this);
     DBHelper dbHelper(){ return this.dbHelper; }
     String shared = "file";
+    boolean javaState,pythonState,cState;
     //sdf = new SimpleDateFormat("yyyy/MM/dd");
     //String date = sdf.format(new Date(System.currentTimeMillis()));
 
@@ -66,28 +67,22 @@ public class LockScreenActivity extends AppCompatActivity {
         tViewLock =  findViewById(R.id.lock_problem_text);
         tViewLock.setMovementMethod(new ScrollingMovementMethod());
 
-        final ImageButton imageBtn = findViewById(R.id.lock_star_off_btn);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            // 즐겨찾기 별 누르고 이벤트
-            @Override
-            public void onClick(View v) {
-                imageBtn.setImageResource(R.drawable.star_on);
-            }
-        });
-
-        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-        keyguardManager.requestDismissKeyguard(this, null);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-         | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-
-        String email = HomeActivity.showEmail();
-
+       email = HomeActivity.showEmail();
         cursor=dbHelper().getAllData();
         while (cursor.moveToNext()) {
             if (email.equals(cursor.getString(2))) {
                 break;
             }
         }
+
+        final ImageButton imageBtn = findViewById(R.id.lock_star_off_btn);
+
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+        keyguardManager.requestDismissKeyguard(this, null);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+         | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
+        showSelectLanguage();
 
         textSet(); //문제 띄우기
         answer_btn.setOnClickListener(new View.OnClickListener() {
@@ -161,10 +156,41 @@ public class LockScreenActivity extends AppCompatActivity {
                 }
             }
         });
-
+        imageBtn.setOnClickListener(new View.OnClickListener() {
+            // 즐겨찾기 별 누르고 이벤트
+            @Override
+            public void onClick(View v) {
+                imageBtn.setImageResource(R.drawable.star_on);
+                if(cursor.getString(4)==null){
+                    dbHelper().updateFavourite(email, "#"+textView.getText().toString()+" ");
+                }else {
+                    String favouriteProblem = cursor.getString(4) + "#" + textView.getText().toString() + " ";
+                    dbHelper().updateFavourite(email, favouriteProblem);
+                }
+            }
+        });
     }
-    public static int getCorrectNum(){ return correctNum; }
 
+    private void showSelectLanguage(){
+        if(checkDuplicate('J')){
+            javaState=true;
+        }
+        else{
+            javaState=false;
+        }
+        if(checkDuplicate('C')){
+            pythonState=true;
+        }
+        else{
+            pythonState=false;
+        }
+        if(checkDuplicate('P')){
+            cState=true;
+        }
+        else{
+            cState=false;
+        }
+    }
     private void textSet() { //txt 나누기
 
         String txt = readRandomTxt();
@@ -236,6 +262,19 @@ public class LockScreenActivity extends AppCompatActivity {
         Date.setText(date);
     }
 
+    protected boolean checkDuplicate(char s){
+        boolean check = false;
+        int languageLength;
+        languageLength = cursor.getString(3).length(); // language 문자열 처음부터 끝까지 확인
+        for(int i=0; i<languageLength; i++){
+            if(cursor.getString(3).charAt(i)==s){
+                check=true;
+                return check;
+            }
+        }
+        return check;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -245,4 +284,5 @@ public class LockScreenActivity extends AppCompatActivity {
         editor.putInt("solvedNum",num);
         editor.commit();
     }
+
 }

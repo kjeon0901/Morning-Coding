@@ -93,6 +93,12 @@ class DBHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
     }
+    public void updateFavourite(String email,String favouriteProblem){
+        ContentValues contentValues = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+        contentValues.put("favouriteProblem",favouriteProblem);
+        db.update("userData",contentValues,"email=?",new String[] {email});
+    }
 
     //데이터 수정
     public void updateLanguage(String email, String language) {
