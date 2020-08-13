@@ -34,7 +34,7 @@ class DBHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "language";
     public static final String COL_5 = "favouriteProblem";
     public static final String COL_6 = "solvedProblem";
-
+    public static final String COL_7 = "correct";
 
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 2);
@@ -43,7 +43,7 @@ class DBHelper extends SQLiteOpenHelper {
     //실행할 때 테이블 최초 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, favouriteProblem TEXT, solvedProblem TEXT)");
+        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, favouriteProblem TEXT, solvedProblem TEXT, correct TEXT)");
     }
 
     //버전 업그레이드
@@ -53,8 +53,10 @@ class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+
     //테이블에 정보 넣기
-    public boolean insertData(String name, String email, String language, String favouriteProblem, String solvedProblem) {
+    public boolean insertData(String name, String email, String language, String favouriteProblem, String solvedProblem, String correctProblem) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, name);
@@ -62,7 +64,7 @@ class DBHelper extends SQLiteOpenHelper {
         contentValues.put(COL_4, language);
         contentValues.put(COL_5, favouriteProblem);
         contentValues.put(COL_6, solvedProblem);
-
+        contentValues.put(COL_7, correctProblem);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         if (result == -1) {
@@ -78,12 +80,24 @@ class DBHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where email='" + email + "'", null);
         return res;
     }
+    //컬럼추가
+    public void addColumn(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String str="alter table userData add column correct text";
+        db.execSQL(str);
+    }
 
     //데이터 전체 조회
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
+    }
+    public void updateFavourite(String email,String favouriteProblem){
+        ContentValues contentValues = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+        contentValues.put("favouriteProblem",favouriteProblem);
+        db.update("userData",contentValues,"email=?",new String[] {email});
     }
 
     //데이터 수정
@@ -100,7 +114,12 @@ class DBHelper extends SQLiteOpenHelper {
         contentValues.put("solvedProblem",solvedProblem);
         db.update("userData",contentValues,"email=?",new String[] {email});
     }
-
+    public void updateCorrect(String email,String correctProblem){
+        ContentValues contentValues = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+        contentValues.put("correct",correctProblem);
+        db.update("userData",contentValues,"email=?",new String[] {email});
+    }
     //테이블 전체 데이터 삭제
     public void deleteData() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -109,12 +128,10 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     //특정 id 데이터 삭제하기
-
-   /* public void deleteOneData(){
-
+   public void deleteOneData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String sqlDelete = "DELETE FROM userData WHERE no=?";
-        db.execSQL(sqlDelete);
-    }*/
+       // String sqlDelete = "DELETE FROM userData WHERE no=?";
+      //  db.execSQL(sqlDelete);
+    }
 
 }

@@ -32,13 +32,14 @@ public class LockScreenActivity extends AppCompatActivity {
     TextView textView,problem_text;
     RadioButton one,two,three;
     Button answer_btn;
-    String answer;
+    String answer,email;
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     String time = sdf.format(new Date(System.currentTimeMillis()));
     Cursor cursor;
     private DBHelper dbHelper=new DBHelper(this);
     DBHelper dbHelper(){ return this.dbHelper; }
     String shared = "file";
+    boolean javaState,pythonState,cState;
     //sdf = new SimpleDateFormat("yyyy/MM/dd");
     //String date = sdf.format(new Date(System.currentTimeMillis()));
 
@@ -66,22 +67,7 @@ public class LockScreenActivity extends AppCompatActivity {
         tViewLock =  findViewById(R.id.lock_problem_text);
         tViewLock.setMovementMethod(new ScrollingMovementMethod());
 
-        final ImageButton imageBtn = findViewById(R.id.lock_star_off_btn);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            // 즐겨찾기 별 누르고 이벤트
-            @Override
-            public void onClick(View v) {
-                imageBtn.setImageResource(R.drawable.star_on);
-            }
-        });
-
-        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-        keyguardManager.requestDismissKeyguard(this, null);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-         | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-
-        String email = HomeActivity.showEmail();
-
+       email = HomeActivity.showEmail();
         cursor=dbHelper().getAllData();
         while (cursor.moveToNext()) {
             if (email.equals(cursor.getString(2))) {
@@ -89,7 +75,16 @@ public class LockScreenActivity extends AppCompatActivity {
             }
         }
 
+        final ImageButton imageBtn = findViewById(R.id.lock_star_off_btn);
+
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+        keyguardManager.requestDismissKeyguard(this, null);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+         | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
+        showSelectLanguage(); // 3개의 언어가 각각 선택되어 있는지 체크
         textSet(); //문제 띄우기
+
         answer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +93,9 @@ public class LockScreenActivity extends AppCompatActivity {
                 String email= cursor.getString(2);
                 String language = cursor.getString(3);
                 String favouriteProblem=cursor.getString(4);
-                String solvedProblem;
+                String solvedProblem=cursor.getString(5);
+                String correctProblem=cursor.getString(6);
+
                 if(cursor.getString(5)==null){
                     solvedProblem = " #" +textView.getText().toString();
                     dbHelper().updateSolved(email,solvedProblem);
@@ -107,12 +104,19 @@ public class LockScreenActivity extends AppCompatActivity {
                     solvedProblem = cursor.getString(5) + " #" + textView.getText().toString();
                     dbHelper().updateSolved(email,solvedProblem);
                 }
-                System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem );
                 System.out.println(correctNum);
                 if(one.isChecked()){
                     if(answer.equals("1번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
-                        correctNum++;
+                        if(cursor.getString(6)==null){
+                            correctProblem = " #" +textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
+                        else {
+                            correctProblem= cursor.getString(6) + " #" + textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -121,7 +125,14 @@ public class LockScreenActivity extends AppCompatActivity {
                 else if(two.isChecked()){
                     if(answer.equals("2번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
-                        correctNum++;
+                        if(cursor.getString(6)==null){
+                            correctProblem = " #" +textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
+                        else {
+                            correctProblem= cursor.getString(6) + " #" + textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -130,7 +141,14 @@ public class LockScreenActivity extends AppCompatActivity {
                 else{
                     if(answer.equals("3번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
-                        correctNum++;
+                        if(cursor.getString(6)==null){
+                            correctProblem = " #" +textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
+                        else {
+                            correctProblem= cursor.getString(6) + " #" + textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -138,13 +156,44 @@ public class LockScreenActivity extends AppCompatActivity {
                 }
             }
         });
-
+        imageBtn.setOnClickListener(new View.OnClickListener() {
+            // 즐겨찾기 별 누르고 이벤트
+            @Override
+            public void onClick(View v) {
+                imageBtn.setImageResource(R.drawable.star_on);
+                if(cursor.getString(4)==null){
+                    dbHelper().updateFavourite(email, "#"+textView.getText().toString()+" ");
+                }else {
+                    String favouriteProblem = cursor.getString(4) + "#" + textView.getText().toString() + " ";
+                    dbHelper().updateFavourite(email, favouriteProblem);
+                }
+            }
+        });
     }
-    public static int getCorrectNum(){ return correctNum; }
 
+    private void showSelectLanguage(){
+        if(checkDuplicate('J')){
+            javaState=true;
+        }
+        else{
+            javaState=false;
+        }
+        if(checkDuplicate('P')){
+            pythonState=true;
+        }
+        else{
+            pythonState=false;
+        }
+        if(checkDuplicate('C')){
+            cState=true;
+        }
+        else{
+            cState=false;
+        }
+    }
     private void textSet() { //txt 나누기
 
-        String txt = readRandomTxt();
+        String txt = readRandomTxt(javaState,pythonState,cState);
         String[] array = txt.split("#"); // 문제 구분
         //System.out.println(array[0]);
 
@@ -168,39 +217,46 @@ public class LockScreenActivity extends AppCompatActivity {
     }
 
     // txt에서 String 추출
-    private String readRandomTxt() {
+    private String readRandomTxt(boolean javaState,boolean pythonState, boolean cState) {
         // getResources().openRawResource()로 raw 폴더의 원본 파일을 가져온다.
         // txt 파일을 InpuStream에 넣는다. (open 한다)
+        //반복문안에서 랜덤 난수를 생성하여 선택된 언어가 우리가 선택한 언어인경우에만 txt를 읽는다.
         String readData;
-        int num= (int)(Math.random()*3);  // 0~2 사이의 난수 발생
-        try {
-            if(num==0) { //num이 0이면 java txt 가져옴
-                InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
-                byte[] data = new byte[fis.available()];
-                while (fis.read(data) != -1) {
-                    ;
+        while(true) {
+            int num = (int) (Math.random() * 3);  // 0~2 사이의 난수 발생
+            try {
+                if (num == 0) { //num이 0이면 java txt 가져옴
+                    InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
+                    byte[] data = new byte[fis.available()];
+                    while(fis.read(data)!=-1){;}
+                    if(javaState==false){
+                        continue;
+                    }
+                    readData = new String(data);
+                    break;
+                } else if (num == 1) { //num이 1이면 python txt 가져옴
+                    InputStream fis = getResources().openRawResource(R.raw.python_mcproblems);
+                    byte[] data = new byte[fis.available()];
+                    while(fis.read(data)!=-1){;}
+                    if (pythonState == false) {
+                        continue;
+                    }
+                    readData = new String(data);
+                    break;
+                } else { //num이 2이면 c txt 가져옴
+                    InputStream fis = getResources().openRawResource(R.raw.c_mcproblems);
+                    byte[] data = new byte[fis.available()];
+                    while(fis.read(data)!=-1){;}
+                    if(cState==false){
+                        continue;
+                    }
+                    readData = new String(data);
+                    break;
                 }
-                readData = new String(data);
+            } catch (IOException e) {
+                readData = "failed read";
+                e.printStackTrace();
             }
-            else if(num==1){ //num이 1이면 python txt 가져옴
-                InputStream fis = getResources().openRawResource(R.raw.python_mcproblems);
-                byte[] data = new byte[fis.available()];
-                while (fis.read(data) != -1) {
-                    ;
-                }
-                readData = new String(data);
-            }
-            else{ //num이 2이면 c txt 가져옴
-                InputStream fis = getResources().openRawResource(R.raw.c_mcproblems);
-                byte[] data = new byte[fis.available()];
-                while (fis.read(data) != -1) {
-                    ;
-                }
-                readData = new String(data);
-            }
-        } catch (IOException e) {
-            readData = "failed read";
-            e.printStackTrace();
         }
         return readData;
     }
@@ -213,6 +269,19 @@ public class LockScreenActivity extends AppCompatActivity {
         Date.setText(date);
     }
 
+    protected boolean checkDuplicate(char s){
+        boolean check = false;
+        int languageLength;
+        languageLength = cursor.getString(3).length(); // language 문자열 처음부터 끝까지 확인
+        for(int i=0; i<languageLength; i++){
+            if(cursor.getString(3).charAt(i)==s){
+                check=true;
+                return check;
+            }
+        }
+        return check;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -222,4 +291,5 @@ public class LockScreenActivity extends AppCompatActivity {
         editor.putInt("solvedNum",num);
         editor.commit();
     }
+
 }

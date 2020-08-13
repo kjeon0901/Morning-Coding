@@ -1,30 +1,24 @@
 package com.example.bottomup2020;
 
-import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-
 import com.example.bottomup2020.List.ListViewAdapter;
 import com.example.bottomup2020.List.ListViewItem;
 
-
 import java.util.ArrayList;
-
-import static android.R.layout.simple_list_item_single_choice;
 
 public class FavouritesListActivity extends AppCompatActivity {
     private ListView listview;
@@ -32,25 +26,43 @@ public class FavouritesListActivity extends AppCompatActivity {
     ListViewAdapter adapter;
     Button delBtn;
 
-
+    DBHelper dbHelper = new DBHelper(this);
+    public DBHelper dbHelper(){return this.dbHelper;}
+    String favouriteProblem;
+    String email = HomeActivity.showEmail();
+    Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites_list);
         ListViewItem item = new ListViewItem();
 
-
         listview = (ListView) findViewById(R.id.listview);
         delBtn = (Button) findViewById(R.id.delete);
 
-         adapter = new ListViewAdapter();
+        cursor=dbHelper().getAllData();
+        while (cursor.moveToNext()) {
+            if (email.equals(cursor.getString(2))) {
+                break;
+            }
+        }
+        adapter = new ListViewAdapter();
+
+        if(cursor.getString(4)!=null) {
+            email = cursor.getString(4);
+            String[] favouriteNum = email.split("#");
+            for (int i = 1; i < favouriteNum.length; i++) {
+                String number[] = favouriteNum[i].split("  ");
+                adapter.addItem(number[0], number[1] + "번");
+            }
+        }
 //        listview.setAdapter(adapter);
 //
 //        item.setTitle("JAVA");
 //        item.setContent("01번");
 //
 //        list.add(item);
-        adapter.addItem("JAVA", "01번");
+      /*  adapter.addItem("JAVA", "01번");
         adapter.addItem("JAVA", "02번");
         adapter.addItem("JAVA", "03번");
         adapter.addItem("JAVA", "04번");
@@ -64,7 +76,7 @@ public class FavouritesListActivity extends AppCompatActivity {
         adapter.addItem("PYTHON", "02번");
         adapter.addItem("PYTHON", "03번");
         adapter.addItem("PYTHON", "04번");
-
+*/
 
         listview.setAdapter(adapter);
 
