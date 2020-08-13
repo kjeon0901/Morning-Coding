@@ -190,9 +190,12 @@ public class LockScreenActivity extends AppCompatActivity  {
 //                mainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(mainActivity);
                 finish();
+
+                // finish();하면 잠금화면 전 화면으로 돌아가고 주석처리한 코드 하면 home으로 돌아감.
             }
         });
     }
+
 
     private void showSelectLanguage(){
         if(checkDuplicate('J')){
@@ -227,7 +230,7 @@ public class LockScreenActivity extends AppCompatActivity  {
         int i =(int)(Math.random()*3);//문제번호는 0~3
         i=i*2;//문제번호는 0,2,4,6
         while (i < array.length) {
-            textView.setText(array[i]);
+            textView.setText(array[i] + "번");
             String[] str = array[i + 1].split("\\|\\|");   // 선지 구분
             problem_text.setText(str[0]);
             one.setText(str[1]);

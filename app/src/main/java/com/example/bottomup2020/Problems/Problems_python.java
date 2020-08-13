@@ -61,6 +61,10 @@ public class Problems_python extends AppCompatActivity {
                 button2.setText(str[2]);
                 button3.setText(str[3]);
                 problem_solution.setText("답 : " + str[4]);
+                if(str.length > 5){
+                    problem_solution.append(str[5]);
+                    problem_solution.setTextSize(15);
+                }
                 break;
             }
 
