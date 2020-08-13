@@ -216,7 +216,7 @@ public class HomeActivity extends AppCompatActivity {
         int i =(int)(Math.random()*3);//문제번호는 0~3
         i=i*2;//문제번호는 0,2,4,6
         while (i < array.length) {
-                textView.setText(array[i]);
+                textView.setText(array[i] + "번");
                 String[] str = array[i + 1].split("\\|\\|");   // 선지 구분
                 problem_text.setText(str[0]);
                 button1.setText(str[1]);
