@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "GSC";
+    public static final String DATABASE_NAME = "morning_coding";
     public static final String TABLE_NAME = "userData";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "name";
@@ -34,7 +34,7 @@ class DBHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "language";
     public static final String COL_5 = "favouriteProblem";
     public static final String COL_6 = "solvedProblem";
-    public static final String COL_7 = "correct";
+    public static final String COL_7 = "correctProblem";
 
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 2);
@@ -43,7 +43,7 @@ class DBHelper extends SQLiteOpenHelper {
     //실행할 때 테이블 최초 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, favouriteProblem TEXT, solvedProblem TEXT, correct TEXT)");
+        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT , email TEXT, language TEXT, favouriteProblem TEXT, solvedProblem TEXT, correctProblem TEXT)");
     }
 
     //버전 업그레이드
@@ -117,7 +117,7 @@ class DBHelper extends SQLiteOpenHelper {
     public void updateCorrect(String email,String correctProblem){
         ContentValues contentValues = new ContentValues();
         SQLiteDatabase db = this.getWritableDatabase();
-        contentValues.put("correct",correctProblem);
+        contentValues.put("correctProblem",correctProblem);
         db.update("userData",contentValues,"email=?",new String[] {email});
     }
     //테이블 전체 데이터 삭제
