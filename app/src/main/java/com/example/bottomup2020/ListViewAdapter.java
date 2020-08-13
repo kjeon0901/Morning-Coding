@@ -1,5 +1,7 @@
-package com.example.bottomup2020.List;
+package com.example.bottomup2020;
+
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,20 +9,22 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.bottomup2020.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends BaseAdapter {
+import static com.example.bottomup2020.HomeActivity.email;
 
+public class ListViewAdapter extends BaseAdapter {
 
     TextView titleTextView;
     TextView contentTextView;
-
+    Cursor cursor;
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<ListViewItem> listViewItemList =  new ArrayList<ListViewItem>();
+    private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
-// ListViewAdapter의 생성자
+    // ListViewAdapter의 생성자
     public ListViewAdapter() {
 
     }
@@ -38,7 +42,7 @@ public class ListViewAdapter extends BaseAdapter {
         final Context context = parent.getContext();
 
         // "listview_item" Layout을 inflate하여 convertView 참조 획득.
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater Inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = Inflater.inflate(R.layout.listview_item, parent, false);
         }
@@ -55,22 +59,35 @@ public class ListViewAdapter extends BaseAdapter {
         contentTextView.setText(listViewItem.getContent());
 
         delbtn.setTag(position);
-
+        final DBHelper dbHelper = new DBHelper(context);
+        cursor=dbHelper.getAllData();
+        while (cursor.moveToNext()) {
+            if (email.equals(cursor.getString(2))) {
+                break;
+            }
+        }
         delbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 int pos = Integer.parseInt(v.getTag().toString());
                 Toast.makeText(context, listViewItemList.get(pos).getTitle() + " " + listViewItemList.get(pos).getContent() + "이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-
                 listViewItemList.remove(pos);
-
                 notifyDataSetChanged();
 
-
+                String favouriteProblem= cursor.getString(4);
+                String favouriteArr[]= favouriteProblem.split("#");
+                for(int i=0;i<favouriteArr.length;i++){
+                   String str= titleTextView.getText().toString()+"  "+contentTextView.getText().toString().charAt(0)+contentTextView.getText().toString().charAt(1)+" "; //ex)C  01
+                    if(favouriteArr[i].equals(str)){
+                        str="#"+str;
+                        favouriteProblem= cursor.getString(4).replace(str,"");
+                        dbHelper.updateFavourite(email,favouriteProblem);
+                        break;
+                    }
+                }
             }
         });
-
 
         return convertView;
     }
@@ -109,6 +126,14 @@ public class ListViewAdapter extends BaseAdapter {
         listViewItemList.add(item);
 
     }
+
+}
+class subClass extends AppCompatActivity {
+    DBHelper dbHelper = new DBHelper(this);
+    public DBHelper dbHelper(){
+        return this.dbHelper;
+    };
+}
 //
 //    public void removeItem(String title, String content){
 //        ListViewItem item = new ListViewItem(title, content);
@@ -119,4 +144,3 @@ public class ListViewAdapter extends BaseAdapter {
 //        listViewItemList.remove(item);
 //    }
 
-}
