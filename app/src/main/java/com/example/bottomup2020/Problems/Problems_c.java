@@ -63,7 +63,9 @@ public class Problems_c extends AppCompatActivity {
                 button2.setText(str[2]);
                 button3.setText(str[3]);
                 problem_solution.setText("답 : " + str[4]);
-
+                if(str[5] != null){
+                    problem_solution.append(str[5]);
+                }
                 break;
             }
 
