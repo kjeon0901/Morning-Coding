@@ -96,6 +96,8 @@ public class HomeActivity extends AppCompatActivity {
         //==============================================
         userName.setText(name);
 
+        dbHelper().addColumn();
+        
         if(checkDuplicate('J')){
             java_btn.setBackgroundResource(R.drawable.btn_margin);
             btn_java=0;
