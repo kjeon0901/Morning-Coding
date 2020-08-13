@@ -1,6 +1,5 @@
 package com.example.bottomup2020;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -33,9 +32,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
-    String name,language,favouriteProblem,imagePath,solvedProblem;
+    String name,language,favouriteProblem,imagePath,solvedProblem,correctProblem;
     ImageView imageView5;
-    TextView userName, solved, correct;
+    TextView userName, solved, correct , correctPercent;
     Cursor cursor;
     Bitmap bitmap;
     Button java_btn , python_btn, c_btn;
@@ -53,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
     int btn_python = 1;
     int btn_c = 1;
     TextView tViewLog;
-    public static Context hContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +64,8 @@ public class HomeActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         solved=findViewById(R.id.solved);
         correct = findViewById(R.id.correct);
+        correctPercent = findViewById(R.id.corrrectPercent);
+
         lock=findViewById(R.id.sb_use_listener);
         tViewLog = (TextView) findViewById(R.id.home_problem_text);
         tViewLog.setMovementMethod(new ScrollingMovementMethod());
@@ -88,8 +88,9 @@ public class HomeActivity extends AppCompatActivity {
             cursor.moveToFirst();
             favouriteProblem = null;
             solvedProblem = null;
+            correctProblem=null;
             language="JAVA PYTHON C";
-            dbHelper().insertData(name, email, language, favouriteProblem,solvedProblem);
+            dbHelper().insertData(name, email, language, favouriteProblem,solvedProblem,correctProblem);
             cursor = dbHelper().getOneData(email);
         }
         //==============================================
@@ -135,19 +136,31 @@ public class HomeActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
-        //맞은 문제 개수 표시
+        //dbHelper().updateSolved(email,null);
+        //dbHelper().updateCorrect(email,null);
+        //푼문제가 0
         if(cursor.getString(5)==null){
             solved.setText("0");
             correct.setText("0");
         }
         else {
-            String str = cursor.getString(5);
-            String[] txtArr = str.split("#");
+            //푼 문제 존재
+            String solvedStr = cursor.getString(5);
+            String[] txtArr = solvedStr.split("#");
             solvedNum = txtArr.length - 1;
             solved.setText(String.valueOf(solvedNum));
-            correct.setText(String.valueOf(LockScreenActivity.getCorrectNum()));
+            if(cursor.getString(6)==null){ //맞은 문제 0
+                correct.setText("0");
+            }
+            else{ //맞은 문제 존재
+                String correctStr = cursor.getString(6);
+                String[] txtArr2 = correctStr.split("#");
+                correctNum = txtArr2.length-1;
+                correct.setText(String.valueOf(correctNum));
+            }
         }
+        int percent= (int) (((double)correctNum/(double)solvedNum)*100);
+        correctPercent.setText(String.valueOf(percent));
 
         //문제를 맞혔을 경우
         //correctNum++;
@@ -160,7 +173,8 @@ public class HomeActivity extends AppCompatActivity {
         language = cursor.getString(3);
         favouriteProblem = cursor.getString(4);
         solvedProblem = cursor.getString(5);
-        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+        correctProblem = cursor.getString(6);
+        System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem+ " | "+ correctProblem);
 
         textSet(); // 랜덤 오늘의 모닝코딩 출력
         lock.setChecked(true); //잠금화면은 항상 ON 으로

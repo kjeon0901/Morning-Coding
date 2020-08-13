@@ -98,7 +98,9 @@ public class LockScreenActivity extends AppCompatActivity {
                 String email= cursor.getString(2);
                 String language = cursor.getString(3);
                 String favouriteProblem=cursor.getString(4);
-                String solvedProblem;
+                String solvedProblem=cursor.getString(5);
+                String correctProblem=cursor.getString(6);
+
                 if(cursor.getString(5)==null){
                     solvedProblem = " #" +textView.getText().toString();
                     dbHelper().updateSolved(email,solvedProblem);
@@ -107,12 +109,19 @@ public class LockScreenActivity extends AppCompatActivity {
                     solvedProblem = cursor.getString(5) + " #" + textView.getText().toString();
                     dbHelper().updateSolved(email,solvedProblem);
                 }
-                System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem);
+                System.out.println(id + " | " + nickName + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem );
                 System.out.println(correctNum);
                 if(one.isChecked()){
                     if(answer.equals("1번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
-                        correctNum++;
+                        if(cursor.getString(6)==null){
+                            correctProblem = " #" +textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
+                        else {
+                            correctProblem= cursor.getString(6) + " #" + textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -121,7 +130,14 @@ public class LockScreenActivity extends AppCompatActivity {
                 else if(two.isChecked()){
                     if(answer.equals("2번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
-                        correctNum++;
+                        if(cursor.getString(6)==null){
+                            correctProblem = " #" +textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
+                        else {
+                            correctProblem= cursor.getString(6) + " #" + textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
@@ -130,7 +146,14 @@ public class LockScreenActivity extends AppCompatActivity {
                 else{
                     if(answer.equals("3번")){
                         Toast.makeText(getApplicationContext(), "정답입니다!", Toast.LENGTH_LONG).show();
-                        correctNum++;
+                        if(cursor.getString(6)==null){
+                            correctProblem = " #" +textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
+                        else {
+                            correctProblem= cursor.getString(6) + " #" + textView.getText().toString();
+                            dbHelper().updateCorrect(email,correctProblem);
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"틀렸습니다. 정답은 "+answer ,Toast.LENGTH_LONG).show();
