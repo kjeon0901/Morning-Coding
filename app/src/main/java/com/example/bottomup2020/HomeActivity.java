@@ -74,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
         name = data.get(0);
         email = data.get(1);
         imagePath=data.get(2);
+
         //===================DB=====================
         // db에 데이터 있는지 검사
         cursor=dbHelper().getAllData();
@@ -96,8 +97,6 @@ public class HomeActivity extends AppCompatActivity {
         //==============================================
         userName.setText(name);
 
-        dbHelper().addColumn();
-        
         if(checkDuplicate('J')){
             java_btn.setBackgroundResource(R.drawable.btn_margin);
             btn_java=0;
@@ -414,6 +413,9 @@ public class HomeActivity extends AppCompatActivity {
     protected boolean checkDuplicate(char s){
         boolean check = false;
         int languageLength;
+        if(cursor.getString(3)==null){
+            return false;
+        }
         languageLength = cursor.getString(3).length(); // language 문자열 처음부터 끝까지 확인
         for(int i=0; i<languageLength; i++){
             if(cursor.getString(3).charAt(i)==s){
