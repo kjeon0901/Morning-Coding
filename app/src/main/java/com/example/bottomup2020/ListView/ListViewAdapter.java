@@ -1,10 +1,11 @@
-package com.example.bottomup2020.List;
+package com.example.bottomup2020.ListView;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.bottomup2020.R;
@@ -59,7 +60,8 @@ public class ListViewAdapter extends BaseAdapter {
         delbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // pos는 내가 누른 버튼의 index를 가져옴
+                // 0번째 아이템에 있는 삭제 버튼을 누르면 pos = 0이 됨.
                 int pos = Integer.parseInt(v.getTag().toString());
                 Toast.makeText(context, listViewItemList.get(pos).getTitle() + " " + listViewItemList.get(pos).getContent() + "이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
 
@@ -67,6 +69,11 @@ public class ListViewAdapter extends BaseAdapter {
 
                 notifyDataSetChanged();
 
+                ArrayList<ListViewItem> l = new ArrayList<>(listViewItemList);
+                listViewItemList.clear();
+                for(int i = 0; i < l.size(); i++){
+                    listViewItemList.add(l.get(i));
+                }
 
             }
         });

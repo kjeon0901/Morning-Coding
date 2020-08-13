@@ -1,6 +1,4 @@
-package com.example.bottomup2020.List;
-
-import android.widget.Button;
+package com.example.bottomup2020.ListView;
 
 public class ListViewItem {
 
