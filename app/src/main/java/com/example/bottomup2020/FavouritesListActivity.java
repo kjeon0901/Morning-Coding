@@ -15,6 +15,11 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
+import com.example.bottomup2020.ListView.ListViewAdapter;
+import com.example.bottomup2020.ListView.ListViewItem;
+
+
 import java.util.ArrayList;
 
 public class FavouritesListActivity extends AppCompatActivity {
