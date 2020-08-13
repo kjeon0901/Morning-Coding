@@ -1,3 +1,4 @@
+
 package com.example.bottomup2020;
 
 import android.app.KeyguardManager;
@@ -33,8 +34,8 @@ public class LockScreenActivity extends AppCompatActivity {
     RadioButton one,two,three;
     Button answer_btn;
     String answer,email;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy/M/d");    // 날짜 포맷
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-    String time = sdf.format(new Date(System.currentTimeMillis()));
     Cursor cursor;
     private DBHelper dbHelper=new DBHelper(this);
     DBHelper dbHelper(){ return this.dbHelper; }
@@ -45,7 +46,6 @@ public class LockScreenActivity extends AppCompatActivity {
 
     Calendar cal = new GregorianCalendar();
     //String timeGre = String.format("%d:%d", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
-    String date = String.format("%d/%d/%d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
     TextView tViewLock;
     public static int correctNum=0;
 
@@ -67,7 +67,7 @@ public class LockScreenActivity extends AppCompatActivity {
         tViewLock =  findViewById(R.id.lock_problem_text);
         tViewLock.setMovementMethod(new ScrollingMovementMethod());
 
-       email = HomeActivity.showEmail();
+        email = HomeActivity.showEmail();
         cursor=dbHelper().getAllData();
         while (cursor.moveToNext()) {
             if (email.equals(cursor.getString(2))) {
@@ -80,7 +80,7 @@ public class LockScreenActivity extends AppCompatActivity {
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         keyguardManager.requestDismissKeyguard(this, null);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-         | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
         showSelectLanguage(); // 3개의 언어가 각각 선택되어 있는지 체크
         textSet(); //문제 띄우기
@@ -264,6 +264,13 @@ public class LockScreenActivity extends AppCompatActivity {
     private void timeset() {
         Time = findViewById(R.id.Time);
         Date = findViewById(R.id.Date);
+
+        Date dd = new Date();
+        String date = mFormat.format(dd);
+
+        long now = System.currentTimeMillis();
+        Date tt = new Date(now);
+        String time = sdf.format(tt);
 
         Time.setText(time);
         Date.setText(date);

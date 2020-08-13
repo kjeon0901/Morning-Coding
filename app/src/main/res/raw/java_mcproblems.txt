@@ -1,4 +1,6 @@
-JAVA  01#반복 조건을 루프 끝에 검사하는 것은 무엇인가? ||while문 ||do-while문 ||for문 ||2번#JAVA  02#다음의 코드에 의하여 생성되는 출력은 무엇인가?
+JAVA  01#반복 조건을 루프 끝에 검사하는 것은 무엇인가?
+||while문 ||do-while문 ||for문 ||2번#JAVA  02#다음의 코드에 의하여 생성되는 출력은 무엇인가?
+
 class C1{
    pubic static void main(String[] args){
       int a=10;
@@ -6,7 +8,9 @@ class C1{
       return;
    }
 } ||a:+10 ||a:a ||a:10 ||3번#JAVA  03#틀린 것을 고르시오.
+
 if(조건1 & 조건2) ||조건 1이 참이면 조건2를 검사한다 ||조건 1이 거짓이면 조건2를 검사한다 ||조건1이 거짓이면 조건2를 검사하지 않는다 ||3번#JAVA  04#다음의 코드에 의하여 생성되는 출력은 무엇인가?
+
 import java.util.Scanner;
 class Problem {
 	Scanner sc = new Scanner(System.in);
