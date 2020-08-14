@@ -8,17 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.example.bottomup2020.R;
-import com.example.bottomup2020.SolutionActivity_c;
-import com.example.bottomup2020.SolutionActivity_java;
-import com.example.bottomup2020.SolutionActivity_python;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,6 +55,7 @@ public class FavouritesActivity extends AppCompatActivity {
         int i = 0;
         while(i < array.length){
             String name_compare = language_name_favourites+ "  " +  button_number_favourites;
+            array[i]=array[i]+" ";
             if(array[i].equals(name_compare)){
                 String[] str = array[i+1].split("\\|\\|");   // 선지 구분
                 problem_text.setText(str[0]);
