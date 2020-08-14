@@ -20,16 +20,16 @@
                 android:id="@+id/sb_use_listener"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="180dp"
                 android:layout_marginTop="20dp"
-                android:text="잠금화면 사용  "
-                android:textColor="#9b9b9b"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:switchMinWidth="0dp"
+                android:text="잠금화면 사용 항상 ON  "
+                android:textColor="#9b9b9b"
                 android:textOff=""
                 android:textOn=""
-                android:thumbTextPadding="15dp" />
+                android:thumb="@drawable/switch_thumb"
+                android:thumbTextPadding="15dp"
+                android:track="@drawable/switch_track_selector" />
 
             <TextView
                 android:id="@+id/userName"
@@ -72,7 +72,7 @@
                 android:id="@+id/solved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="315dp"
+                android:layout_marginLeft="320dp"
                 android:layout_marginTop="110dp"
                 android:text="0"
                 android:textSize="20dp" />
@@ -81,7 +81,7 @@
                 android:id="@+id/slash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="300dp"
+                android:layout_marginLeft="305dp"
                 android:layout_marginTop="110dp"
                 android:text="/"
                 android:textSize="20dp" />
