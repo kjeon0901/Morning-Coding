@@ -3,7 +3,6 @@ package com.example.bottomup2020;
 
 import android.app.KeyguardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
@@ -171,9 +170,12 @@ public class LockScreenActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 imageBtn.setImageResource(R.drawable.star_on);
                 if(cursor.getString(4)==null){
-                    dbHelper().updateFavourite(email, "#"+textView.getText().toString()+" ");
+                    String favouriteProblem="#"+textView.getText().toString()+" ";
+                    favouriteProblem= favouriteProblem.replace("번","");
+                    dbHelper().updateFavourite(email, favouriteProblem);
                 }else {
                     String favouriteProblem = cursor.getString(4) + "#" + textView.getText().toString() + " ";
+                    favouriteProblem = favouriteProblem.replace("번","");
                     dbHelper().updateFavourite(email, favouriteProblem);
                 }
             }

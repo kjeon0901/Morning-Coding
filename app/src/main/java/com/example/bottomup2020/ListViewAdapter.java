@@ -71,17 +71,17 @@ public class ListViewAdapter extends BaseAdapter {
             public void onClick(View v) {
 
                 int pos = Integer.parseInt(v.getTag().toString());
-                Toast.makeText(context, listViewItemList.get(pos).getTitle() + " " + listViewItemList.get(pos).getContent() + "이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                String problemName= listViewItemList.get(pos).getTitle()+"  "+listViewItemList.get(pos).getContent();
+                Toast.makeText(context, problemName + "이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 listViewItemList.remove(pos);
                 notifyDataSetChanged();
-
+                problemName = problemName.replace("번","");
                 String favouriteProblem= cursor.getString(4);
                 String favouriteArr[]= favouriteProblem.split("#");
                 for(int i=0;i<favouriteArr.length;i++){
-                   String str= titleTextView.getText().toString()+"  "+contentTextView.getText().toString().charAt(0)+contentTextView.getText().toString().charAt(1)+" "; //ex)C  01
-                    if(favouriteArr[i].equals(str)){
-                        str="#"+str;
-                        favouriteProblem= cursor.getString(4).replace(str,"");
+                    if(favouriteArr[i].equals(problemName)){
+                        problemName="#"+problemName;
+                        favouriteProblem= cursor.getString(4).replace(problemName,"");
                         dbHelper.updateFavourite(email,favouriteProblem);
                         break;
                     }
