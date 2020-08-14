@@ -85,6 +85,10 @@ public class SolutionToolbarActivity extends AppCompatActivity {
                 intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.GoHome:
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                return true;
             default:
 
                 return super.onOptionsItemSelected(item);

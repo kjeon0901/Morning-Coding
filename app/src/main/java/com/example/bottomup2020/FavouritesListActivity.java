@@ -180,12 +180,16 @@ public class FavouritesListActivity extends AppCompatActivity {
                 intent = new Intent(this, SolutionActivity_python.class);
                 startActivity(intent);
                 break;
+            case android.R.id.home: {
+                finish();
+                return true;
+            }
 //            case R.id.FavoritesMenu:
 //                intent = new Intent(this, FavouritesListActivity.class);
 //                startActivity(intent);
 //                break;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     // 메뉴가 화면에 보여질 때 마다 호출됨.

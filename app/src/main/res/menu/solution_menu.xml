@@ -16,6 +16,10 @@
         android:title="Python"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/GoHome"
+        android:title="홈으로 가기"
+        app:showAsAction="never"/>
+
     <!-- Settings, should always be in the overflow -->
     <!--
     <item android:id="@+id/SettingMenu"

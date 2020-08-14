@@ -65,7 +65,6 @@ public class FavouritesActivity extends AppCompatActivity {
                 problem_solution.setText("답 : " + str[4]);
                 if(str.length > 5){
                     problem_solution.append(str[5]);
-                    problem_solution.setTextSize(15);
                 }
                 break;
             }
