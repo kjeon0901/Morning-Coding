@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
     int btn_python = 1;
     int btn_c = 1;
     TextView tViewLog;
+    boolean javaState, pythonState, cState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +178,7 @@ public class HomeActivity extends AppCompatActivity {
         correctProblem = cursor.getString(6);
         System.out.println(id + " | " + name + " | " + email + " | "+ language+ " | " + favouriteProblem +" | "+solvedProblem+ " | "+ correctProblem);
 
+        showSelectLanguage(); // 언어선택한 거 저장
         textSet(); // 랜덤 오늘의 모닝코딩 출력
         lock.setChecked(true); //잠금화면은 항상 ON 으로
         Intent intentLock = new Intent(getApplicationContext(), ScreenService.class);
@@ -205,7 +207,7 @@ public class HomeActivity extends AppCompatActivity {
         Button button3 =  findViewById(R.id.home_radiobutton3);
         TextView problem_text = findViewById(R.id.home_problem_text);
 
-        String txt = readRandomTxt();
+        String txt = readRandomTxt(javaState,pythonState,cState);
         String[] array = txt.split("#"); // 문제 구분
         //System.out.println(array[0]);
 
@@ -228,39 +230,46 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     // txt에서 String 추출
-    private String readRandomTxt() {
+    private String readRandomTxt(boolean javaState,boolean pythonState, boolean cState) {
         // getResources().openRawResource()로 raw 폴더의 원본 파일을 가져온다.
         // txt 파일을 InpuStream에 넣는다. (open 한다)
+        //반복문안에서 랜덤 난수를 생성하여 선택된 언어가 우리가 선택한 언어인경우에만 txt를 읽는다.
         String readData;
-        int num= (int)(Math.random()*3);  // 0~2 사이의 난수 발생
-        try {
-            if(num==0) { //num이 0이면 java txt 가져옴
-                InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
-                byte[] data = new byte[fis.available()];
-                while (fis.read(data) != -1) {
-                    ;
+        while(true) {
+            int num = (int) (Math.random() * 3);  // 0~2 사이의 난수 발생
+            try {
+                if (num == 0) { //num이 0이면 java txt 가져옴
+                    InputStream fis = getResources().openRawResource(R.raw.java_mcproblems);
+                    byte[] data = new byte[fis.available()];
+                    while(fis.read(data)!=-1){;}
+                    if(javaState==false){
+                        continue;
+                    }
+                    readData = new String(data);
+                    break;
+                } else if (num == 1) { //num이 1이면 python txt 가져옴
+                    InputStream fis = getResources().openRawResource(R.raw.python_mcproblems);
+                    byte[] data = new byte[fis.available()];
+                    while(fis.read(data)!=-1){;}
+                    if (pythonState == false) {
+                        continue;
+                    }
+                    readData = new String(data);
+                    break;
+                } else { //num이 2이면 c txt 가져옴
+                    InputStream fis = getResources().openRawResource(R.raw.c_mcproblems);
+                    byte[] data = new byte[fis.available()];
+                    while(fis.read(data)!=-1){;}
+                    if(cState==false){
+                        continue;
+                    }
+                    readData = new String(data);
+                    break;
                 }
-                readData = new String(data);
+            } catch (IOException e) {
+                readData = "failed read";
+                e.printStackTrace();
             }
-            else if(num==1){ //num이 1이면 python txt 가져옴
-                InputStream fis = getResources().openRawResource(R.raw.python_mcproblems);
-                byte[] data = new byte[fis.available()];
-                while (fis.read(data) != -1) {
-                    ;
-                }
-                readData = new String(data);
-            }
-            else{ //num이 2이면 c txt 가져옴
-                InputStream fis = getResources().openRawResource(R.raw.c_mcproblems);
-                byte[] data = new byte[fis.available()];
-                while (fis.read(data) != -1) {
-                    ;
-                }
-                readData = new String(data);
-            }
-        } catch (IOException e) {
-            readData = "failed read";
-            e.printStackTrace();
         }
         return readData;
     }
@@ -410,6 +419,28 @@ public class HomeActivity extends AppCompatActivity {
         editor.putBoolean("checked",true);
         editor.commit();
     }
+
+    private void showSelectLanguage(){
+        if(checkDuplicate('J')){
+            javaState=true;
+        }
+        else{
+            javaState=false;
+        }
+        if(checkDuplicate('P')){
+            pythonState=true;
+        }
+        else{
+            pythonState=false;
+        }
+        if(checkDuplicate('C')){
+            cState=true;
+        }
+        else{
+            cState=false;
+        }
+    }
+
     protected boolean checkDuplicate(char s){
         boolean check = false;
         int languageLength;
